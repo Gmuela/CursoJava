@@ -6,11 +6,18 @@ body {
     padding: 20px;
     text-align: center
 }
+ul{
+    list-style: none;
+}
 h2 {
     padding: 15px;
 }
 .destacada {
+    background-color: darkgrey;
     font-size: 16px;
+}
+.noDestacada{
+    background-color: slategrey;
 }
 p.destacada b {
     color: indianred;
