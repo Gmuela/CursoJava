@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<!--CABECERA-->
+
+<head>
+    <title>BloWer</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../blowerStyle.css" type="text/css">
+</head>
+
+<!--CUERPO-->
+
+<body>
+    <main>
+        <header>
+            <h1>BloWer</h1>
+        </header>
+        <form action="registro.php" method="get" name="registro" class="registro">
+            <input class="especial" type="text" placeholder="Nombre" name="nombre" />
+            <input class="especial" type="text" placeholder="Apellido" name="apellido" />
+            <br>
+            <input type="email" placeholder="Correo electrónico" name="email" />
+            <br>
+            <input type="email" placeholder="Repite el correo electrónico" name="rptCorreo" />
+            <br>
+            <input type="password" placeholder="Contraseña" name="password" />
+            <br>
+            <input type="date" name="fecha"/>
+            <br>
+            <input type="radio" name="sexo" id="sexoH" />
+            <label for="sexoH">Hombre</label>
+            <input type="radio" name="sexo" id="sexoM" />
+            <label for="sexoM">Mujer</label>
+            <br>
+            <input type="button" value="Regístrarte" />
+        </form>
+    </main>
+</body>
+
+</html>

@@ -5,6 +5,7 @@
 }
 header h1 {
     font: bold 60px "Comic Sans MS", sans-serif;
+    display: inline
 }
 article h1 {
     font: bold 20px verdana, sans-serif;
@@ -53,12 +54,29 @@ section {
 }
 aside {
     float: left;
-    width: 220px;
+    width: 110px;
     margin: 20px 0px;
     padding: 20px;
     background-color: aliceblue;
     text-align: center;
     position: fixed
+}
+.login {
+    float: right;
+    position: relative;
+    width: 100px;
+    text-align: center;
+}
+.login input {
+    display: block;
+    width: 110px;
+    margin: 2px;
+}
+.login a {
+    color: white;
+}
+.login a:hover {
+    color: darkorange;
 }
 footer {
     clear: both;
@@ -86,4 +104,30 @@ aside a {
 }
 a:hover {
     color: darkslateblue;
+}
+
+main form{
+    text-align: center;
+}
+
+form.registro input{
+    padding: 4px;
+}
+
+form.registro input.especial{
+    width: 85px !important;
+}
+form.registro input[type|="text"],
+form.registro input[type|="password"],
+form.registro input[type|="date"],
+form.registro input[type|="email"] {
+    margin: 7px;
+    width: 200px
+}
+form.registro input[type|="radio"] {
+    margin: 10px 10px 25px 7px;
+}
+form.registro input[type|="button"] {
+    padding: 3px;
+    margin-left: 7px;
 }
