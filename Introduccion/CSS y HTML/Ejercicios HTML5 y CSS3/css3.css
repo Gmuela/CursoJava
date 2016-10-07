@@ -1,0 +1,26 @@
+body {
+    text-align: center;
+}
+#principal {
+    display: block;
+    width: 500px;
+    margin: 50px auto;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #999999;
+    background: #DDDDDD;
+    border-radius: 10px 200px;
+    box-shadow: grey -30px -3px 30px;
+}
+#principal:hover {
+    transform: translateX(200px);
+    transition-duration: 1s;
+}
+#titulo {
+    font: bold 36px mark_my_words, verdana, sans-serif;
+    text-shadow: grey -20px 3px 10px;
+}
+@font-face {
+    font-family: "mark_my_words";
+    src: url("mark_my_words.ttf")
+}
