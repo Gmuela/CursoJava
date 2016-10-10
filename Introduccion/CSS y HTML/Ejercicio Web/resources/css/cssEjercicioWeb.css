@@ -9,8 +9,8 @@
     src: url("mark_my_words.ttf")
 }
 @media (max-width: 450px){
-    body{
-        background-color: black;
+    img{
+        width: 20px;
     }
 }
 
