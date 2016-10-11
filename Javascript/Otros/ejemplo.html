@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function myFunction() {
+            document.getElementById("demo").innerHTML = "Hello JavaScript!";
+        }
+
+        function myFunction2() {
+            var x = document.getElementById("demo");
+            x.style.fontSize = "25px";
+            x.style.color = "red";
+        }
+
+        function myFunction3() {
+            var text;
+            var x = document.getElementById("numeroIntroducido").value;
+
+            if (isNaN(x) || x < 1 || x > 10) {
+                text = "Entrada no válida";
+            } else {
+                text = "OK";
+            }
+            document.getElementById("demo").innerHTML = text;
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>Mi primera pagina con javascript</h1>
+    <p>JavaScript puede cambiar el contenido de un elemeto HTML</p>
+    <button type="button" onclick="myFunction()">Clickeame!</button>
+    <button type="button" onclick="myFunction2()">Clickeame2!</button>
+    <p id="demo">Esto es solo una demostracion</p>
+    <script>
+        x = new Number(5);
+
+        alert(x);
+
+    </script>
+    <p>Introduce un numero entre 1 y 10</p>
+    <input id="numeroIntroducido" type="number">
+    <button type="button" onclick="myFunction3()">Submit</button>
+    <p id="demo"></p>
+
+
+</body>
+
+</html>
