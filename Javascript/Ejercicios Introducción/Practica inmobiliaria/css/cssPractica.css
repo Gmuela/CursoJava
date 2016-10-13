@@ -1,0 +1,38 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+body{
+    width: 900px;
+    padding: 10px 0px;
+    margin-left: 240px;
+}
+img{
+    width: 10%;
+    border-radius: 15px;
+}
+
+p{
+    margin: 10px 0px;
+}
+
+div{
+    margin: 20px;
+    border-bottom: 3px solid #409693;
+}
+button{
+    border-radius: 3px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1em;
+    display: block;
+    transition-duration: 0.5s;
+
+}
+button:hover{
+    color: #409693;
+}
+aside button{
+    margin: 10px auto;
+}
