@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    Utiliza le metodo slice() para visualizar solamente Banana,Kiwi
+    <p id="demo"></p>
+
+    <script>
+        var str = "Apple,Banana,Kiwi";
+        str = str.slice(str.indexOf("Banana"), str.length);
+        document.getElementById("demo").innerHTML = str;
+
+    </script>
+
+</body>
+
+</html>
