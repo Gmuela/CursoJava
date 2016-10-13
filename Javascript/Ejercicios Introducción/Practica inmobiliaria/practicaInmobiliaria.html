@@ -7,12 +7,6 @@
 </head>
 
 <body>
-    <div id="datosPersona">
-        <h2 id="nombrePersona">Nombre de la persona</h2>
-        <p id="dniPersona">DNI de la persona</p>
-        <p id="imagenPersona">Imagen de la persona</p>
-        <p id="cuentaPersona">Cuenta bancaria de la persona</p>
-    </div>
     <div id="datosCasa">
         <p id="precioCasa">Precio</p>
         <p id="direccionCasa">Dirección</p>
@@ -22,12 +16,18 @@
         <p id="imagenCasa">Imagen</p>
 
     </div>
+    <div id="datosPersona">
+        <h4 id="nombrePersona">Nombre de la persona</h4>
+        <p id="dniPersona">DNI de la persona</p>
+        <p id="imagenPersona">Imagen de la persona</p>
+        <p id="cuentaPersona">Cuenta bancaria de la persona</p>
+    </div>
     <main>
         <aside>
+            <button onclick="mostrarCasa(casa)" id="botonTres">Mostrar Casa</button>
             <button onclick="mostrarPersona(personaPropietario)" id="botonUno">Mostrar Propietario</button>
             <button onclick="mostrarPersona(personaComprador)" id="botonDos">Mostrar Comprador</button>
-            <button onclick="mostrarCasa(casa)">Mostrar Casa</button>
-            <button onclick="comprarCasa(casa,personaComprador)">Comprar Casa</button>
+            <button onclick="comprarCasa(casa,personaComprador)" id="botonCuatro">Comprar Casa</button>
         </aside>
     </main>
 </body>

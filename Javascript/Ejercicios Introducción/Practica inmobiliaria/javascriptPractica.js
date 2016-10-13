@@ -19,11 +19,11 @@ function persona(nombre, apellido, dni, imagen, cuentaBancaria) {
     this.cuentaBancaria = cuentaBancaria;
 }
 
-var cuentaPropietario = new cuentaBancaria(11, 17000);
-var personaPropietario = new persona("Juan", "Perez", "0001", "img/propietario.jpg", cuentaPropietario);
+var cuentaPropietario = new cuentaBancaria("ES12 2960 4967 09 1058396710", 17000);
+var personaPropietario = new persona("Juan", "Pérez", "56789234-T", "img/propietario.jpg", cuentaPropietario);
 
-var cuentaComprador = new cuentaBancaria(12, 30000);
-var personaComprador = new persona("Antonio", "Diaz", "0002", "img/comprador.jpg", cuentaComprador);
+var cuentaComprador = new cuentaBancaria("ES29 6948 5768 28 3856347183", 30000);
+var personaComprador = new persona("Antonio", "Díaz", "02345187-H", "img/comprador.jpg", cuentaComprador);
 
 var casa = new casa(10000, "Avenida Olmos, Nº14", 140, "img/casa.jpg", personaPropietario);
 
@@ -51,5 +51,9 @@ function comprarCasa(casa, comprador) {
     comprador.cuentaBancaria.cantidadDinero -= casa.precio;
     document.getElementById("botonUno").innerHTML = "Mostrar Aniguo Propietario";
     document.getElementById("botonDos").innerHTML = "Mostrar Nuevo Propietario";
+    document.getElementById("botonTres").disabled = true;
+    document.getElementById("botonCuatro").disabled = true;
     mostrarCasa(casa);
+    mostrarPersona(casa.propietario);
+    document.getElementById("precioCasa").innerHTML = "<h3>Vendida</h3>";
 }
