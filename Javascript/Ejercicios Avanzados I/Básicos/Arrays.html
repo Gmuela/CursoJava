@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>Arrays</h1>
+    <p>var expensiveCars = new Array("Mercedes", "Audi", "BMW", "Ferrari");</p>
+    <p>var cheapCars = new Array("Opel", "Fiat", "Tata", "Seat");</p>
+    <hr>
+    <h1>Métodos</h1>
+    <p id="demo1">.length -> </p>
+    <p id="demo2">.toString() -> </p>
+    <p id="demo3">.join() -> </p>
+    <p id="demo4">.pop().toString() -> </p>
+    <p id="demo5">Array después de pop() -> </p>
+    <p id="demo6">.push().toString() -> </p>
+    <p id="demo7">Array después de push() -> </p>
+    <p id="demo8">.concat().toString() -> </p>
+    <p id="demo9">.reverse().toString() -> </p>
+    <p id="demo10">.sort().toString() -> </p>
+    <p id="demo11">.slice(2,array.length).toString() -> </p>
+
+    <script>
+        var expensiveCars = new Array("Mercedes", "Audi", "BMW", "Ferrari");
+        var cheapCars = new Array("Opel", "Fiat", "Tata", "Seat");
+
+        document.getElementById("demo1").innerHTML += expensiveCars.length;
+        document.getElementById("demo2").innerHTML += expensiveCars.toString();
+        document.getElementById("demo3").innerHTML += expensiveCars.join();
+        document.getElementById("demo4").innerHTML += expensiveCars.pop().toString();
+        document.getElementById("demo5").innerHTML += expensiveCars.toString();
+        document.getElementById("demo6").innerHTML += expensiveCars.push("Mazda").toString();
+        document.getElementById("demo7").innerHTML += expensiveCars.toString();
+        document.getElementById("demo8").innerHTML += expensiveCars.concat(cheapCars).toString();
+        document.getElementById("demo9").innerHTML += expensiveCars.reverse().toString();
+        document.getElementById("demo10").innerHTML += expensiveCars.sort().toString();
+        document.getElementById("demo11").innerHTML += expensiveCars.slice(2, expensiveCars.length).toString();
+
+    </script>
+
+</body>
+
+</html>

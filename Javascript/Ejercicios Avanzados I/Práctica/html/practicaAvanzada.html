@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/cssPractcaAvanzada.css" type="text/css" />
+    <script src="../js/jsPracticaAvanzada.js"></script>
+</head>
+
+<body>
+
+    <fieldset id="usuariosRegistrados">
+        <legend>Datos usuarios registrados</legend>
+        <h4>Primer registro:</h4>
+        <div class="datos">
+            <p>Nombre: <span id="nombreUserReg1"></span></p>
+            <p>Apellidos: <span id="apellidosUserReg1"></span></p>
+            <p>Edad: <span id="edadUserReg1"></span></p>
+        </div>
+        <h4>Último registro:</h4>
+        <div class="datos">
+            <p>Nombre: <span id="nombreUserReg2"></span></p>
+            <p>Apellidos: <span id="apellidosUserReg2"></span></p>
+            <p>Edad: <span id="edadUserReg2"></span></p>
+        </div>
+        <button class="myButton" onclick="borrarUltimoRegistro()">Borrar último registro</button>
+    </fieldset>
+
+    <fieldset id="datosRegistro">
+        <legend>Datos de registro</legend>
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre" />
+
+        <label for="apellidos">Apellidos</label>
+        <input type="text" name="apellido" id="apellidos" />
+
+        <label for="fechaNacimiento">Fecha de nacimiento</label>
+        <input type="date" name="fechaNacimiento" id="fechaNacimiento" />
+
+        <label for="fechaCarnet">Obtención de carnet de conducir</label>
+        <input type="date" name="fechaCarnet" id="fechaCarnet" />
+
+        <label for="fechaEstudios">Finalización de estudios</label>
+        <input type="date" name="fechaEstudios" id="fechaEstudios" />
+
+        <button class="myButton" onclick="crearNuevoUsuario()">Registrarse</button>
+    </fieldset>
+
+    <div class="botones">
+        <button class="myButton" onclick="cambiarDetalle(1)">Años</button>
+        <button class="myButton" onclick="cambiarDetalle(2)">Años/Meses</button>
+        <button class="myButton" onclick="cambiarDetalle(3)">Años/Meses/Días</button>
+        <button class="myButton" onclick="cambiarFormatoFecha('-')">YYYY-MM-DD</button>
+        <button class="myButton" onclick="cambiarFormatoFecha('/')">DD/MM/YYYY</button>
+
+    </div>
+
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Segundo Apellido</th>
+        </tr>
+        <tr class="trEspecial">
+            <td id="nombreUser"></td>
+            <td id="apellidoUser"></td>
+            <td id="segApellidoUser"></td>
+        </tr>
+        <tr>
+            <th>Fecha Nacimiento</th>
+            <th>Edad</th>
+        </tr>
+        <tr class="trEspecial">
+            <td id="fechaNacUser"></td>
+            <td id="edadUser"></td>
+        </tr>
+        <tr>
+            <th>Fecha Carnet</th>
+            <th>Tiempo de carnet</th>
+        </tr>
+        <tr class="trEspecial">
+            <td id="fechaCarUser"></td>
+            <td id="tiempoCarUser"></td>
+        </tr>
+        <tr>
+            <th>Fecha Estudios</th>
+            <th>Tiempo</th>
+        </tr>
+        <tr class="trEspecial">
+            <td id="fechaEsUser"></td>
+            <td id="tiempoEsUser"></td>
+        </tr>
+    </table>
+
+
+</body>
+
+</html>
