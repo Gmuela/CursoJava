@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    Utilice un operador condicional (ternario) para este ejercicio: Si la variable firstName es igual a "Juan", el valor de la variable resultado debería ser: "Hola Juan!" de lo contrario el valor del resultado debe ser "No eres Juan! ". First Name:
+    <input type="text" id="fname" value="Juan">
+
+    <p id="demo"></p>
+
+    <script>
+        var firstName = document.getElementById("fname").value;
+        var result = (firstName == "Juan") ? "Hola Juan" : "No eres Juan!";
+            document.getElementById("demo").innerHTML = result;
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    Utilice un operador condicional (ternario) para este ejercicio: Si la variable edad es un valor por debajo de 18, el valor de la variable de puedeVotar debe ser "demasiado joven", de lo contrario el valor de puedevotar debe ser "lo suficientemente viejo".
+
+    <br>
+    Edad: <input type="number" id="age" value="17">
+    <p id="demo"></p>
+
+    <script>
+        var age = document.getElementById("age").value;
+        var puedeVotar = (age < 18) ? "Aun no puede":"Ya puede";
+        document.getElementById("demo").innerHTML = puedeVotar + " votar.";
+
+    </script>
+
+</body>
+
+</html>
