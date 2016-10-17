@@ -145,42 +145,55 @@ function calcularTiempo(fecha, detalle) {
 
     var controlMes = true;
     var controlFebrero = true;
+    var bisiesto = 0;
 
     for (var i = diasTotal; i > 0; i--) {
 
         diasCalculados++;
 
+        if(bisiesto == 4){
+
+            diasCalculados++;
+            bisiesto = 0;
+
+        }
+
         if (controlFebrero) {
 
-            if (diasCalculados > 28) {
+            if (diasCalculados == 28) {
                 mesesCalculados++;
                 diasCalculados = 0;
                 controlFebrero = !controlFebrero;
             }
-        } else {
+        }
+
+        else {
 
             if (controlMes) {
 
-                if (diasCalculados > 30) {
+                if (diasCalculados == 30) {
                     mesesCalculados++;
                     diasCalculados = 0;
                     controlMes = !controlMes;
 
                 }
-            } else {
+            }
 
-                if (diasCalculados > 31) {
+            else {
+
+                if (diasCalculados == 31) {
                     mesesCalculados++;
                     diasCalculados = 0;
                     controlMes = !controlMes;
                 }
             }
+        }
 
-            if (mesesCalculados > 12) {
-                aniosCalculados++;
-                mesesCalculados = 0;
-                controlFebrero = !controlFebrero;
-            }
+        if (mesesCalculados == 12) {
+            aniosCalculados++;
+            mesesCalculados = 0;
+            controlFebrero = !controlFebrero;
+            bisiesto++;
         }
     }
 
