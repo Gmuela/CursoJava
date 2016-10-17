@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/cssPracticaAvanzada2.css" type="text/css" />
+    <script src="../js/jsPracticaAvanzada2.js"></script>
+</head>
+
+<body>
+
+    <fieldset id="datosRegistro">
+        <legend>Datos de registro</legend>
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre" />
+        <div class="error" id="errorNombre"></div>
+
+        <label for="apellidos">Apellidos</label>
+        <input type="text" name="apellido" id="apellidos" />
+        <div class="error" id="errorApellido"></div>
+
+        <label for="fechaNacimiento">Fecha de nacimiento</label>
+        <input type="date" name="fechaNacimiento" id="fechaNacimiento" />
+        <div class="error" id="errorFecha"></div>
+
+        <label for="nombreUsuario">Nombre de usuario</label>
+        <input type="text" name="nombreUsuario" id="nombreUsuario" />
+        <div class="error" id="errorNombreUsuario"></div>
+
+        <label for="email">Correo electrónico</label>
+        <input type="text" name="email" id="email" />
+        <div class="error" id="errorEmail">Hola</div>
+
+        <label for="pass">Contraseña</label>
+        <input type="password" name="pass" id="pass" />
+
+        <label for="passRepeat">Repite la contraseña</label>
+        <input type="password" name="passRepeat" id="passRepeat" onblur="passCheck()"/>
+        <div class="error" id="errorPass"></div>
+
+        <button class="myButton" onclick="crearNuevoUsuario()">Registrarse</button>
+    </fieldset>
+
+    <table id="tablaUsuarios">
+        <tr>
+            <th>Nombre de usuario</th>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Correo eletrónico</th>
+        </tr>
+    </table>
+
+
+</body>
+
+</html>
