@@ -153,7 +153,7 @@ function calcularTiempo(fecha, detalle) {
 
         aniosCalculados = Math.floor(milisTotal / 1000 / 60 / 60 / 24 / 365.25);
 
-        mesesCalculados = Math.floor((milisTotal / 1000 / 60 / 60 / 24 / 365.25) % 12);
+        mesesCalculados = Math.floor((milisTotal / 1000 / 60 / 60 / 24) % 365.25/30.42);
 
         tiempoCalculado = aniosCalculados + " años y " + mesesCalculados + " meses";
 
@@ -161,9 +161,9 @@ function calcularTiempo(fecha, detalle) {
 
         aniosCalculados = Math.floor(milisTotal / 1000 / 60 / 60 / 24 / 365.25);
 
-        mesesCalculados = Math.floor((milisTotal / 1000 / 60 / 60 / 24 / 365.25) % 12);
+        mesesCalculados = Math.floor((milisTotal / 1000 / 60 / 60 / 24) % (365.25/30.42));
 
-        diasCalculados = Math.floor(milisTotal / 1000 / 60 / 60 / 24) % (365.25/12);
+        diasCalculados = Math.floor((milisTotal / 1000 / 60 / 60 / 24) % (365.25/12));
 
         tiempoCalculado = aniosCalculados + " años, " + mesesCalculados + " meses y " + diasCalculados + " días";
     }
