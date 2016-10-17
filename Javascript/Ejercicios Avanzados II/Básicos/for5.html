@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    Dentro del bucle for: Establezca la variable de contador (i) a 0. Ejecuta el bucle, siempre y cuando i es menor que la longitud de la matriz alimentaria Incrementando i en 1..
+
+
+    <p id="demo"></p>
+
+    <script>
+        var text = "";
+        var food = ["Pizza", "Beans", "Tacos", "Fish", "Chicken"];
+        var i;
+
+        for (var i = 0; i < food.length; i++) {
+            text += "I love " + food[i] + "<br>";
+        }
+
+        document.getElementById("demo").innerHTML = text;
+
+    </script>
+
+</body>
+
+</html>
