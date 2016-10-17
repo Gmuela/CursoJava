@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    Utiliza la sentencia continue para no mostrar el valor "Saab"
+    <p id="demo"></p>
+
+    <script>
+        var cars = ["BMW", "Volvo", "Saab", "Ford"];
+        var text = ""
+        var i;
+        for (i = 0; i < cars.length; i++) {
+            if(cars[i] == "Saab"){
+                continue;
+            }
+            text += cars[i] + "<br>";
+        }
+        document.getElementById("demo").innerHTML = text;
+
+    </script>
+
+</body>
+
+</html>
