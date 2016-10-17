@@ -133,79 +133,37 @@ function calcularTiempo(fecha, detalle) {
 
     var tiempoCalculado;
 
-    var diasDeFechaActual = (new Date().getTime()) / (1000 * 60 * 60 * 24);
+    var fechaActual = (new Date().getTime());
 
-    var diasFecha = fecha.getTime() / (1000 * 60 * 60 * 24);
+    var fecha = fecha.getTime();
 
-    var diasTotal = diasDeFechaActual - diasFecha;
+    var milisTotal = fechaActual - fecha;
 
-    var diasCalculados = 0;
-    var mesesCalculados = 0;
-    var aniosCalculados = 0;
-
-    var controlMes = true;
-    var controlFebrero = true;
-    var bisiesto = 0;
-
-    for (var i = diasTotal; i > 0; i--) {
-
-        diasCalculados++;
-
-        if(bisiesto == 4){
-
-            diasCalculados++;
-            bisiesto = 0;
-
-        }
-
-        if (controlFebrero) {
-
-            if (diasCalculados == 28) {
-                mesesCalculados++;
-                diasCalculados = 0;
-                controlFebrero = !controlFebrero;
-            }
-        }
-
-        else {
-
-            if (controlMes) {
-
-                if (diasCalculados == 30) {
-                    mesesCalculados++;
-                    diasCalculados = 0;
-                    controlMes = !controlMes;
-
-                }
-            }
-
-            else {
-
-                if (diasCalculados == 31) {
-                    mesesCalculados++;
-                    diasCalculados = 0;
-                    controlMes = !controlMes;
-                }
-            }
-        }
-
-        if (mesesCalculados == 12) {
-            aniosCalculados++;
-            mesesCalculados = 0;
-            controlFebrero = !controlFebrero;
-            bisiesto++;
-        }
-    }
+    var aniosCalculados;
+    var mesesCalculados;
+    var diasCalculados;
 
     if (detalle == 1) {
+
+        var aniosCalculados = Math.floor(milisTotal / 1000 / 60 / 60 / 24 / 365.25);
 
         tiempoCalculado = aniosCalculados + " años";
 
     } else if (detalle == 2) {
 
+        aniosCalculados = Math.floor(milisTotal / 1000 / 60 / 60 / 24 / 365.25);
+
+        mesesCalculados = Math.floor((milisTotal / 1000 / 60 / 60 / 24 / 365.25) % 12);
+
         tiempoCalculado = aniosCalculados + " años y " + mesesCalculados + " meses";
 
     } else if (detalle == 3) {
+
+        aniosCalculados = Math.floor(milisTotal / 1000 / 60 / 60 / 24 / 365.25);
+
+        mesesCalculados = Math.floor((milisTotal / 1000 / 60 / 60 / 24 / 365.25) % 12);
+
+        diasCalculados = Math.floor(milisTotal / 1000 / 60 / 60 / 24) % (365.25/12);
 
         tiempoCalculado = aniosCalculados + " años, " + mesesCalculados + " meses y " + diasCalculados + " días";
     }
