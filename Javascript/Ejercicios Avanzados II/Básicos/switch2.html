@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    A la sentencia switch le falta un caso por defecto. Añade el caso por defecto al final de la sentencia switch, y establecer el texto a "Nunca he oído hablar de ese fruto."
+    <input id="myInput" type="text" value="tutifruti">
+
+    <p id="demo"></p>
+
+    <script>
+        var text;
+        var fruits = document.getElementById("myInput").value;
+
+        switch (fruits) {
+            case "Platano":
+                text = "EL platano esta bien!";
+                break;
+            case "Naranja":
+                text = "No soy fan de las naranjas";
+                break;
+            default:
+                text = "Nunca de oído hablar de esa fruta";
+                break;
+        }
+        document.getElementById("demo").innerHTML = text;
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    La sentencia switch no se encuentra un caso de "Manzana". Añadir este caso y el texto a "¿Cómo te gustan las manzanas?"
+    <input id="myInput" type="text" value="Manzana">
+
+    <p id="demo"></p>
+
+    <script>
+        var text;
+        var fruits = document.getElementById("myInput").value;
+
+        switch (fruits) {
+            case "Platano":
+                text = "El platano esta bien!";
+                break;
+            case "Manzana":
+                text = "¿Cómo te gustan las manzanas?";
+                break;
+            case "Naranja":
+                text = "No soy fan de las naranjas";
+                break;
+            default:
+                text = "No conozco esa fruta";
+        }
+        document.getElementById("demo").innerHTML = text;
+
+    </script>
+
+</body>
+
+</html>

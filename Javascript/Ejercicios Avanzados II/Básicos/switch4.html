@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    Termina la sentencia switch. Agregue los siguientes casos: BMW , Ford y Peugeot . Establezca el valor de la variable de texto a: "alemán de automóviles" para BMW . "Coche americano" para Ford . "Coche francés" para Peugeot . añadir también un caso por defecto en el que el valor de texto sea "nombre de coche desconocido".
+    <input id="myInput" type="text" value="aa">
+
+    <p id="demo"></p>
+
+    <script>
+        var text;
+        var favCar = document.getElementById("myInput").value;
+
+        switch (favCar) {
+            case "BMW":
+                text = "alemán de automóviles";
+                break;
+            case "Ford":
+                text = "coche americano";
+                break;
+            case "Peugeot":
+                text = "coche francés";
+                break;
+            default:
+                text = "nombre de coche desconocido";
+                break;
+
+
+        }
+        document.getElementById("demo").innerHTML = text;
+
+    </script>
+
+</body>
+
+</html>
