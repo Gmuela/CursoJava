@@ -124,14 +124,6 @@ function fieldCheck(nombre, apellidos, nombreUsuario, correo, password) {
 
     var checked = true;
 
-    alert(regExpNombreCompleto.test(nombre));
-    alert(regExpNombreCompleto.test(apellidos));
-    alert(fechaCheck());
-    alert(regExpNombreUsuario.test(nombreUsuario));
-    alert(regExpEmail.test(correo));
-    alert(passCheck());
-
-
     if (!(regExpNombreCompleto.test(nombre)) || !(regExpNombreCompleto.test(apellidos))) {
 
         checked = false;

@@ -34,7 +34,7 @@ function allowRegister() {
 
     }
 
-    if(!fieldCheck(nombre,apellidos, nombreUsuario, correo, password)){
+    if (!fieldCheck(nombre, apellidos, nombreUsuario, correo, password)) {
 
         allowed = false;
 
@@ -132,9 +132,53 @@ function modificarRegistro(index) {
 
 }
 
+function allowModify(index) {
+
+    var allowed = true;
+
+    var nombre = document.getElementById("nombre").value.trim();
+    var apellidos = document.getElementById("apellidos").value.trim();
+    var fechaNac = document.getElementById("fechaNacimiento").value;
+    var nombreUsuario = document.getElementById("nombreUsuario").value.trim();
+    var correo = document.getElementById("email").value.trim();
+    var password = document.getElementById("pass").value.trim();
+    var repeatPassword = document.getElementById("passRepeat").value.trim();
+
+    if (nombre == "" || apellidos == "" || fechaNac == "" || nombreUsuario == "" || correo == "" || password == "" || repeatPassword == "") {
+
+        allowed = false;
+
+    }
+
+    if (password != repeatPassword) {
+
+        allowed = false;
+
+    }
+
+    if (!fieldCheck(nombre, apellidos, nombreUsuario, correo, password)) {
+
+        allowed = false;
+
+    }
+
+    for (var i = 0; i <= usuariosRegistrados.length - 1; i++) {
+
+        if (index != i) {
+            if (usuariosRegistrados[i].nombreUsuario == nombreUsuario || usuariosRegistrados[i].correo == correo) {
+
+                allowed = false;
+
+            }
+        }
+    }
+
+    return allowed;
+}
+
 function modificarUsuario(index) {
 
-    if (allowRegister()) {
+    if (allowModify(index)) {
         var nombre = document.getElementById("nombre").value.trim();
         var apellidos = document.getElementById("apellidos").value.trim();
         var fechaNac = document.getElementById("fechaNacimiento").value;
