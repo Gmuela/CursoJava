@@ -10,37 +10,56 @@ function usuario(nombre, apellidos, fechaNacimiento, nombreUsuario, correo, pass
     this.password = password;
 }
 
-function crearNuevoUsuario() {
+function allowRegister() {
+
+    var allowed = true;
 
     var nombre = document.getElementById("nombre").value.trim();
     var apellidos = document.getElementById("apellidos").value.trim();
-    var fechaNac = new Date(document.getElementById("fechaNacimiento").value);
+    var fechaNac = document.getElementById("fechaNacimiento").value;
     var nombreUsuario = document.getElementById("nombreUsuario").value.trim();
     var correo = document.getElementById("email").value.trim();
     var password = document.getElementById("pass").value.trim();
+    var repeatPassword = document.getElementById("passRepeat").value.trim();
 
-    var nuevoUsuario = new usuario(nombre, apellidos, fechaNac, nombreUsuario, correo, password);
+    if (nombre == "" || apellidos == "" || fechaNac == "" || nombreUsuario == "" || correo == "" || password == "" || repeatPassword == "") {
 
-    registro(nuevoUsuario);
+        allowed = false;
 
-    mostrarRegistros();
+    }
 
+    for (var i = 0; i <= usuariosRegistrados.length - 1; i++) {
+
+        if (usuariosRegistrados[i].nombreUsuario == nombreUsuario || usuariosRegistrados[i].correo == correo) {
+
+            allowed = false;
+
+        }
+    }
+
+    return allowed;
 }
 
-function passCheck(){
+function crearNuevoUsuario() {
 
-    var pass = document.getElementById("pass").value;
-    var passRepeat = document.getElementById("passRepeat").value;
+    if (allowRegister()) {
+        var nombre = document.getElementById("nombre").value.trim();
+        var apellidos = document.getElementById("apellidos").value.trim();
+        var fechaNac = document.getElementById("fechaNacimiento").value;
+        var nombreUsuario = document.getElementById("nombreUsuario").value.trim();
+        var correo = document.getElementById("email").value.trim();
+        var password = document.getElementById("pass").value.trim();
 
-    if(pass != passRepeat){
+        var nuevoUsuario = new usuario(nombre, apellidos, fechaNac, nombreUsuario, correo, password);
 
-        document.getElementById("errorPass").innerHTML = "Las contraseñas no coinciden";
+        registro(nuevoUsuario);
 
+        mostrarRegistros();
+
+        limpiarFormulario();
+    } else {
+        document.getElementById("registerError").innerHTML = "Usuario no registrado. Campos vacíos o nombre de usuario/correo ya existentes."
     }
-    else{
-        document.getElementById("errorPass").innerHTML = "";
-    }
-
 }
 
 function registro(nuevoUsuario) {
@@ -50,48 +69,95 @@ function registro(nuevoUsuario) {
 
 function mostrarRegistros() {
 
-    if (usuariosRegistrados.length == 0) {
+    var salida = "<tr><th>Nombre de usuario</th><th>Nombre</th><th>Edad</th><th>Correo eletrónico</th><th>Eliminar usuario</th><th>Modificar usuario</th></tr>";
 
-        document.getElementById("nombreUserReg1").innerHTML = "";
-        document.getElementById("apellidosUserReg1").innerHTML = "";
-        document.getElementById("edadUserReg1").innerHTML = "";
-        document.getElementById("nombreUserReg2").innerHTML = "";
-        document.getElementById("apellidosUserReg2").innerHTML = "";
-        document.getElementById("edadUserReg2").innerHTML = "";
+    for (var i = 0; i <= usuariosRegistrados.length - 1; i++) {
+
+        salida += "<tr><td>" + usuariosRegistrados[i].nombreUsuario + "</td>" + "<td>" + usuariosRegistrados[i].nombre + "</td>" + "<td>" + calcularTiempo(usuariosRegistrados[i].fechaNacimiento) + "</td>" + "<td>" + usuariosRegistrados[i].correo + "</td>" + "<td><button class='myDelButton' onclick='eliminarRegistro(" + i + ")'>Eliminar</button>" + "<td><button class='myUpdButton' onclick='modificarRegistro(" + i + ")'>Modificar</button></tr>";
+
     }
 
-    document.getElementById("nombreUserReg1").innerHTML = usuariosRegistrados[0].nombre;
-    document.getElementById("apellidosUserReg1").innerHTML = usuariosRegistrados[0].apellidos;
-
-    var edadPrimero = calcularTiempo(usuariosRegistrados[0].fechaNacimiento, 1)
-
-    document.getElementById("edadUserReg1").innerHTML = edadPrimero;
-
-    document.getElementById("nombreUserReg2").innerHTML = usuariosRegistrados[usuariosRegistrados.length - 1].nombre;
-    document.getElementById("apellidosUserReg2").innerHTML = usuariosRegistrados[usuariosRegistrados.length - 1].apellidos;
-
-    var edadUltimo = calcularTiempo(usuariosRegistrados[usuariosRegistrados.length - 1].fechaNacimiento, 1)
-
-    document.getElementById("edadUserReg2").innerHTML = edadUltimo;
+    document.getElementById("tablaUsuarios").innerHTML = salida;
 
 }
 
-function borrarRegistro(id) {
+function limpiarFormulario() {
+    document.getElementById("nombre").value = "";
+    document.getElementById("apellidos").value = "";
+    document.getElementById("fechaNacimiento").value = "";
+    document.getElementById("nombreUsuario").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("pass").value = "";
+    document.getElementById("passRepeat").value = "";
+}
 
-    //TODO
+function eliminarRegistro(index) {
+
+    usuariosRegistrados.splice(index, 1);
+
+    mostrarRegistros();
+
+    document.getElementById("tablaUsuarios").innerHTML = "";
+
+}
+
+function modificarRegistro(index) {
+
+    document.getElementById("nombre").value = usuariosRegistrados[index].nombre;
+    document.getElementById("apellidos").value = usuariosRegistrados[index].apellidos;
+    document.getElementById("fechaNacimiento").value = usuariosRegistrados[index].fechaNacimiento;
+    document.getElementById("nombreUsuario").value = usuariosRegistrados[index].nombreUsuario;
+    document.getElementById("email").value = usuariosRegistrados[index].correo;
+    document.getElementById("pass").value = "";
+    document.getElementById("passRepeat").value = "";
+
+    document.getElementById("botonFormulario").innerHTML = "<button class='myButton' id='modificar' onclick='modificarUsuario(" + index + ")'>Modificar</button>"
+    document.getElementById("labelPass").innerHTML = "Nueva contraseña";
+    document.getElementById("labelRepeatPass").innerHTML = "Repite la nueva contraseña";
+
+}
+
+function modificarUsuario(index) {
+
+    if (allowRegister()) {
+        var nombre = document.getElementById("nombre").value.trim();
+        var apellidos = document.getElementById("apellidos").value.trim();
+        var fechaNac = document.getElementById("fechaNacimiento").value;
+        var nombreUsuario = document.getElementById("nombreUsuario").value.trim();
+        var correo = document.getElementById("email").value.trim();
+        var password = document.getElementById("pass").value.trim();
+
+        usuariosRegistrados[index].nombre = nombre;
+        usuariosRegistrados[index].apellidos = apellidos;
+        usuariosRegistrados[index].fechaNacimiento = fechaNac;
+        usuariosRegistrados[index].nombreUsuario = nombreUsuario;
+        usuariosRegistrados[index].correo = correo;
+        usuariosRegistrados[index].password = password;
+
+        mostrarRegistros();
+
+        limpiarFormulario();
+
+        document.getElementById("botonFormulario").innerHTML = "<button class='myButton' id='registro' onclick='crearNuevoUsuario()'>Registrarse</button>";
+        document.getElementById("labelPass").innerHTML = "Contraseña";
+        document.getElementById("labelRepeatPass").innerHTML = "Repite la contraseña";
+
+    } else {
+        document.getElementById("registerError").innerHTML = "Usuario no modificado. Campos vacíos o nombre de usuario/correo ya existentes.";
+    }
+
+
 
 }
 
 
-
-
-function calcularTiempo(fecha, detalle) {
+function calcularTiempo(fecha) {
 
     var tiempoCalculado;
 
     var fechaActual = (new Date().getTime());
 
-    var fecha = fecha.getTime();
+    var fecha = new Date(fecha).getTime();
 
     var milisTotal = fechaActual - fecha;
 

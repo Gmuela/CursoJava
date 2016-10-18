@@ -4,6 +4,7 @@
 <head>
     <link rel="stylesheet" href="../css/cssPracticaAvanzada2.css" type="text/css" />
     <script src="../js/jsPracticaAvanzada2.js"></script>
+    <script src="../js/jsValidacionesPracAvanzada2.js"></script>
 </head>
 
 <body>
@@ -11,42 +12,45 @@
     <fieldset id="datosRegistro">
         <legend>Datos de registro</legend>
         <label for="nombre">Nombre</label>
-        <input type="text" name="nombre" id="nombre" />
-        <div class="error" id="errorNombre"></div>
+        <input type="text" name="nombre" id="nombre" onblur="nombreCompletoCheck('nombre')"/>
+
+        <div class="error" id="nombreError"></div>
 
         <label for="apellidos">Apellidos</label>
-        <input type="text" name="apellido" id="apellidos" />
-        <div class="error" id="errorApellido"></div>
+        <input type="text" name="apellidos" id="apellidos" onblur="nombreCompletoCheck('apellidos')"/>
+
+        <div class="error" id="apellidosError"></div>
 
         <label for="fechaNacimiento">Fecha de nacimiento</label>
-        <input type="date" name="fechaNacimiento" id="fechaNacimiento" />
-        <div class="error" id="errorFecha"></div>
+        <input type="date" name="fechaNacimiento" id="fechaNacimiento" onblur="fechaCheck()"/>
+
+        <div class="error" id="fechaError"></div>
 
         <label for="nombreUsuario">Nombre de usuario</label>
-        <input type="text" name="nombreUsuario" id="nombreUsuario" />
-        <div class="error" id="errorNombreUsuario"></div>
+        <input type="text" name="nombreUsuario" id="nombreUsuario" onblur="nombreUsuarioCheck()"/>
+
+        <div class="error" id="nombreUsuarioError"></div>
 
         <label for="email">Correo electrónico</label>
-        <input type="text" name="email" id="email" />
-        <div class="error" id="errorEmail">Hola</div>
+        <input type="text" name="email" id="email" onblur="emailCheck()"/>
 
-        <label for="pass">Contraseña</label>
-        <input type="password" name="pass" id="pass" />
+        <div class="error" id="emailError"></div>
 
-        <label for="passRepeat">Repite la contraseña</label>
+        <label id="labelPass" for="pass">Contraseña</label>
+        <input type="password" name="pass" id="pass" onblur="passCheck()"/>
+
+        <label id="labelRepeatPass" for="passRepeat">Repite la contraseña</label>
         <input type="password" name="passRepeat" id="passRepeat" onblur="passCheck()"/>
-        <div class="error" id="errorPass"></div>
 
-        <button class="myButton" onclick="crearNuevoUsuario()">Registrarse</button>
+        <div class="error" id="passError"></div>
+
+        <div id="botonFormulario"><button class="myButton" id="registro" onclick="crearNuevoUsuario()">Registrarse</button></div>
+
+        <div class="error" id="registerError"></div>
     </fieldset>
 
     <table id="tablaUsuarios">
-        <tr>
-            <th>Nombre de usuario</th>
-            <th>Nombre</th>
-            <th>Edad</th>
-            <th>Correo eletrónico</th>
-        </tr>
+
     </table>
 
 
