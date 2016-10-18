@@ -3,6 +3,7 @@ var regExpNombreCompleto = /^[a-zA-Z ]{2,}$/;
 
 function nombreCompletoCheck(id) {
 
+
     var campo = document.getElementById(id).value.trim();
 
     if (!(regExpNombreCompleto.test(campo))) {
@@ -17,11 +18,11 @@ function nombreCompletoCheck(id) {
 }
 
 /*VALIDACIÓN FECHA NACIMIENTO*/
-function fechaCheck(){
+function fechaCheck() {
+
+    var checked = false;
 
     var fecha = new Date(document.getElementById("fechaNacimiento").value).getTime();
-
-
 
     var fechaActual = (new Date().getTime());
 
@@ -31,20 +32,25 @@ function fechaCheck(){
 
     var aniosCalculados = Math.floor(milisTotal / 1000 / 60 / 60 / 24 / 365.25);
 
-    if(aniosCalculados < 18){
+    if (aniosCalculados < 18) {
 
         document.getElementById("fechaError").innerHTML = "La edad mínima para registrarse son 18 años";
-    }
-    else{
+
+    } else {
+
         document.getElementById("fechaError").innerHTML = "";
+        checked = true;
     }
 
+    return checked;
 }
 
 /*VALIDACIÓN NOMRE DE USUARIO*/
 var regExpNombreUsuario = /^[a-zA-Z0-9]+$/;
 
 function nombreUsuarioCheck() {
+
+    var checked = false;
 
     var campo = document.getElementById("nombreUsuario").value.trim();
 
@@ -55,14 +61,18 @@ function nombreUsuarioCheck() {
     } else {
 
         document.getElementById("nombreUsuarioError").innerHTML = "";
+        checked = true;
     }
 
+    return checked;
 }
 
 /*VALIDACIÓN EMAIL*/
-var regExpEmail = /^(\w+\d+|\w+)\@[a-z]+\.com$/;
+var regExpEmail = /^(\w+\d+|\w+)\@[a-z]+\.([a-z]{2,})$/;
 
 function emailCheck() {
+
+    var checked = false;
 
     var email = document.getElementById("email").value.trim();
 
@@ -73,13 +83,17 @@ function emailCheck() {
     } else {
 
         document.getElementById("emailError").innerHTML = "";
+        checked = true;
     }
 
+    return checked;
 }
 
 
 /*VALIDACIÓN EMAIL*/
 function passCheck() {
+
+    var checked = false;
 
     var pass = document.getElementById("pass").value.trim();
     var passRepeat = document.getElementById("passRepeat").value.trim();
@@ -93,11 +107,51 @@ function passCheck() {
         if (pass.length < 6) {
 
             document.getElementById("passError").innerHTML = "La contraseña necesita mínimo 6 caractéres";
+
         } else {
 
             document.getElementById("passError").innerHTML = "";
+            checked = true;
         }
 
     }
 
+    return checked;
+}
+
+/*VALIDACIÓN EXTRA*/
+function fieldCheck(nombre, apellidos, nombreUsuario, correo, password) {
+
+    var checked = true;
+
+    alert(regExpNombreCompleto.test(nombre));
+    alert(regExpNombreCompleto.test(apellidos));
+    alert(fechaCheck());
+    alert(regExpNombreUsuario.test(nombreUsuario));
+    alert(regExpEmail.test(correo));
+    alert(passCheck());
+
+
+    if (!(regExpNombreCompleto.test(nombre)) || !(regExpNombreCompleto.test(apellidos))) {
+
+        checked = false;
+
+    } else if (!fechaCheck()) {
+
+        checked = false;
+
+    } else if (!(regExpNombreUsuario.test(nombreUsuario))) {
+
+        checked = false;
+
+    } else if (!(regExpEmail.test(correo))) {
+
+        checked = false;
+
+    } else if (!passCheck()) {
+
+        checked = false;
+    }
+
+    return checked;
 }

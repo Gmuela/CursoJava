@@ -28,6 +28,18 @@ function allowRegister() {
 
     }
 
+    if (password != repeatPassword) {
+
+        allowed = false;
+
+    }
+
+    if(!fieldCheck(nombre,apellidos, nombreUsuario, correo, password)){
+
+        allowed = false;
+
+    }
+
     for (var i = 0; i <= usuariosRegistrados.length - 1; i++) {
 
         if (usuariosRegistrados[i].nombreUsuario == nombreUsuario || usuariosRegistrados[i].correo == correo) {
@@ -57,8 +69,10 @@ function crearNuevoUsuario() {
         mostrarRegistros();
 
         limpiarFormulario();
+
     } else {
-        document.getElementById("registerError").innerHTML = "Usuario no registrado. Campos vacíos o nombre de usuario/correo ya existentes."
+
+        document.getElementById("registerError").innerHTML = "Usuario no registrado. Campos vacíos/erróneos o nombre de usuario/correo ya existentes.";
     }
 }
 
@@ -89,6 +103,7 @@ function limpiarFormulario() {
     document.getElementById("email").value = "";
     document.getElementById("pass").value = "";
     document.getElementById("passRepeat").value = "";
+    document.getElementById("registerError").innerHTML = "";
 }
 
 function eliminarRegistro(index) {
@@ -143,11 +158,8 @@ function modificarUsuario(index) {
         document.getElementById("labelRepeatPass").innerHTML = "Repite la contraseña";
 
     } else {
-        document.getElementById("registerError").innerHTML = "Usuario no modificado. Campos vacíos o nombre de usuario/correo ya existentes.";
+        document.getElementById("registerError").innerHTML = "Usuario no modificado. Campos vacíos/erróneos o nombre de usuario/correo ya existentes.";
     }
-
-
-
 }
 
 
