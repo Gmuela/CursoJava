@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+
+        var myVar = setInterval(miReloj, 1000);
+
+        function miReloj() {
+            var d = new Date();
+            var t = d.toLocaleTimeString();
+            document.getElementById("demo").innerHTML = t;
+        }
+
+        function congeladorDeTiempo() {
+            clearInterval(myVar);
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <p>Con ayuda del temporizador Interval, ejecutamos un script que cambia la hora cada segundo:</p>
+    <p> tambien tenemos un boton que paraliza el script</p>
+    <p id="demo"></p>
+    <button onclick="congeladorDeTiempo()">Parar el tiempo</button>
+
+</body>
+
+</html>

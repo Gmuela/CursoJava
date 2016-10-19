@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function myFunction() {
+            nuevaVentana = window.open("http://www.google.es", "toolbar=yes,location=yes");
+        }
+
+        function myFunc() {
+            nuevaVentana.close();
+        }
+
+        function nueva() {
+            if (confirm("¿Seguro que quieres cerrar la ventana?")) {
+                close();
+            } else {
+                alert("Gracias por no despedirte de nosotros aún");
+            }
+        }
+        var nuevaVentana;
+
+        function nueva2() {
+            nuevaVentana = nuevaVentana = window.open("", "segundaPag", "width=300,height=300");
+            nuevaVentana.document.write("<HTML><HEAD><TITLE>" + "Sin Título</TITLE></HEAD>\n");
+            nuevaVentana.document.write("<BODY><form>\n");
+            nuevaVentana.document.write("<input type='button' " + "value='Cerrar' onClick='window.close();'>\n");
+            nuevaVentana.document.write("</form>\n");
+            nuevaVentana.document.write("</BODY></HTML>\n");
+            nuevaVentana.document.close();
+        }
+        var myWindow;
+
+        function openWin() {
+            myWindow = window.open("", "myWindow", "width=200, height=100");
+            myWindow.document.write("<p>This is 'myWindow'</p>");
+        }
+
+        function moveWin() {
+            myWindow.moveBy(250, 250); //probar tambien moveTo(250,250)
+            myWindow.focus();
+        }
+
+        function resizeWin() {
+            myWindow.resizeBy(250, 250); //probar tambien con resizeTo(250,250)
+            myWindow.focus();
+        }
+
+    </script>
+</head>
+
+<body>
+
+
+    <button type="button" onclick="myFunction()">Clickeame!</button>
+    <button type="button" onclick="myFunc()">Clickeame2!</button>
+    <button type="button" onclick="nueva()">Clickeame3!</button>
+    <button type="button" onclick="nueva2()">Clickeame4!</button>
+    <button onclick="openWin()">Open "myWindow"</button>
+    <button onclick="moveWin()">Move "myWindow"</button>
+    <button onclick="resizeWin()">Resize "myWindow"</button>
+
+
+</body>
+
+</html>
