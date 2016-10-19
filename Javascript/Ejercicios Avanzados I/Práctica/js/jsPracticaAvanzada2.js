@@ -144,19 +144,25 @@ function allowModify(index) {
     var password = document.getElementById("pass").value.trim();
     var repeatPassword = document.getElementById("passRepeat").value.trim();
 
-    if (nombre == "" || apellidos == "" || fechaNac == "" || nombreUsuario == "" || correo == "" || password == "" || repeatPassword == "") {
+    if (password == "") {
+
+        password = usuariosRegistrados[index].password;
+        repeatPassword = password;
+    }
+
+    if (nombre == "" || apellidos == "" || fechaNac == "" || nombreUsuario == "" || correo == "" || password == "") {
 
         allowed = false;
 
     }
 
-    if (password != repeatPassword) {
+    if (password != repeatPassword || password.length < 6) {
 
         allowed = false;
 
     }
 
-    if (!fieldCheck(nombre, apellidos, nombreUsuario, correo, password)) {
+    if (!fieldCheckModify(nombre, apellidos, nombreUsuario, correo)) {
 
         allowed = false;
 
@@ -166,6 +172,7 @@ function allowModify(index) {
 
         if (index != i) {
             if (usuariosRegistrados[i].nombreUsuario == nombreUsuario || usuariosRegistrados[i].correo == correo) {
+
 
                 allowed = false;
 

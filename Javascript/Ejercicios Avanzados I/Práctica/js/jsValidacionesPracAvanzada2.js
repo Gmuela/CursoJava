@@ -147,3 +147,28 @@ function fieldCheck(nombre, apellidos, nombreUsuario, correo, password) {
 
     return checked;
 }
+
+function fieldCheckModify(nombre, apellidos, nombreUsuario, correo) {
+
+    var checked = true;
+
+    if (!(regExpNombreCompleto.test(nombre)) || !(regExpNombreCompleto.test(apellidos))) {
+
+        checked = false;
+
+    } else if (!fechaCheck()) {
+
+        checked = false;
+
+    } else if (!(regExpNombreUsuario.test(nombreUsuario))) {
+
+        checked = false;
+
+    } else if (!(regExpEmail.test(correo))) {
+
+        checked = false;
+
+    }
+
+    return checked;
+}
