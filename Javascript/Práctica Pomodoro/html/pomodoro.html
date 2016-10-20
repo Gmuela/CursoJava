@@ -3,12 +3,43 @@
 
 <head>
     <script src="../js/jsPomodoro.js"></script>
-    <link rel="stylesheet" href="../css/cssPomodoro.css" type="text/css"/>
+    <link rel="stylesheet" href="../css/cssPomodoro.css" type="text/css" />
     <title>Pemedere</title>
 </head>
 
 <body>
+    <main>
+        <h1 class="cabecera">PEMEDERE</h1>
+        <div id="botones" class="botonera">
+            <button class="myButton" onclick="setTimerClock(5,0)" name="buttonSel">Descanso Corto</button>
+            <button class="myButton" onclick="setTimerClock(25,0)" name="buttonSel">Pomodoro</button>
+            <button class="myButton" onclick="setTimerClock(15,0)" name="buttonSel">Descanso Largo</button>
+        </div>
 
+        <div class="reloj" id="clock"></div>
+        <div id="controles" class="botonera">
+            <button class="play" onclick="play()" name="control" id="play">►</button>
+            <button class="stop" onclick="stop()" name="control" disabled id="stop">■</button>
+            <span id="breakButton"><button class="break" onclick="breakTime()" disabled id="break">❚❚</button></span>
+        </div>
+        <select id="audios">
+            <option value="wololo.mp3">Wololo</option>
+            <option value="ah_gay.mp3">Gaaaayy!</option>
+            <option value="the_one.mp3">I'm the one</option>
+            <option value="jump.mp3">F***ing Jump</option>
+        </select>
+        <input type="number" placeholder="Minutos" min="0" max="59" id="customMin" />
+        <input type="number" placeholder="Segundos" min="0" max="59" id="customSec" />
+        <button class="customTime" onclick="setCustomTime()" id="customTime">Personalizar tiempo</button>
+
+        <div id="pomodoroTable" class="pomodoroTable">
+            <table><th>TAREA</th><th>T. ESTIMADO</th><th>T. USADO</th><th>T. INTERRUPCIÓN</th><th>BORRAR</th></table>
+        </div>
+    </main>
+    <script>
+        setTimerClock(25, 0);
+
+    </script>
 </body>
 
 </html>
