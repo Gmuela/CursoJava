@@ -104,8 +104,10 @@ span {
 }
 .pomodoroTable {
     text-align: center;
+    margin: 30px auto;
+    animation-duration: 3s;
+    animation-name: fadeInFromNone;
 }
-table,
 tr,
 th {
     margin: 20px auto;
@@ -116,16 +118,15 @@ td {
     border: 3px solid #592724;
     border-collapse: collapse;
     text-align: center;
+    height: 30px;
+    width: 180px;
+    font-weight: bold;
 }
 tr:nth-child(even) {
     background-color: #eb675e;
 }
 tr:nth-child(odd) {
     background-color: #A64942;
-}
-td {
-    height: 30px;
-    width: 150px;
 }
 th {
     padding: 2px;
@@ -282,7 +283,7 @@ button {
 .break {
     margin-left: 25px;
 }
-.customTime {
+.customTime, .newTask {
     background: linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
     filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#007dc1', endColorstr='#0061a7', GradientType=0);
     background-color: #007dc1;
@@ -298,14 +299,14 @@ button {
     text-decoration: none;
     text-shadow: 0px 2px 0px #154682;
     margin-top: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 35px;
 }
-.customTime:hover {
+.customTime:hover, .newTask:hover {
     background: linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
     filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#0061a7', endColorstr='#007dc1', GradientType=0);
     background-color: #0061a7;
 }
-.customTime:active {
+.customTime:active, .newTask:active {
     position: relative;
     top: 1px;
 }
@@ -342,4 +343,54 @@ select option:nth-child(even) {
 }
 select option:nth-child(odd) {
     background-color: #87807A;
+}
+.newTask{
+    margin-bottom: 20px;
+}
+.separadorTimerTable{
+    border-radius: 15px;
+    height: 3px;
+    width: 30%;
+    background-color: #71CFBF;
+    animation-duration: 3s;
+    animation-name: fadeInFromNone;
+}
+.prepareInput{
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    font-weight: 400;
+    width: 170px;
+    margin: 7px;
+    font-size: 1em;
+    text-align: center;
+    animation-duration: 3s;
+    animation-name: fadeInFromNone;
+    border-radius: 4px;
+}
+.deleteTask {
+	box-shadow:inset 0px 1px 0px 0px #cf866c;
+	background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d0451b', endColorstr='#bc3315',GradientType=0);
+	background-color:#d0451b;
+	border-radius:24px;
+	border:2px solid #942911;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	font-weight:bold;
+	padding:4px 7px;
+	text-decoration:none;
+	text-shadow:0px 2px 0px #854629;
+    margin: 3px;
+}
+.deleteTask:hover {
+	background:linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bc3315', endColorstr='#d0451b',GradientType=0);
+	background-color:#bc3315;
+}
+.deleteTask:active {
+	position:relative;
+	top:1px;
 }
