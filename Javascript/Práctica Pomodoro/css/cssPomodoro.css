@@ -38,19 +38,27 @@ main p {
 }
 .intro {
     animation-duration: 3s;
-    animation-name: slidein;
+    animation-name: slideInFromRight;
     border-radius: 100px;
 }
-.cuerpoIntro {
-    animation-duration: 8s;
+.cuerpoIntroP1 {
+    animation-duration: 6s;
+    animation-name: fadeInFromNone;
+}
+.cuerpoIntroP2 {
+    animation-duration: 9s;
+    animation-name: fadeInFromNone;
+}
+.cuerpoIntroCabecera{
+    animation-duration: 3s;
     animation-name: fadeInFromNone;
 }
 .enlaceIntro,
 .enlaceIntro a {
     text-decoration: none;
     margin-top: 50px;
-    animation-duration: 9s;
-    animation-name: fadeInFromNone;
+    animation-duration: 5s;
+    animation-name: slideinFromBottom;
     color: #52968B;
     font-weight: bolder;
     font-size: 1.5em;
@@ -61,17 +69,29 @@ a:hover {
     color: #eb675e;
     text-decoration: underline;
 }
-@keyframes slidein {
+@keyframes slideInFromRight {
     from {
         margin-left: 120%;
         border-right: 0px;
         border-left: 0px;
         opacity: 0;
+        display: none
     }
     to {
         margin-left: 0%;
         border-right: 15px solid #71CFBF;
         border-left: 15px solid #71CFBF;
+        opacity: 1;
+        display: block;
+    }
+}
+@keyframes slideinFromBottom {
+    from {
+        margin-top: 98px;
+        opacity: 0;
+    }
+    to {
+        margin-top: 50px;
         opacity: 1;
     }
 }
@@ -169,7 +189,7 @@ button {
     width: 45%;
     text-align: center;
     padding: 5px;
-    font-size: 10em;
+    font-size: 11em;
     color: white;
     font-family: clock;
     animation-duration: 3s;

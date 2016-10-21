@@ -178,10 +178,16 @@ function breakTime() {
 function finishBreak() {
     clearInterval(clockBreak);
     changeButtonBreak("breakIt");
-    play();
-    calculateTime()
-    setTimerClock(timeClockM, timeClockS);
-    controlBreak = true;
+    calculateTime();
+    if (timeClockM < 0) {
+        setTimerClock(timeClockM, timeClockS);
+        controlBreak = true;
+        finishTime();
+    } else {
+        setTimerClock(timeClockM, timeClockS);
+        controlBreak = true;
+        play();
+    }
 }
 
 function calculateTime() {
