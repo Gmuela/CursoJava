@@ -111,11 +111,11 @@ span {
 tr,
 th {
     margin: 20px auto;
-    border-radius: 10px;
+    border-radius: 4px;
 }
 th,
 td {
-    border: 3px solid #592724;
+    border: 1px solid #592724;
     border-collapse: collapse;
     text-align: center;
     height: 30px;
