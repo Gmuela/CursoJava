@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="css.css" type="text/css">
+</head>
+<body>
+<form action="formulario.php" method="post" name="formu">
+    <fieldset>
+        <legend>Formulario Registro</legend>
+        <label for="nombre">Nombre</label><input type="text" name="nombre" id="nombre">
+        <label for="email">Correo electrónico</label><input type="text" name="email" id="email">
+        <label for="pass">Contraseña</label><input type="password" name="pass" id="pass">
+        <label for="edad">Edad</label><input type="edad" name="edad" id="edad">
+
+        <label for="sexo">Sexo</label>
+        <select name="sexo" id="sexo">
+            <option value="hombre">Hombre</option>
+            <option value="mujer">Mujer</option>
+        </select>
+
+        <div class="divCheck">
+            <label for="juegos" class="check">Juegos</label><input type="checkbox" name="intereses[]" id="juegos" value="juegos">
+            <label for="musica" class="check">Música</label><input type="checkbox" name="intereses[]" id="musica" value="musica">
+            <label for="cine" class="check">Cine</label><input type="checkbox" name="intereses[]" id="cine" value="cine">
+            <label for="deporte" class="check">Deporte</label><input type="checkbox" name="intereses[]" id="deporte" value="deporte">
+        </div>
+
+        <label for="fichero">Subir fichero</label> <input type="file" name="fichero" id="fichero">
+        <input type="button" class="myButton" onclick="submit(this)" value="Registrar">
+    </fieldset>
+</form>
+</body>
+</html>

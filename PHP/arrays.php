@@ -1,9 +1,8 @@
 <?php
+$diaSemana = array("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo");
 
-function calendario()
-{
+function calendario(){
 
-    $diaSemana = array("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo");
     $mesesDias = array(
         "Enero" => 31,
         "Febrero" => 28,
@@ -26,7 +25,7 @@ function calendario()
 
         for ($i = 1; $i <= $dia; $i++) {
 
-            if ($mes == "Marzo") {
+            if ($mes == $_POST["Mes"]) {
 
                 if ($check) {
                     if ($counter != 0) {
@@ -46,7 +45,7 @@ function calendario()
                     $counter++;
                 }
                 
-                if($i==31){
+                if($i==$dia && $counter!=0){
                     for($j=0;$j<=(6-$counter);$j++){
                         echo "<td></td>";
                     }
@@ -91,16 +90,14 @@ function calendario()
     </style>
 </head>
 <body>
-<h1>Calendario Marzo 2017</h1>
+<h1>Calendario <?php echo $_POST["Mes"] ?> 2017</h1>
 <table>
     <tr>
-        <th>Lunes</th>
-        <th>Martes</th>
-        <th>Miércoles</th>
-        <th>Jueves</th>
-        <th>Viernes</th>
-        <th>Sábado</th>
-        <th>Domingo</th>
+       <?php
+       foreach ($diaSemana as $dia) {
+           echo "<th>".$dia."</th>";
+       }
+       ?>
     </tr>
     <tr><?php
         calendario();
