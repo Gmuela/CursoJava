@@ -34,7 +34,7 @@ function validarFormulario()
 
     if ($ficheros["imagen"]["size"] > $formulario["MAX_FILE_SIZE"]) {
         $checked = false;
-        array_push($errores, "La imagen supera el tamaño permitido(1MB)");
+        array_push($errores, "La imagen supera el tamaño permitido(10MB)");
     }
     if ($ficheros["imagen"]["type"] != "image/jpeg") {
         $checked = false;
@@ -50,7 +50,7 @@ function mostrarDatos()
     $formulario = $_POST;
     $ficheros = $_FILES;
 
-    move_uploaded_file($ficheros["imagen"]["tmp_name"], "./perfiles/" . $ficheros["imagen"]["name"]);
+    move_uploaded_file($ficheros["imagen"]["tmp_name"], "./perfiles/" . $formulario["nombre"].".jpg");
 
     echo "Nombre: " . $formulario["nombre"] . "<br>";
     echo "Correo electrónico: " . $formulario["email"] . "<br>";
@@ -65,7 +65,7 @@ function mostrarDatos()
         echo $interes . ",";
     }
 
-    echo "Imagen de usuario: <img src='./perfiles/" . $ficheros["imagen"]["name"] . "'>";
+    echo "Imagen de usuario: <img src='./perfiles/" . $formulario["nombre"].".jpg'>";
 
     echo "<br>";
 }

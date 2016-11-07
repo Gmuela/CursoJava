@@ -6,6 +6,10 @@ body {
     width: 500px;
     padding: 10px;
 }
+img{
+    width: 120px;
+}
+table, td
 label {
     display: block;
     margin-bottom: 3px;
