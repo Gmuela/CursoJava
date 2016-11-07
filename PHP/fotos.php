@@ -5,7 +5,7 @@ function mostrarDatos()
     if ($gestor = opendir('./perfiles')) {
         while (false !== ($entrada = readdir($gestor))) {
             if($entrada != "." AND $entrada != ".."){
-                echo "<td>".substr($entrada,0,strpos($entrada,"."))."<img src='./perfiles/".$entrada."'></td>";
+                echo "<td><img src='./perfiles/".$entrada."'>".substr($entrada,0,strpos($entrada,"."))."</td>";
                 $contador++;
             }
 
