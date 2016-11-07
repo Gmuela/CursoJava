@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css.css" type="text/css">
 </head>
 <body>
-<form action="formulario.php" method="post" name="formu">
+<form action="formulario.php" method="post" name="formu" enctype="multipart/form-data">
     <fieldset>
         <legend>Formulario Registro</legend>
         <label for="nombre">Nombre</label><input type="text" name="nombre" id="nombre">
@@ -27,7 +27,8 @@
             <label for="deporte" class="check">Deporte</label><input type="checkbox" name="intereses[]" id="deporte" value="deporte">
         </div>
 
-        <label for="fichero">Subir fichero</label> <input type="file" name="fichero" id="fichero">
+        <label for="fichero">Subir fichero</label> <input type="file" name="imagen" id="fichero">
+        <input type="hidden" name="MAX_FILE_SIZE" value="102400">
         <input type="button" class="myButton" onclick="submit(this)" value="Registrar">
     </fieldset>
 </form>
