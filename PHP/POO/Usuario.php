@@ -1,7 +1,11 @@
 <?php
 
+require_once("UsuarioBuilder.php");
+
 class Usuario
 {
+    const MAYORIA_EDAD = 18;
+
     private $nombre;
     private $email;
     private $password;
@@ -9,33 +13,35 @@ class Usuario
     private $sexo;
     private $intereses;
     private $rutaImagen;
-    const MAYORIA_EDAD = 18;
-
-    /**BUILDER**/
-
-    public function build($nombre, $email, $password, $fechaNac, $sexo, $intereses, $nombreImagen){
-        $usuarioNuevo = new Usuario();
-        $usuarioNuevo->setNombre($nombre);
-        $usuarioNuevo->setEmail($email);
-        $usuarioNuevo->setPassword($password);
-        $usuarioNuevo->setFechaNac($fechaNac);
-        $usuarioNuevo->setSexo($sexo);
-        $usuarioNuevo->setIntereses($intereses);
-        $usuarioNuevo->setRutaImagen("./userImages".$nombreImagen.".jpg");
-
-        return $usuarioNuevo;
-    }
 
     /**CONS&DES**/
 
     function __construct()
     {
-
+        /**Constructor por defecto**/
     }
 
     function __destruct()
     {
+        /**Destructor por defecto**/
+    }
 
+    function toString()
+    {
+        $string = $this->nombre . " "
+            . $this->email
+            . " "
+            . $this->password
+            . " "
+            . $this->fechaNac
+            . " "
+            . $this->rutaImagen;
+
+        foreach ($this->intereses as $interes) {
+            $string .= " " . $interes . " ";
+        }
+
+        return $string;
     }
 
     /**GETTERS**/

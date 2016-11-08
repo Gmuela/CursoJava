@@ -33,6 +33,14 @@ input[type="checkbox"], label.check, input[type="date"] {
 div.divCheck{
     margin: 20px 0px;
 }
+div.okPass{
+    color: darkgreen;
+    font-weight: bold;
+}
+div.wrongPass{
+    color: red;
+    font-weight: bold;
+}
 fieldset {
     width: 300px;
     padding-left: 15px;

@@ -1,5 +1,7 @@
 <?php
 
+require_once("Usuario.php");
+
 $errores = array();
 $formulario = $_POST;
 $ficheros = $_FILES;
@@ -15,7 +17,7 @@ function validarFormulario()
 
     $checked = true;
 
-    if ($formulario["nombre"] == null OR $formulario["email"] == null OR $formulario["pass"] == null OR $formulario["edad"] == null) {
+    if ($formulario["nombre"] == null OR $formulario["email"] == null OR $formulario["pass"] == null OR $formulario["fechaNac"] == null) {
         $checked = false;
         array_push($errores, "Los campos no pueden estar vacíos");
     }
@@ -23,11 +25,6 @@ function validarFormulario()
     if (strlen($formulario["pass"]) < 6) {
         $checked = false;
         array_push($errores, "La contraseña no puede tener menos de 6 caractéres");
-    }
-
-    if ($formulario["edad"] < 1 OR $formulario["edad"] > 120 OR is_nan($formulario["edad"])) {
-        $checked = false;
-        array_push($errores, "Edad no válida(1-120)");
     }
 
     if (strpos($formulario["email"], "@") == false) {
@@ -57,12 +54,30 @@ function registrarUsuario(){
     $nombre = $formulario['nombre'];
     $email = $formulario['email'];
     $pass = $formulario["pass"];
-    $fecha = $formulario["fecha"];
+    $fecha = $formulario["fechaNac"];
     $sexo = $formulario["sexo"];
     $intereses = $formulario["intereses"];
     $nombreImagen = $ficheros["imagen"]["name"];
 
-    $usuarioNuevo->build($nombre, $email, $pass, $fecha, $sexo, $intereses, $nombreImagen);
+    $usuarioBuilder = new UsuarioBuilder();
+
+    $usuarioBuilder->build($nombre, $email, $pass, $fecha, $sexo, $intereses, $nombreImagen);
+
+    $usuarioNuevo = $usuarioBuilder->getUsuario();
+}
+
+function login($password){
+
+    global $usuarioNuevo;
+    global $errores;
+
+    $login = true;
+
+    if($password != $usuarioNuevo->getPassword()){
+        $login = false;
+    }
+
+    return $login;
 }
 
 function mostrarDatos()
@@ -73,33 +88,44 @@ function mostrarDatos()
     echo "Correo electrónico: " . $usuarioNuevo->getEmail() . "<br>";
     echo "Contraseña: " . $usuarioNuevo->getPassword() . "<br>";
 
-    echo checkEdad($usuarioNuevo->getFechaNac());
+    echo "Edad: ".checkEdad($usuarioNuevo->getFechaNac()). "<br>";
 
     echo "Sexo: " . $usuarioNuevo->getSexo() . "<br>";
 
     echo "Intereses: ";
 
-    foreach ($usuarioNuevo->getIntereses() as $interes) {
+    $intereses = $usuarioNuevo->getIntereses();
+    foreach ($intereses as $interes) {
         echo $interes . ",";
     }
+
+    echo  "<br>";
 
     echo "Imagen de usuario: <img src='".$usuarioNuevo->getRutaImagen()."'>";
 
     echo "<br>";
+
+    echo $usuarioNuevo->toString();
 }
 
 function checkEdad($fechaNac){
-    $anios = substr($fechaNac,0,3);
-    var_dump($anios);
-    return "Hola";
+
+    $anios = substr($fechaNac,0,4);
+
+    $result = 2016-$anios;
+
+    if($result<Usuario::MAYORIA_EDAD){
+        $result = "No es mayor de edad";
+    }
+
+    return $result;
 }
 
 function moveImageTo($carpeta)
 {
     global $ficheros;
-    global $formulario;
 
-    move_uploaded_file($ficheros["imagen"]["tmp_name"], "./".$carpeta."/" . $formulario["nombre"] . ".jpg");
+    move_uploaded_file($ficheros["imagen"]["tmp_name"], "./".$carpeta."/" . $ficheros["imagen"]["name"]);
 }
 
 if (validarFormulario()) {
@@ -107,6 +133,13 @@ if (validarFormulario()) {
     moveImageTo("userImages");
 
     echo "Te has registrado satisfactoriamente<br><br>";
+
+    if(login("123456")){
+        echo "Login correcto<br><br>";
+    } else{
+        echo "Login incorrecto<br><br>";
+    }
+
     mostrarDatos();
 } else {
     foreach ($errores as $error) {
