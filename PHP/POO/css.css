@@ -9,7 +9,7 @@ body {
 img{
     width: 120px;
 }
-table, td
+table, td,
 label {
     display: block;
     margin-bottom: 3px;
@@ -26,7 +26,7 @@ input {
 input[type="text"] {
     width: 200px;
 }
-input[type="checkbox"], label.check {
+input[type="checkbox"], label.check, input[type="date"] {
     display: inline;
     margin-left: 5px;
 }
