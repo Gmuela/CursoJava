@@ -1,6 +1,7 @@
 <?php
 
-require_once("Usuario.php");
+require_once("../Beans/Usuario.php");
+require_once("./usuarioController.php");
 
 $errores = array();
 $formulario = $_POST;
@@ -45,44 +46,8 @@ function validarFormulario()
 
 }
 
-function registrarUsuario(){
-
-    global $formulario;
-    global $ficheros;
-    global $usuarioNuevo;
-
-    $nombre = $formulario['nombre'];
-    $email = $formulario['email'];
-    $pass = $formulario["pass"];
-    $fecha = $formulario["fechaNac"];
-    $sexo = $formulario["sexo"];
-    $intereses = $formulario["intereses"];
-    $nombreImagen = $ficheros["imagen"]["name"];
-
-    $usuarioBuilder = new UsuarioBuilder();
-
-    $usuarioBuilder->build($nombre, $email, $pass, $fecha, $sexo, $intereses, $nombreImagen);
-
-    $usuarioNuevo = $usuarioBuilder->getUsuario();
-}
-
-function login($password){
-
-    global $usuarioNuevo;
-
-    $login = true;
-
-    if($password != $usuarioNuevo->getPassword()){
-        $login = false;
-    }
-
-    return $login;
-}
-
-function mostrarDatos()
+function mostrarDatos($usuarioNuevo)
 {
-    global $usuarioNuevo;
-
     echo $usuarioNuevo->toString();
 }
 
@@ -105,24 +70,34 @@ function moveImageTo($carpeta)
 {
     global $ficheros;
 
-    move_uploaded_file($ficheros["imagen"]["tmp_name"], "./".$carpeta."/" . $ficheros["imagen"]["name"]);
+    move_uploaded_file($ficheros["imagen"]["tmp_name"], $carpeta . $ficheros["imagen"]["name"]);
 }
 
-if (validarFormulario()) {
-    registrarUsuario();
-    moveImageTo("userImages");
+function callView(){
 
-    echo "Te has registrado satisfactoriamente<br><br>";
+    global $errores;
+    global $formulario;
+    global $ficheros;
 
-    if(login("123456")){
-        echo "Login correcto<br><br>";
-    } else{
-        echo "Login incorrecto<br><br>";
+    if (validarFormulario()) {
+        $usuarioNuevo = registrarUsuario($formulario,$ficheros);
+        moveImageTo("../View/Resources/userImages/");
+
+        echo "Te has registrado satisfactoriamente<br><br>";
+
+        if(login($usuarioNuevo,"123456")){
+            echo "Login correcto<br><br>";
+        } else{
+            echo "Login incorrecto<br><br>";
+        }
+
+        mostrarDatos($usuarioNuevo);
+    } else {
+        foreach ($errores as $error) {
+            echo $error . "<br>";
+        }
     }
 
-    mostrarDatos();
-} else {
-    foreach ($errores as $error) {
-        echo $error . "<br>";
-    }
 }
+
+callView();
