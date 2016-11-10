@@ -46,12 +46,8 @@ function validarFormulario()
 
 }
 
-function mostrarDatos($usuarioNuevo)
+function checkEdad($fechaNac)
 {
-    echo $usuarioNuevo->toString();
-}
-
-function checkEdad($fechaNac){
 
     $fechaDate = new DateTime($fechaNac);
     $hoy = new DateTime();
@@ -59,7 +55,7 @@ function checkEdad($fechaNac){
     $result = $fechaDate->diff($hoy);
     $result = $result->format('%y');
 
-    if($result<Usuario::MAYORIA_EDAD){
+    if ($result < Usuario::MAYORIA_EDAD) {
         $result = "No es mayor de edad";
     }
 
@@ -73,25 +69,31 @@ function moveImageTo($carpeta)
     move_uploaded_file($ficheros["imagen"]["tmp_name"], $carpeta . $ficheros["imagen"]["name"]);
 }
 
-function callView(){
+function callView()
+{
 
     global $errores;
     global $formulario;
     global $ficheros;
 
     if (validarFormulario()) {
-        $usuarioNuevo = registrarUsuario($formulario,$ficheros);
+        $usuarioNuevo = registrarUsuario($formulario, $ficheros);
         moveImageTo("../View/Resources/userImages/");
+
+        echo "<br><br><h1>---------------------------------ÚLTIMO REGISTRO--------------------------------</h1><br><br>";
 
         echo "Te has registrado satisfactoriamente<br><br>";
 
-        if(login($usuarioNuevo,"123456")){
+        if (login($usuarioNuevo, "123456")) {
             echo "Login correcto<br><br>";
-        } else{
+        } else {
             echo "Login incorrecto<br><br>";
         }
 
-        mostrarDatos($usuarioNuevo);
+        $user = findUser($usuarioNuevo->getNombre());
+        mostrarDatos($user);
+        echo "<br><br><h1>---------------------------------TABLA USUARIOS--------------------------------</h1><br><br>";
+        mostrarTabla();
     } else {
         foreach ($errores as $error) {
             echo $error . "<br>";
