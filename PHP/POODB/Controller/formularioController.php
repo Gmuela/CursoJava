@@ -48,7 +48,6 @@ function validarFormulario()
 
 function checkEdad($fechaNac)
 {
-
     $fechaDate = new DateTime($fechaNac);
     $hoy = new DateTime();
 
