@@ -21,14 +21,14 @@ class Operaciones():
 
 def insertar_numeros():
     lista_numeros = list()
-    nuevo_num = raw_input("Introduce el valor(-1 para salir): ")
-    if nuevo_num.isdigit() and nuevo_num >= 0:
-        lista_numeros.append(float(nuevo_num))
+    nuevo_num = 0
 
-    while nuevo_num != -1:
-        if nuevo_num.isdigit() and nuevo_num >= 0:
-           lista_numeros.append(float(nuevo_num))
-
+    while float(nuevo_num) != -1:
+        nuevo_num = raw_input("Introduce el valor(-1 para salir): ")
+        if nuevo_num.isdigit() and float(nuevo_num) >= 0:
+            lista_numeros.append(float(nuevo_num))
+        else:
+            print "Número erróneo"
     return lista_numeros
 
 
