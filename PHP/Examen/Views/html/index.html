@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Red Social</title>
+    <link rel="stylesheet" type="text/css" href="../Resources/css/cssExamen.css">
+</head>
+<body>
+<h1 class="indexTitle">Red Social</h1>
+<fieldset class="login">
+    <form name="login" id="login" action="../../Controller/LoginController.php" method="post">
+        <div>
+            <label for="nombre" class="login">Nombre de Usuario</label> <input type="text" id="nombre" name="nombre">
+            <label for="password" class="login">Contraseña</label> <input type="password" id="password" name="password">
+        </div>
+        <div class="registerLink">¿Aún sin cuenta? <a href="registro.html">Regístrate</a></div>
+        <button class="loginButton" onclick="submit(this)">Entrar</button>
+    </form>
+</fieldset>
+</body>
+</html>
