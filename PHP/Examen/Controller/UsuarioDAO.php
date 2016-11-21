@@ -41,16 +41,24 @@ class UsuarioDAO
 
     }
 
-    public function selectOneUsuario($usuario){
+    public function selectOneUsuario($nombre){
         $dbConnection = UtilDB::connectTo("redsocial", "root", "");
         $query = $dbConnection->prepare('SELECT * FROM usuarios WHERE usuarios.nombre= :nombre');
 
-        $query->bindParam(":nombre", $usuario);
+        $query->bindParam(":nombre", $nombre);
 
         $query->execute();
 
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function updateEstado($nombre, $estado){
+        $dbConnection = UtilDB::connectTo("redsocial", "root", "");
+        $query = $dbConnection->prepare('UPDATE usuarios SET estado = :estado WHERE nombre= :nombre');
 
+        $query->bindParam(":nombre", $nombre);
+        $query->bindParam(":estado", $estado);
+
+        $query->execute();
+    }
 }
