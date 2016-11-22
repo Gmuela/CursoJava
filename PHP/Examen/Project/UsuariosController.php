@@ -4,7 +4,9 @@ require_once("UsuarioDAO.php");
 require_once("SeguidorDAO.php");
 require_once("UtilViews.php");
 require_once("Usuarios.php");
-session_start();
+if(!isset($_SESSION)){
+   session_start();
+}
 function mostrarMiPerfil()
 {
 

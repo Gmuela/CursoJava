@@ -1,6 +1,8 @@
 <?php
-require_once("../../Controller/UsuariosController.php");
-session_start();
+require_once("../../Project/UsuariosController.php");
+if(!isset($_SESSION)){
+    session_start();
+}
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +13,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="../Resources/css/cssExamen.css">
 </head>
 <body>
-<h1 class="indexTitle">Red Social</h1>
+<div class="divTitle"><h1 class="indexTitle">PRIV-RAPED</h1></div>
 <div class="perfil">
     <?php echo mostrarMiPerfil()?>
     <button class='nuevoEstado' onclick='window.location.href="nuevoEstado.html"'>Cambiar Estado</button>
