@@ -40,6 +40,12 @@ public class Rectangulo {
 
     }
 
+    public Boolean mayorQue(Rectangulo rectangulo){
+
+        return this.area > rectangulo.getArea();
+
+    }
+
     public void escribir() {
         System.out.println("Rectángulo: \nPunto Inferior Izquierdo: "+this.inferiorIzquierdo.getSituacion());
         System.out.println("Punto Superior Izquierdo: "+this.superiorIzquierdo.getSituacion());
@@ -48,5 +54,23 @@ public class Rectangulo {
         System.out.println("Base: "+this.base);
         System.out.println("Altura: "+this.altura);
         System.out.println("Área: "+this.area);
+    }
+
+    public Double getArea() {
+        return area;
+    }
+
+    public String pintar(){
+
+        String resultado = "";
+
+        for (int i = 0; i < altura; i++) {
+            for(int j = 0; j < base; j++){
+                resultado += "*";
+            }
+            resultado +="\n";
+        }
+
+        return resultado;
     }
 }

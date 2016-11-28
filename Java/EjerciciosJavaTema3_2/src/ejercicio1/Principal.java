@@ -4,7 +4,7 @@ import java.util.IntSummaryStatistics;
 
 public class Principal {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         Integer numerador1 = Integer.parseInt(args[0]);
         Integer denominador1 = Integer.parseInt(args[1]);
@@ -12,7 +12,7 @@ public class Principal {
         Integer numerador2 = Integer.parseInt(args[2]);
         Integer denominador2 = Integer.parseInt(args[3]);
 
-        Racional racional1 = new Racional(numerador1,denominador1);
+        Racional racional1 = new Racional(numerador1, denominador1);
         Racional racional2 = new Racional(numerador2, denominador2);
 
         Racional racionalSumado = racional1.suma(racional2);
@@ -37,12 +37,10 @@ public class Principal {
         System.out.println("La resta de " + fraccionUno + " y " + fraccionDos + " es " + fraccionResultadoResta);
         System.out.println("La multiplicación de " + fraccionUno + " y " + fraccionDos + " es " + fraccionResultadoMultiplicacion);
         System.out.println("La división de " + fraccionUno + " y " + fraccionDos + " es " + fraccionResultadoDividido);
-        if(mayorQue){
+        if (mayorQue) {
 
             System.out.println("La fracción " + fraccionUno + " es mayor que " + fraccionDos);
-        }
-
-        else{
+        } else {
 
             System.out.println("La fracción " + fraccionUno + " es menor que " + fraccionDos);
         }
@@ -50,36 +48,44 @@ public class Principal {
         System.out.println("----------------------------------------------------------");
         System.out.println("----------------------------------------------------------");
 
-        Polinomio polinomio = new Polinomio(2,3,5);
-        polinomio.calcularValor((double)3);
-        polinomio.escribir((double)3);
+        Polinomio polinomio = new Polinomio(2, 3, 5);
+        polinomio.calcularValor((double) 3);
+        polinomio.escribir((double) 3);
 
         System.out.println("----------------------------------------------------------");
         System.out.println("----------------------------------------------------------");
 
-        Circulo circulo = new Circulo(3.012,-56.009,6.0);
+        Circulo circulo = new Circulo(3.012, -56.009, 6.0);
         circulo.mostrarResultados();
 
         System.out.println("----------------------------------------------------------");
         System.out.println("----------------------------------------------------------");
 
         Punto inferiorIzquierdo = new Punto(4.0);
-        Punto superiorIzquierdo = new Punto(12.0);
-        Punto superiorDerecho = new Punto(23.0);
-        Punto inferiorDerecho = new Punto(6.0);
+        Punto superiorIzquierdo = new Punto(15.0);
+        Punto superiorDerecho = new Punto(30.0);
+        Punto inferiorDerecho = new Punto(7.0);
 
 
-        Rectangulo rectangulo = new Rectangulo(inferiorIzquierdo,superiorIzquierdo,superiorDerecho,inferiorDerecho);
+        Rectangulo rectangulo = new Rectangulo(inferiorIzquierdo, superiorIzquierdo, superiorDerecho, inferiorDerecho);
         rectangulo.calcularBase();
         rectangulo.calcularAltura();
         rectangulo.calcularArea();
         rectangulo.escribir();
 
-        Rectangulo rectangulo2 = new Rectangulo(superiorIzquierdo,superiorDerecho,inferiorDerecho);
+        Rectangulo rectangulo2 = new Rectangulo(superiorIzquierdo, superiorDerecho, inferiorDerecho);
         rectangulo2.calcularBase();
         rectangulo2.calcularAltura();
         rectangulo2.calcularArea();
         rectangulo2.escribir();
+
+        if (rectangulo.mayorQue(rectangulo2)) {
+            System.out.println("El rectángulo 1 con área " + rectangulo.getArea() + " es mayor que el rectángulo 2 con área " + rectangulo2.getArea());
+        } else {
+            System.out.println("El rectángulo 1 con área " + rectangulo.getArea() + " es menor que el rectángulo 2 con área " + rectangulo2.getArea());
+        }
+
+        System.out.println(rectangulo2.pintar());
 
     }
 }
