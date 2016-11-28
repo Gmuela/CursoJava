@@ -46,6 +46,12 @@ public class Rectangulo {
 
     }
 
+    public Boolean igualQue(Rectangulo rectangulo){
+
+        return this.area.equals(rectangulo.getArea());
+
+    }
+
     public void escribir() {
         System.out.println("Rectángulo: \nPunto Inferior Izquierdo: "+this.inferiorIzquierdo.getSituacion());
         System.out.println("Punto Superior Izquierdo: "+this.superiorIzquierdo.getSituacion());

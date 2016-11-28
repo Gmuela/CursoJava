@@ -79,13 +79,19 @@ public class Principal {
         rectangulo2.calcularArea();
         rectangulo2.escribir();
 
-        if (rectangulo.mayorQue(rectangulo2)) {
-            System.out.println("El rectángulo 1 con área " + rectangulo.getArea() + " es mayor que el rectángulo 2 con área " + rectangulo2.getArea());
-        } else {
-            System.out.println("El rectángulo 1 con área " + rectangulo.getArea() + " es menor que el rectángulo 2 con área " + rectangulo2.getArea());
+        if(!rectangulo.igualQue(rectangulo2)){
+
+            if (rectangulo.mayorQue(rectangulo2)) {
+                System.out.println("El rectángulo 1 con área " + rectangulo.getArea() + " es mayor que el rectángulo 2 con área " + rectangulo2.getArea());
+            } else {
+                System.out.println("El rectángulo 1 con área " + rectangulo.getArea() + " es menor que el rectángulo 2 con área " + rectangulo2.getArea());
+            }
+
+        }else{
+
+            System.out.println("El rectángulo 1 con área " + rectangulo.getArea() + " es igual que el rectángulo 2 con área " + rectangulo2.getArea());
         }
 
         System.out.println(rectangulo2.pintar());
-
     }
 }
