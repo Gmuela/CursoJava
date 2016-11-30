@@ -13,9 +13,10 @@ public class Calculos {
     public static double calcularSueldoBruto(Empleado empleado){
 
         double sueldoNeto = empleado.getSueldoNeto();
-        double irpf = comprobarIrpf(empleado);
 
-        return sueldoNeto + ((sueldoNeto*irpf)/100);
+        double eurosPorHoraExtra = calculoEurosPorHoraExtra(empleado);
+
+        return sueldoNeto + eurosPorHoraExtra;
 
     }
 
