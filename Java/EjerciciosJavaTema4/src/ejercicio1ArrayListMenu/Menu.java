@@ -2,10 +2,16 @@ package ejercicio1ArrayListMenu;
 
 public class Menu {
 
+    private Agenda agenda;
+
+    public Menu() {
+        this.agenda = new Agenda();
+    }
+
     private final String OPTION_ADD = "1.Añadir Persona";
     private final String OPTION_DELETE = "2.Borrar Persona(Buscar por DNI)";
     private final String OPTION_SEARCH = "3.Buscar Persona(Buscar por DNI)";
-    private final String OPTION_SHOW_AGENDA = "4.Mostrar Agenda";
+    private final String OPTION_SHOW_AGENDA = "4.Mostrar agenda";
     private final String OPTION_SHOW_BIRTHDAYS = "5.Mostrar Cumpleaños";
     private final String OPTION_EXIT = "0.Escribe cualquier otro número para salir";
 
@@ -37,19 +43,19 @@ public class Menu {
 
         switch (opcion) {
             case 1:
-                Agenda.addPersona();
+                agenda.addPersona();
                 break;
             case 2:
-                Agenda.deletePersona();
+                agenda.deletePersona();
                 break;
             case 3:
-                Agenda.searchPersona();
+                agenda.searchPersona();
                 break;
             case 4:
-                Agenda.showAgenda();
+                agenda.showAgenda();
                 break;
             case 5:
-                Agenda.showBirthdays();
+                agenda.showBirthdays();
                 break;
             default:
                 finished = true;

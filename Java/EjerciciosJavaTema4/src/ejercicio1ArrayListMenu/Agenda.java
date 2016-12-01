@@ -5,15 +5,15 @@ import java.util.Scanner;
 
 public class Agenda {
 
-    private static ArrayList<Persona> contactos = new ArrayList<Persona>();
+    private ArrayList<Persona> contactos = new ArrayList<Persona>();
 
-    public static ArrayList<Persona> getContactos() {
+    public ArrayList<Persona> getContactos() {
 
-        return contactos;
+        return this.contactos;
     }
 
 
-    public static void addPersona() {
+    public void addPersona() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Escribe el nombre");
@@ -34,16 +34,16 @@ public class Agenda {
 
         Persona personaNueva = new Persona(nombre,apellidos,dni,fecha,telefono);
 
-        contactos.add(personaNueva);
+        this.contactos.add(personaNueva);
     }
 
-    public static void searchPersona() {
+    public void searchPersona() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Escribe el DNI de la persona que deseas buscar");
         String dni = scanner.nextLine();
 
-        for (Persona contacto : contactos) {
+        for (Persona contacto : this.contactos) {
             String contactoDni = contacto.getDni();
             if (contactoDni.equalsIgnoreCase(dni)) {
                 System.out.println(contacto.toString());
@@ -51,27 +51,42 @@ public class Agenda {
         }
     }
 
-    public static void deletePersona() {
+    public void deletePersona() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Escribe el DNI de la persona que deseas buscar");
         String dni = scanner.nextLine();
 
-        for (Persona contacto : contactos) {
+        Persona pesonaToRemove = new Persona();
+
+        for (Persona contacto : this.contactos) {
             String contactoDni = contacto.getDni();
             if (contactoDni.equalsIgnoreCase(dni)) {
-                contactos.remove(contacto);
+                pesonaToRemove = contacto;
             }
         }
+
+        contactos.remove(pesonaToRemove);
     }
 
-    public static void showAgenda() {
-        for (Persona contacto : contactos) {
+    public void showAgenda() {
+        for (Persona contacto : this.contactos) {
             System.out.println(contacto.toString());
         }
     }
 
-    public static void showBirthdays() {
+    public void showBirthdays() {
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Escribe el mes del cumpleaños de la persona");
+        String mes = scanner.nextLine();
+
+        for (Persona contacto : this.contactos) {
+            Fecha fechaNacimiento = contacto.getFechaNacimiento();
+            String contactoMes = fechaNacimiento.getMes();
+            if (contactoMes.equalsIgnoreCase(mes)) {
+                System.out.println(contacto.toString());
+            }
+        }
     }
 }

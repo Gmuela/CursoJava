@@ -27,13 +27,15 @@ public class Persona {
         String nombre = "Nombre:" + this.nombre;
         String apellidos = "Apellidos: " + this.apellidos;
         String dni = "DNI: " + this.dni;
-        String fecha = "Fecha" + this.fechaNacimiento.toString();
+        String fecha = "Fecha: " + this.fechaNacimiento.toString();
         String telefono = "Teléfono: " + this.telefono;
 
-        String separador = "\n";
+        String separadorVertical = "\n";
+        String separadorHorizontal = "---------------------------";
 
-        info = nombre + separador + apellidos + separador + dni + separador + fecha + separador + telefono;
-
+        info = separadorHorizontal + separadorVertical;
+        info += nombre + separadorVertical + apellidos + separadorVertical + dni + separadorVertical + fecha + separadorVertical + telefono;
+        info += separadorVertical;
         return info;
     }
 
