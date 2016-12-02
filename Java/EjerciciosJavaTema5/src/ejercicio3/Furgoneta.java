@@ -6,11 +6,15 @@ public class Furgoneta extends Vehiculo {
     private Double capacidadDeCarga;
 
     public Furgoneta(String matricula, Double kilometraje, Boolean isAlquilado, Double capacidadDeCarga) {
-        super(matricula, kilometraje, isAlquilado);
+        super(matricula, kilometraje, isAlquilado, false);
         this.capacidadDeCarga = capacidadDeCarga;
     }
 
     public Double getCapacidadDeCarga() {
         return capacidadDeCarga;
+    }
+
+    public Double getPrecioPorKilometro() {
+        return PRECIO_POR_KILOMETRO;
     }
 }

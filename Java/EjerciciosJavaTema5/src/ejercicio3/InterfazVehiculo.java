@@ -6,4 +6,5 @@ public interface InterfazVehiculo {
     Double getKilometraje();
     Boolean isAlquilado();
     Double getPrecioPorKilometro();
+    Integer getPrecioSuplemento();
 }

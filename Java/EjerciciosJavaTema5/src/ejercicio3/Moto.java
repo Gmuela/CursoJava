@@ -9,4 +9,11 @@ public class Moto extends Vehiculo {
         super(matricula, kilometraje, isAlquilado, incluyeCasco);
     }
 
+    public Integer getPrecioSuplemento() {
+        return PRECIO_CASCO_INCLUIDO;
+    }
+
+    public Double getPrecioPorKilometro() {
+        return PRECIO_POR_KILOMETRO;
+    }
 }

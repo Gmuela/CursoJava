@@ -21,7 +21,11 @@ public class Alquiler {
     }
 
     public Double calcularImporteAlquiler(Vehiculo vehiculo){
-        return vehiculo.getKilometraje() * vehiculo.getPrecioPorKilometro();
+        double precio = vehiculo.getKilometraje() * vehiculo.getPrecioPorKilometro();
+        if(vehiculo.tieneSuplemento()){
+            precio += vehiculo.getPrecioSuplemento();
+        }
+        return precio;
     }
 
 }
