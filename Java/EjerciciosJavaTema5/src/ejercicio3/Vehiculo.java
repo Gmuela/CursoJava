@@ -2,14 +2,21 @@ package ejercicio3;
 
 public class Vehiculo implements InterfazVehiculo {
 
+    protected Boolean extra;
     private String matricula;
     private Double kilometraje;
     private Boolean isAlquilado;
+    private final Double PRECIO_POR_KILOMETRO = 0.0;
 
-    public Vehiculo(String matricula, Double kilometraje, Boolean isAlquilado) {
+    public Vehiculo() {
+        //Dafault
+    }
+
+    public Vehiculo(String matricula, Double kilometraje, Boolean isAlquilado, Boolean tieneExtra) {
         this.matricula = matricula;
         this.kilometraje = kilometraje;
         this.isAlquilado = isAlquilado;
+        this.extra = tieneExtra;
     }
 
     public String toString() {
@@ -27,6 +34,10 @@ public class Vehiculo implements InterfazVehiculo {
         return info;
     }
 
+    public void setAlquilado(Boolean alquilado) {
+        isAlquilado = alquilado;
+    }
+
     public String getMatricula() {
         return this.matricula;
     }
@@ -37,5 +48,17 @@ public class Vehiculo implements InterfazVehiculo {
 
     public Boolean isAlquilado() {
         return this.isAlquilado;
+    }
+
+    public Double getPrecioPorKilometro() {
+        return this.PRECIO_POR_KILOMETRO;
+    }
+
+    public Boolean isNotAlquilado() {
+        return !this.isAlquilado;
+    }
+
+    public Boolean getExtra() {
+        return extra;
     }
 }
