@@ -9,7 +9,23 @@ public class Estudiante extends Persona {
         this.cursoMatriculado = cursoMatriculado;
     }
 
+    public String toString() {
+
+        String info = super.toString();
+
+        String separador = "\n";
+        String cursoMatriculado = "Curso Matriculado: " + this.cursoMatriculado;
+
+        info += separador + cursoMatriculado;
+
+        return info;
+    }
+
     public String getCursoMatriculado() {
         return cursoMatriculado;
+    }
+
+    public void setCursoMatriculado(String cursoMatriculado) {
+        this.cursoMatriculado = cursoMatriculado;
     }
 }

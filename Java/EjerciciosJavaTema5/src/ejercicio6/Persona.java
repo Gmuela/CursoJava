@@ -17,6 +17,19 @@ public class Persona implements InterfazPersona {
         this.estadoCivil = estadoCivil;
     }
 
+    public String toString() {
+        String info;
+
+        String estadoCivil = "Estado Civil: " + this.estadoCivil;
+        String dni = "DNI: " + this.dni;
+        String apellidos = "Apellidos: " + this.apellidos;
+        String nombre = "Nombre: " + this.nombre;
+        String separador = "\n";
+        info = nombre + separador + apellidos + separador + dni + separador + estadoCivil;
+
+        return info;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -31,5 +44,9 @@ public class Persona implements InterfazPersona {
 
     public String getEstadoCivil() {
         return estadoCivil;
+    }
+
+    public void setEstadoCivil(String estadoCivil) {
+        this.estadoCivil = estadoCivil;
     }
 }
