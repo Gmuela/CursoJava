@@ -1,9 +1,8 @@
-import java.io.IOException;
-import java.io.Serializable;
+public class Main {
+    public static void main(String[] args){
+        LectorFichero lector = new LectorFichero("HolaMundo.txt");
 
-public class Main implements Serializable {
-
-    public static void main(String[] args) throws IOException {
-
+        System.out.println(lector.leerLinea());
+        System.out.println(lector.leerLinea());
     }
 }
