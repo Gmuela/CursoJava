@@ -4,5 +4,14 @@ public class Main {
 
         System.out.println(lector.leerLinea());
         System.out.println(lector.leerLinea());
+
+        System.out.println(lector.leerCadena());
+        System.out.println(lector.leerCadena());
+
+        System.out.println(lector.leerCadena("o"));
+        System.out.println(lector.leerCadena("o"));
+        System.out.println(lector.leerCadena("o"));
+
+        lector.close();
     }
 }

@@ -1,7 +1,3 @@
-public class IOFichero {
-
-    public void cerrar(){
-
-    }
-
+public interface IOFichero {
+    void close();
 }
