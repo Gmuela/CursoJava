@@ -1,3 +1,5 @@
+package IOClasses;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -9,11 +11,11 @@ public class EscrituraFichero implements IOFichero {
 
     public EscrituraFichero(String nombreFichero, Boolean addEnd) {
         this.nombreFichero = nombreFichero;
-        FileWriter fileWriter = initFileWriter(addEnd);
+        FileWriter fileWriter = init(addEnd);
         this.bufferedWriter = new BufferedWriter(fileWriter);
     }
 
-    private FileWriter initFileWriter(Boolean addEnd) {
+    private FileWriter init(Boolean addEnd) {
         FileWriter fileWriter = null;
 
         try {
@@ -25,13 +27,17 @@ public class EscrituraFichero implements IOFichero {
         return fileWriter;
     }
 
-    public void escribirLinea(String linea) {
+    public boolean escribirLinea(String linea) {
+        boolean success = true;
         try {
             this.bufferedWriter.write(linea);
             this.bufferedWriter.newLine();
         } catch (IOException e) {
             System.out.println("Error en la escritura del archivo " + e);
+            success = false;
         }
+
+        return success;
     }
 
     @Override
