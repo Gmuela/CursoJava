@@ -11,7 +11,7 @@ public class PersonaDAOFichero implements PersonaDAO {
 
     private EscrituraFichero escritor;
     private LectorFichero lector;
-    private String FICHERO_AGENDA = "ficheroAgenda.txt";
+    private static final String FICHERO_AGENDA = "ficheroAgenda.txt";
 
     public PersonaDAOFichero() {
         //Default
