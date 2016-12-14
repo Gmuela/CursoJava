@@ -7,23 +7,43 @@ public class Agenda {
 
     private PersonaDAO personaDao = new PersonaDAOFichero();
 
-    public void insertarPersona(String nombre, String apellidos, String dni, Fecha fecha, String telefono) {
-        Persona personaNueva = new Persona(nombre, apellidos, dni, fecha, telefono);
+    public String insertarPersona(String nombre, String apellidos, String dni, Fecha fecha, String telefono) {
 
-        this.personaDao.guardaPersona(personaNueva);
+        Persona personaNueva = new Persona(nombre, apellidos, dni, fecha, telefono);
+        boolean personaGuardadaCorrectamente = this.personaDao.guardaPersona(personaNueva);
+        String mensaje;
+
+        if (personaGuardadaCorrectamente) {
+            mensaje = "Persona guardada";
+        } else {
+            mensaje = "Error al guardar persona";
+        }
+        return mensaje;
     }
 
-    public void buscarPersona(String dni) {
-        System.out.println(this.personaDao.recuperarPersona(dni));
+    public String buscarPersona(String dni) {
+        Persona persona = this.personaDao.recuperarPersona(dni);
+        String informacionPersona;
+        if (persona == null) {
+            informacionPersona = "Persona con dni " + dni + " no encontrada";
+        } else {
+            informacionPersona = persona.toString();
+        }
+        return informacionPersona;
     }
 
     public void borrarPersona(String dni) {
-        this.personaDao.borrarPersona(dni);
+        boolean borrado = this.personaDao.borrarPersona(dni);
+        if (borrado) {
+            System.out.println("Persona borrada correctamente" + "\n");
+        } else{
+            System.out.println("Persona no encontrada" + "\n");
+        }
     }
 
     public void listarPersonas() {
         for (Persona contacto : this.personaDao.listarPersonas()) {
-            System.out.println(contacto.toString());
+            System.out.println(contacto.toString() + "\n");
         }
     }
 
@@ -32,7 +52,7 @@ public class Agenda {
             Fecha fechaNacimiento = contacto.getFechaNacimiento();
             String contactoMes = fechaNacimiento.getMes();
             if (contactoMes.equalsIgnoreCase(mes)) {
-                System.out.println(contacto.toString());
+                System.out.println(contacto.toString() + "\n");
             }
         }
     }

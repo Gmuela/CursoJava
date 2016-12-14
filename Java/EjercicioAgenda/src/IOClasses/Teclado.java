@@ -16,7 +16,6 @@ public class Teclado {
     public String leerCadena() {
         String cadena = "";
         try {
-            System.out.println("Escribe una cadena de texto");
             cadena = this.entrada.readLine();
         } catch (IOException e) {
             System.out.println("Error de I/O");

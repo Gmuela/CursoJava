@@ -98,7 +98,9 @@ public class Menu {
         System.out.println("Escribe el DNI de la persona que deseas buscar");
         String dni = scanner.nextLine();
 
-        agenda.buscarPersona(dni);
+        String informacionPersona = agenda.buscarPersona(dni);
+
+        System.out.println(informacionPersona);
     }
 
     public void optionDelete() {
