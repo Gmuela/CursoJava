@@ -1,12 +1,14 @@
+package Utils;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class UtilDB {
 
-    public static final String BBDD = "java";
-    public static final String USER = "root";
-    public static final String PASSWORD = "";
+    private static final String BBDD = "java";
+    private static final String USER = "root";
+    private static final String PASSWORD = "iesrey";
     private Connection connection;
 
     public UtilDB() {
