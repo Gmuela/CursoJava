@@ -18,15 +18,9 @@ public class ClickController implements ActionListener {
         JButton button = ejercicioEventos.button;
         JFrame frame = ejercicioEventos.frame;
         String type = button.getName();
-        if(type.equalsIgnoreCase(TiposBoton.tipoBotonCambiarText)){
-            /*button.setFont(new Font(Font.MONOSPACED,Font.BOLD,30));
-            frame.setTitle("Nuevo título");*/
-            button.setText("Nuevo Texto");
-        }
-        if(type.equalsIgnoreCase(TiposBoton.tipoBotonCambiarTitle)){
-            //button.setFont(new Font(Font.MONOSPACED,Font.BOLD,30));
+        if(type.equalsIgnoreCase(TiposBoton.botonParaCambiar)){
+            button.setFont(new Font(Font.MONOSPACED,Font.BOLD,30));
             frame.setTitle("Nuevo título");
-            //button.setText("Nuevo Texto");
         }
     }
 }

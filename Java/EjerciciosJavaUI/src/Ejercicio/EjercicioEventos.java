@@ -20,7 +20,7 @@ public class EjercicioEventos {
         ejercicioEventos.frame.add(panel);
 
         ejercicioEventos.button = new JButton("Soy un botón");
-        ejercicioEventos.button.setName(TiposBoton.tipoBotonCambiarTitle);
+        ejercicioEventos.button.setName(TiposBoton.botonParaCambiar);
         ejercicioEventos.button.addActionListener(new ClickController(ejercicioEventos));
         panel.add(ejercicioEventos.button);
 
