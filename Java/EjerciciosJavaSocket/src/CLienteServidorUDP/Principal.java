@@ -8,11 +8,13 @@ public class Principal {
         ServidorUDP servidor = new ServidorUDP();
         servidor.start();
         try {
-            Thread.sleep(3000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        cliente.enviar("hola", "localhost");
+
+        cliente.enviar("soy el mensaje que enviaste y volvió del server", "localhost");
+        System.out.println(new String(cliente.recibir()));
 
     }
 

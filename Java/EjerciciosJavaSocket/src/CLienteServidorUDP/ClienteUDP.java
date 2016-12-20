@@ -14,7 +14,7 @@ public class ClienteUDP implements UDPData {
     private DatagramSocket getDatagramSocket() {
         DatagramSocket datagramSocket = null;
         try {
-            datagramSocket =  new DatagramSocket();
+            datagramSocket =  new DatagramSocket(UDPData.PORT_RECEIVE);
         } catch (SocketException e) {
             e.printStackTrace();
         }
@@ -27,7 +27,7 @@ public class ClienteUDP implements UDPData {
 
             byte[] mensajeBytes = mensaje.getBytes();
             InetAddress host = InetAddress.getByName(destino);
-            DatagramPacket mensajeEnviado = new DatagramPacket(mensajeBytes, mensajeBytes.length, host, UDPData.PORT_ONE);
+            DatagramPacket mensajeEnviado = new DatagramPacket(mensajeBytes, mensajeBytes.length, host, UDPData.PORT_SEND);
             this.socket.send(mensajeEnviado);
         } catch (IOException e) {
             e.printStackTrace();

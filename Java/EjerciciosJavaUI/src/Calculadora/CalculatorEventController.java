@@ -31,20 +31,13 @@ public class CalculatorEventController implements ActionListener {
         String type = button.getName();
         switch (type) {
             case (BotonesCalculadora.botonSumar):
-                if (isResultadoZero()) {
-                    if (isPrimerNumeroZero()) {
+                if (resultadoIsZero()) {
+                    if (primerNumeroIsZero()) {
                         Double numberFromCalculator = getNumberFromCalculator();
-                        if(numberFromCalculator != null){
-                            this.primerNumero = numberFromCalculator;
-                            this.resultados.setText(primerNumero.toString());
-                            saveLastOperation(button);
-                            clear();
-                        } else{
-                            saveLastOperation(button);
-                        }
+                        doTheFirstOperation(button, numberFromCalculator);
                     } else if (isSegundoNumeroZero()) {
                         Double numberFromCalculator = getNumberFromCalculator();
-                        if(numberFromCalculator != null){
+                        if(numberFromCalculatorIsNull(numberFromCalculator)){
                             this.segundoNumero = numberFromCalculator;
                             this.resultado = calculos.sumar(this.primerNumero, this.segundoNumero);
                             endOfOperation();
@@ -54,7 +47,7 @@ public class CalculatorEventController implements ActionListener {
                     }
                 } else {
                     Double numberFromCalculator = getNumberFromCalculator();
-                    if(numberFromCalculator != null){
+                    if(numberFromCalculatorIsNull(numberFromCalculator)){
                         this.segundoNumero = numberFromCalculator;
                         this.resultado = calculos.sumar(this.resultado, this.segundoNumero);
                         saveLastOperation(button);
@@ -65,20 +58,13 @@ public class CalculatorEventController implements ActionListener {
                 }
                 break;
             case (BotonesCalculadora.botonRestar):
-                if (isResultadoZero()) {
-                    if (isPrimerNumeroZero()) {
+                if (resultadoIsZero()) {
+                    if (primerNumeroIsZero()) {
                         Double numberFromCalculator = getNumberFromCalculator();
-                        if(numberFromCalculator != null){
-                            this.primerNumero = numberFromCalculator;
-                            this.resultados.setText(primerNumero.toString());
-                            saveLastOperation(button);
-                            clear();
-                        } else{
-                            saveLastOperation(button);
-                        }
+                        doTheFirstOperation(button, numberFromCalculator);
                     } else if (isSegundoNumeroZero()) {
                         Double numberFromCalculator = getNumberFromCalculator();
-                        if(numberFromCalculator != null){
+                        if(numberFromCalculatorIsNull(numberFromCalculator)){
                             this.segundoNumero = numberFromCalculator;
                             this.resultado = calculos.restar(this.primerNumero, this.segundoNumero);
                             endOfOperation();
@@ -88,7 +74,7 @@ public class CalculatorEventController implements ActionListener {
                     }
                 } else {
                     Double numberFromCalculator = getNumberFromCalculator();
-                    if(numberFromCalculator != null){
+                    if(numberFromCalculatorIsNull(numberFromCalculator)){
                         this.segundoNumero = numberFromCalculator;
                         this.resultado = calculos.restar(this.resultado, this.segundoNumero);
                         saveLastOperation(button);
@@ -99,20 +85,13 @@ public class CalculatorEventController implements ActionListener {
                 }
                 break;
             case (BotonesCalculadora.botonMultiplicar):
-                if (isResultadoZero()) {
-                    if (isPrimerNumeroZero()) {
+                if (resultadoIsZero()) {
+                    if (primerNumeroIsZero()) {
                         Double numberFromCalculator = getNumberFromCalculator();
-                        if(numberFromCalculator != null){
-                            this.primerNumero = numberFromCalculator;
-                            this.resultados.setText(primerNumero.toString());
-                            saveLastOperation(button);
-                            clear();
-                        } else{
-                            saveLastOperation(button);
-                        }
+                        doTheFirstOperation(button, numberFromCalculator);
                     } else if (isSegundoNumeroZero()) {
                         Double numberFromCalculator = getNumberFromCalculator();
-                        if(numberFromCalculator != null){
+                        if(numberFromCalculatorIsNull(numberFromCalculator)){
                             this.segundoNumero = numberFromCalculator;
                             this.resultado = calculos.multiplicar(this.primerNumero, this.segundoNumero);
                             endOfOperation();
@@ -122,7 +101,7 @@ public class CalculatorEventController implements ActionListener {
                     }
                 } else {
                     Double numberFromCalculator = getNumberFromCalculator();
-                    if(numberFromCalculator != null){
+                    if(numberFromCalculatorIsNull(numberFromCalculator)){
                         this.segundoNumero = numberFromCalculator;
                         this.resultado = calculos.multiplicar(this.resultado, this.segundoNumero);
                         saveLastOperation(button);
@@ -133,20 +112,13 @@ public class CalculatorEventController implements ActionListener {
                 }
                 break;
             case (BotonesCalculadora.botonDividir):
-                if (isResultadoZero()) {
-                    if (isPrimerNumeroZero()) {
+                if (resultadoIsZero()) {
+                    if (primerNumeroIsZero()) {
                         Double numberFromCalculator = getNumberFromCalculator();
-                        if(numberFromCalculator != null){
-                            this.primerNumero = numberFromCalculator;
-                            this.resultados.setText(primerNumero.toString());
-                            saveLastOperation(button);
-                            clear();
-                        } else{
-                            saveLastOperation(button);
-                        }
+                        doTheFirstOperation(button, numberFromCalculator);
                     } else if (isSegundoNumeroZero()) {
                         Double numberFromCalculator = getNumberFromCalculator();
-                        if(numberFromCalculator != null){
+                        if(numberFromCalculatorIsNull(numberFromCalculator)){
                             this.segundoNumero = numberFromCalculator;
                             this.resultado = calculos.dividir(this.primerNumero, this.segundoNumero);
                             endOfOperation();
@@ -156,7 +128,7 @@ public class CalculatorEventController implements ActionListener {
                     }
                 } else {
                     Double numberFromCalculator = getNumberFromCalculator();
-                    if(numberFromCalculator != null){
+                    if(numberFromCalculatorIsNull(numberFromCalculator)){
                         this.segundoNumero = numberFromCalculator;
                         this.resultado = calculos.dividir(this.resultado, this.segundoNumero);
                         saveLastOperation(button);
@@ -186,31 +158,46 @@ public class CalculatorEventController implements ActionListener {
 
     }
 
+    private void doTheFirstOperation(JButton button, Double numberFromCalculator) {
+        if(numberFromCalculatorIsNull(numberFromCalculator)){
+            this.primerNumero = numberFromCalculator;
+            this.resultados.setText(primerNumero.toString());
+            saveLastOperation(button);
+            clear();
+        } else{
+            saveLastOperation(button);
+        }
+    }
+
+    private boolean numberFromCalculatorIsNull(Double numberFromCalculator) {
+        return numberFromCalculator != null;
+    }
+
     private boolean isSegundoNumeroZero() {
         return this.segundoNumero == 0.0;
     }
 
-    private boolean isPrimerNumeroZero() {
+    private boolean primerNumeroIsZero() {
         return this.primerNumero == 0.0;
     }
 
-    private boolean isResultadoZero() {
+    private boolean resultadoIsZero() {
         return this.resultado == 0.0;
     }
 
     private void doLastOperation() {
         switch (this.lastOperation) {
             case (BotonesCalculadora.botonSumar):
-                if(isResultadoZero()){
+                if(resultadoIsZero()){
                     Double numberFromCalculator = getNumberFromCalculator();
-                    if(numberFromCalculator != null){
+                    if(numberFromCalculatorIsNull(numberFromCalculator)){
                         this.segundoNumero = numberFromCalculator;
                         this.resultado = calculos.sumar(this.primerNumero, this.segundoNumero);
                         endOfOperation();
                     }
                 } else{
                     Double numberFromCalculator = getNumberFromCalculator();
-                    if(numberFromCalculator != null){
+                    if(numberFromCalculatorIsNull(numberFromCalculator)){
                         this.segundoNumero = numberFromCalculator;
                         this.resultado = calculos.sumar(this.resultado, this.segundoNumero);
                         endOfOperation();
@@ -218,16 +205,16 @@ public class CalculatorEventController implements ActionListener {
                 }
                 break;
             case (BotonesCalculadora.botonRestar):
-                if(isResultadoZero()){
+                if(resultadoIsZero()){
                     Double numberFromCalculator = getNumberFromCalculator();
-                    if(numberFromCalculator != null){
+                    if(numberFromCalculatorIsNull(numberFromCalculator)){
                         this.segundoNumero = numberFromCalculator;
                         this.resultado = calculos.restar(this.primerNumero, this.segundoNumero);
                         endOfOperation();
                     }
                 } else{
                     Double numberFromCalculator = getNumberFromCalculator();
-                    if(numberFromCalculator != null){
+                    if(numberFromCalculatorIsNull(numberFromCalculator)){
                         this.segundoNumero = numberFromCalculator;
                         this.resultado = calculos.restar(this.resultado, this.segundoNumero);
                         endOfOperation();
@@ -235,16 +222,16 @@ public class CalculatorEventController implements ActionListener {
                 }
                 break;
             case (BotonesCalculadora.botonMultiplicar):
-                if(isResultadoZero()){
+                if(resultadoIsZero()){
                     Double numberFromCalculator = getNumberFromCalculator();
-                    if(numberFromCalculator != null){
+                    if(numberFromCalculatorIsNull(numberFromCalculator)){
                         this.segundoNumero = numberFromCalculator;
                         this.resultado = calculos.multiplicar(this.primerNumero, this.segundoNumero);
                         endOfOperation();
                     }
                 } else{
                     Double numberFromCalculator = getNumberFromCalculator();
-                    if(numberFromCalculator != null){
+                    if(numberFromCalculatorIsNull(numberFromCalculator)){
                         this.segundoNumero = numberFromCalculator;
                         this.resultado = calculos.multiplicar(this.resultado, this.segundoNumero);
                         endOfOperation();
@@ -252,19 +239,19 @@ public class CalculatorEventController implements ActionListener {
                 }
                 break;
             case (BotonesCalculadora.botonDividir):
-                if(isResultadoZero()){
+                if(resultadoIsZero()){
                     Double numberFromCalculator = getNumberFromCalculator();
-                    if(numberFromCalculator != null){
+                    if(numberFromCalculatorIsNull(numberFromCalculator)){
                         this.segundoNumero = numberFromCalculator;
                         this.resultado = calculos.dividir(this.primerNumero, this.segundoNumero);
                         endOfOperation();
                     }
                 } else{
                     Double numberFromCalculator = getNumberFromCalculator();
-                    if(numberFromCalculator != null){
+                    if(numberFromCalculatorIsNull(numberFromCalculator)){
                         this.segundoNumero = numberFromCalculator;
-                        resetNumbers();
                         this.resultado = calculos.dividir(this.resultado, this.segundoNumero);
+                        resetNumbers();
                     }
                     showResult();
                     clear();

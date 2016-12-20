@@ -16,12 +16,16 @@ public class ServidorUDP extends Thread{
     private DatagramSocket getDatagramSocket() {
         DatagramSocket datagramSocket = null;
         try {
-            datagramSocket =  new DatagramSocket();
+            datagramSocket =  new DatagramSocket(UDPData.PORT_SEND);
         } catch (SocketException e) {
             e.printStackTrace();
         }
 
         return datagramSocket;
+    }
+
+    public static void main(String[] args){
+        new ServidorUDP().servir();
     }
 
 
@@ -40,10 +44,7 @@ public class ServidorUDP extends Thread{
         byte[] data = new byte[1000];
         DatagramPacket request = new DatagramPacket(data, data.length);
         try {
-            System.out.println("escuchando");
             this.socket.receive(request);
-
-                    
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -57,7 +58,6 @@ public class ServidorUDP extends Thread{
             e.printStackTrace();
         }
         DatagramPacket response = new DatagramPacket(request.getData(), request.getLength(), request.getAddress(), request.getPort());
-        System.out.println("He recibido tu petición, gracias.");
         try {
             this.socket.send(response);
         } catch (IOException e) {
