@@ -34,6 +34,7 @@ public class ServidorUDP extends Thread{
     }
 
     public void servir(){
+
         while (true) {
             DatagramPacket request = recibirRequest();
             responderRequest(request);
@@ -52,12 +53,8 @@ public class ServidorUDP extends Thread{
     }
 
     public void responderRequest(DatagramPacket request){
-        try {
-            this.socket = new DatagramSocket();
-        } catch (SocketException e) {
-            e.printStackTrace();
-        }
         DatagramPacket response = new DatagramPacket(request.getData(), request.getLength(), request.getAddress(), request.getPort());
+        System.out.println(new String(request.getData()));
         try {
             this.socket.send(response);
         } catch (IOException e) {

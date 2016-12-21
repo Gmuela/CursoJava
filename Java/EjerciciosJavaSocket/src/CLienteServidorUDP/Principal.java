@@ -13,8 +13,19 @@ public class Principal {
             e.printStackTrace();
         }
 
-        cliente.enviar("soy el mensaje que enviaste y volvió del server", "localhost");
-        System.out.println(new String(cliente.recibir()));
+        String[] mensajes = {"hola", "caranchoa", "tu puta madre", "tranquilo era broma"};
+
+        for (String mensaje : mensajes) {
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            cliente.enviar(mensaje, "Guillermo: ", "192.168.1.213");
+            System.out.println(new String(cliente.recibir()));
+        }
+
+        cliente.cerrar();
 
     }
 

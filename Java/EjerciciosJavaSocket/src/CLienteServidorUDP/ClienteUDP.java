@@ -5,7 +5,7 @@ import java.net.*;
 
 public class ClienteUDP implements UDPData {
 
-    DatagramSocket socket;
+    private DatagramSocket socket;
 
     public ClienteUDP() {
         this.socket = getDatagramSocket();
@@ -22,10 +22,9 @@ public class ClienteUDP implements UDPData {
         return datagramSocket;
     }
 
-    public void enviar(String mensaje, String destino){
+    public void enviar(String mensaje, String persona, String destino){
         try {
-
-            byte[] mensajeBytes = mensaje.getBytes();
+            byte[] mensajeBytes = (persona+mensaje).getBytes();
             InetAddress host = InetAddress.getByName(destino);
             DatagramPacket mensajeEnviado = new DatagramPacket(mensajeBytes, mensajeBytes.length, host, UDPData.PORT_SEND);
             this.socket.send(mensajeEnviado);
