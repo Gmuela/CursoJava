@@ -1,4 +1,4 @@
-package CLienteServidorUDP;
+package ClienteServidorUDP;
 
 public class Principal {
 

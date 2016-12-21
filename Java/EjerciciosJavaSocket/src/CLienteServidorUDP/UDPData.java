@@ -1,4 +1,4 @@
-package CLienteServidorUDP;
+package ClienteServidorUDP;
 
 public interface UDPData {
     int PORT_SEND = 6789;
