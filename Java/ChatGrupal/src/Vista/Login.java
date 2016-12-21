@@ -1,6 +1,8 @@
 package Vista;
 
 import Controller.EventController;
+import Controller.FactoryCommunicationController;
+import Controller.FactoryEventController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,10 +12,10 @@ public class Login {
     private JTextField nick;
     private JTextField host;
     private JButton loginButton;
-    private EventController eventController;
 
     public Login() {
-        this.eventController = new EventController(this.host, this.nick);
+        FactoryEventController.initController(this.host.getText(),this.nick.getText());
+        EventController eventController = FactoryEventController.getController();
         this.loginButton.addActionListener(eventController);
         this.loginButton.setName("login");
     }

@@ -8,21 +8,24 @@ import java.awt.event.ActionListener;
 
 public class EventController implements ActionListener{
 
-    private JTextField nick;
-    private JTextField host;
+    private String nick;
+    private String host;
 
     private CommunicationController communicationController;
 
-    public EventController(JTextField nick, JTextField host) {
+    public EventController(String nick, String host) {
         this.nick = nick;
         this.host = host;
+        this.communicationController = FactoryCommunicationController.getController();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         //if button == login
-        this.communicationController = new CommunicationController(host.getText());
-        new ChatUI(host.getText(), nick.getText());
+        FactoryCommunicationController.initController(this.host);
+        new ChatUI().openChat();
+        System.out.println(nick);
+        System.out.println(host);
         //if button == send
         this.communicationController.enviarMensaje("mensaje");
     }

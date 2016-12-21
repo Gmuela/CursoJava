@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.ClientFactory;
+import Model.FactoryClient;
 import Model.ClientReceiver;
 import Model.ClientTransmitter;
 
@@ -10,8 +10,8 @@ public class CommunicationController {
     private ClientTransmitter clientTransmitter;
 
     public CommunicationController(String host) {
-        this.clientReceiver = ClientFactory.createClientReceiver();
-        this.clientTransmitter = ClientFactory.createClientTransmitter(host);
+        this.clientReceiver = FactoryClient.createClientReceiver(host);
+        this.clientTransmitter = FactoryClient.createClientTransmitter(host);
     }
 
     public void enviarMensaje(String mensaje){
