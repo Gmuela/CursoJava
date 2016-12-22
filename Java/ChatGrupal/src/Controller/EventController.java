@@ -8,25 +8,32 @@ import java.awt.event.ActionListener;
 
 public class EventController implements ActionListener{
 
-    private String nick;
-    private String host;
+    private JTextField nick;
+    private JTextField host;
 
     private CommunicationController communicationController;
 
-    public EventController(String nick, String host) {
+    public EventController() {
+        this.communicationController = FactoryCommunicationController.getController();
+    }
+
+    public void initFields(JTextField nick, JTextField host) {
         this.nick = nick;
         this.host = host;
-        this.communicationController = FactoryCommunicationController.getController();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //if button == login
-        FactoryCommunicationController.initController(this.host);
-        new ChatUI().openChat();
-        System.out.println(nick);
-        System.out.println(host);
-        //if button == send
-        this.communicationController.enviarMensaje("mensaje");
+        JButton button = (JButton) e.getSource();
+        String buttonName = button.getName();
+        if(buttonName.equalsIgnoreCase("login")){
+            FactoryCommunicationController.initController(this.host.getText());
+            new ChatUI().openChat();
+            System.out.println("En la clase event controller----");
+            System.out.println(nick.getText());
+            System.out.println(host.getText());
+        } else if(buttonName.equalsIgnoreCase("send")){
+            this.communicationController.enviarMensaje("mensaje");
+        }
     }
 }

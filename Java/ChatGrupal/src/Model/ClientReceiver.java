@@ -1,5 +1,8 @@
 package Model;
 
+import Controller.CommunicationController;
+
+import javax.swing.*;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.Socket;
@@ -8,6 +11,7 @@ public class ClientReceiver extends Thread implements ClientInterface {
 
     private Socket socket;
     private DataInputStream flujoEntrada;
+    private CommunicationController communicationController;
 
     public ClientReceiver(String host) {
         init(host);
@@ -22,7 +26,7 @@ public class ClientReceiver extends Thread implements ClientInterface {
         }
     }
 
-    public void run(){
+    public void run() {
 
     }
 
