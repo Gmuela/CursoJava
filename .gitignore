@@ -15,3 +15,5 @@ Java/prueba/target/
 *.iml
 Wordpress/
 out/
+lib/*
+JEE/HolaContenedorWeb/lib/
