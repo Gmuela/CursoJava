@@ -5,14 +5,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
-@WebServlet("/servlet")
-public class Servlet extends HttpServlet {
+@WebServlet(name = "ServletFechas" , urlPatterns = "/ServletFechas")
+public class ServletFechas extends HttpServlet {
 
     private static final String TEXT_HTML = "text/html";
     private static final String DOCTYPE = "<!DOCTYPE html>";
@@ -22,7 +23,7 @@ public class Servlet extends HttpServlet {
     private static final String BODY = "<body>";
     private static final String CLOSE_BODY = "</body>";
     private static final String CLOSE_HTML = "</html>";
-    public static final String BR = "<br>";
+    private static final String BR = "<br>";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
@@ -30,8 +31,10 @@ public class Servlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter writer = response.getWriter();
+        HttpSession session = request.getSession(true);
         String nombre = request.getParameter("nombre");
         String fecha = request.getParameter("fecha");
+        session.setAttribute("nombre", nombre);
 
         LocalDate today = LocalDate.now();
 
@@ -51,7 +54,8 @@ public class Servlet extends HttpServlet {
 
         writer.print("<b>Nombre:</b> " + nombre + BR);
         writer.print("<b>Fecha de nacimiento: </b>" + formattedBirthday + BR);
-        writer.print("<b>Edad: </b>" + anios + ", " + meses + " y " + dias);
+        writer.print("<b>Edad: </b>" + anios + ", " + meses + " y " + dias + BR);
+        writer.print("<a href='/ServletSession'>Ir a otra página</a>" + BR);
 
         writer.print(CLOSE_BODY + CLOSE_HTML);
     }
