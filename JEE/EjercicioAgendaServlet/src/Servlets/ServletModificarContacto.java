@@ -45,13 +45,13 @@ public class ServletModificarContacto extends HttpServlet implements UtilHTML {
         response.setContentType(TEXT_HTML);
 
         writer.print(DOCTYPE + HTML + HEAD + BODY);
-        writer.print("<form action=\"/modificarContacto\" method=\"post\">\n" +
+        writer.print("<fieldset><legend>Modificar Contacto</legend><form action=\"/modificarContacto\" method=\"post\">\n" +
                 "    <label for=\"nombre\">Nombre:</label><input type=\"text\" name=\"nombre\" id=\"nombre\" value='"+contacto.getNombre()+"'>\n" +
                 "    <label for=\"apellidos\">Apellidos:</label><input type=\"text\" name=\"apellidos\" id=\"apellidos\" value='"+contacto.getApellidos()+"'>\n" +
                 "    <label for=\"dni\">DNI:</label><input type=\"text\" name=\"dni\" id=\"dni\" value='"+contacto.getDni()+"'>\n" +
                 "    <label for=\"fechaNacimiento\">FechaNacimiento:</label><input type=\"text\" name=\"fechaNacimiento\" id=\"fechaNacimiento\" value='"+contacto.getFechaNacimiento()+"'>\n" +
                 "    <label for=\"telefono\">Teléfono:</label><input type=\"text\" name=\"telefono\" id=\"telefono\" value='"+contacto.getTelefono()+"'>\n" +
-                "    <button type='submit' name='button' value='add'>Modificar Contacto</button>\n" +
-                "</form>\n");
+                "    <div class='botones'><button type='submit' class='myButton' name='button' value='add'>Modificar Contacto</button></div>\n" +
+                "</form></fieldset>\n");
     }
 }

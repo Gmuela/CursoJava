@@ -18,11 +18,13 @@ public interface UtilHTML {
     String CLOSE_TABLE = "</table>";
     String CLOSE_TR = "</tr>";
     String CLOSE_TD = "</td>";
-    String BUTTON_REMOVE = "<div class='botones'><button type='submit' class='myButton' name='button' value='remove'>Borrar</button></div>";
-    String BUTTON_UPDATE = "<div class='botones'><button type='submit' class='myButton' name='button' value='update'>Modificar</button></div>";
+    String IMG_REMOVE = "<img src='/Resources/remove.png' class='icon'>";
+    String IMG_MODIFY = "<img src='/Resources/modify.png' class='icon'>";
+    String BUTTON_REMOVE = "<div class='botones'><button type='submit' class='removeButton' name='button' value='remove'>"+IMG_REMOVE+"</button></div>";
+    String BUTTON_UPDATE = "<div class='botones'><button type='submit' class='modifyButton' name='button' value='update'>"+IMG_MODIFY+"</button></div>";
     String FORM_UPDATE_REMOVE = "<form action='/contactos' method='post'>";
     String CLOSE_FORM = "</form>";
-    String BUTTON_ADD = "<a href='Agenda/addContacto.html'><div class='botones'><button class='myButton'>Añadir</button></div></a>";
+    String BUTTON_ADD = "<a class='linkEspecial' href='Agenda/addContacto.html'><button class='myButton'>Añadir</button></a>";
     String TODOS = "<option value='/00/' selected>Todos</options>";
     String ENERO = "<option value='/01/'>Enero</options>";
     String FEBRERO = "<option value='/02/'>Febrero</options>";
@@ -37,7 +39,7 @@ public interface UtilHTML {
     String NOVIEMBRE = "<option value='/11/'>Noviembre</options>";
     String DICIEMBRE = "<option value='/12/'>Diciembre</options>";
     String OPTIONS = TODOS + ENERO + FEBRERO + MARZO + ABRIL + MAYO + JUNIO + JULIO + AGOSTO + SEPTIEMBRE + OCTUBRE + NOVIEMBRE + DICIEMBRE;
-    String BUTTON_FILTER = "<div class='botones'><button type='submit' class='myButton' name='button' value='filter'>Filtrar</button></div>";
-    String SELECT_MONTH = "<div><form action='/contactos' method='post'><select name='mes'>" + OPTIONS + "</select>" + BUTTON_FILTER + "</form></div>";
+    String BUTTON_FILTER = "<button type='submit' class='myButton' name='button' value='filter'>Filtrar</button>";
+    String SELECT_MONTH = "<div><form action='/contactos' method='post'><div class='select-style'><select name='mes'>" + OPTIONS + "</select></div>" + BUTTON_FILTER + "</form></div>";
 
 }

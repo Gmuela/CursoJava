@@ -11,12 +11,12 @@ th {
     padding: 5px;
 }
 th {
-    background-color: dimgrey;
+    background-color: #e67a73;
     color: white;
 }
 tr:nth-child(odd) {
-    background-color: darkgrey;
+    background-color: #f2e7e6;
 }
 tr:nth-child(even) {
-    background-color: lightgrey;
+    background-color: #d1c6c5;
 }
