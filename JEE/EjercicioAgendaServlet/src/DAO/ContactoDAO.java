@@ -11,7 +11,11 @@ public interface ContactoDAO {
 
     ArrayList<Contacto> listarContactos();
 
-    boolean borrarContacto(String dni);
+    boolean borrarContacto(String id);
 
     boolean modificarContacto(Contacto contacto);
+
+    ArrayList<Contacto> getContactosOf(String usuario);
+
+    ArrayList<Contacto> getContactosFromMonth(String nombreUsuario, String mes);
 }

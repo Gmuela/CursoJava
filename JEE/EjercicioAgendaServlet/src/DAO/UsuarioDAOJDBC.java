@@ -39,7 +39,7 @@ public class UsuarioDAOJDBC extends UtilDAO implements UsuarioDAO {
                 datosUsuarioEnString[i] = datosPersona.getString(i + 1);
             }
 
-            if(datosUsuarioEnString[2].equalsIgnoreCase(password)){
+            if (datosUsuarioEnString[2].equalsIgnoreCase(password)) {
                 usuarioRecuperado = crearUsuario(datosUsuarioEnString);
             } else {
                 usuarioRecuperado = null;
@@ -50,5 +50,36 @@ public class UsuarioDAOJDBC extends UtilDAO implements UsuarioDAO {
         }
 
         return usuarioRecuperado;
+    }
+
+    @Override
+    public boolean registrarUsuario(Usuario contacto) {
+
+        boolean success = true;
+
+        String[] datosPersona = getUsuarioData(contacto);
+
+        String sql = "INSERT INTO usuarios(nombre, email, password) VALUES (?,?,?)";
+
+        try {
+            PreparedStatement insertPersona = this.connectionDB.prepareStatement(sql);
+
+            String nombre = datosPersona[0];
+            String email = datosPersona[1];
+            String password = datosPersona[2];
+
+            insertPersona.setString(1, nombre);
+            insertPersona.setString(2, email);
+            insertPersona.setString(3, password);
+
+            insertPersona.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Error al insertar la contacto " + contacto.getNombre() + " " + e);
+            success = false;
+        }
+
+        return success;
+
     }
 }

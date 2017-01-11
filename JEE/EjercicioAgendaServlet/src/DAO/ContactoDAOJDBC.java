@@ -22,7 +22,7 @@ public class ContactoDAOJDBC extends UtilDAO implements ContactoDAO {
 
         String[] datosPersona = getContactoData(contacto);
 
-        String sql = "INSERT INTO contactos(nombre,apellidos,dni,fechaNacimiento,telefono) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO contactos(nombre,apellidos,dni,fechaNacimiento,telefono,nombre_usuario) VALUES (?,?,?,?,?,?)";
 
         try {
             PreparedStatement insertPersona = this.connectionDB.prepareStatement(sql);
@@ -32,12 +32,14 @@ public class ContactoDAOJDBC extends UtilDAO implements ContactoDAO {
             String dni = datosPersona[2];
             String fechaNacimiento = datosPersona[3];
             String telefono = datosPersona[4];
+            String nombre_usuario = datosPersona[5];
 
             insertPersona.setString(1, nombre);
             insertPersona.setString(2, apellidos);
             insertPersona.setString(3, dni);
             insertPersona.setString(4, fechaNacimiento);
             insertPersona.setString(5, telefono);
+            insertPersona.setString(6, nombre_usuario);
 
             insertPersona.executeUpdate();
 
@@ -50,31 +52,31 @@ public class ContactoDAOJDBC extends UtilDAO implements ContactoDAO {
     }
 
     @Override
-    public Contacto recuperarContacto(String dni) {
+    public Contacto recuperarContacto(String id) {
 
         Contacto contactoRecuperado = null;
 
-        String sql = "SELECT * FROM contactos WHERE contactos.dni = ?";
+        String sql = "SELECT * FROM contactos WHERE contactos.id = ?";
 
         try {
             PreparedStatement selectPersona = this.connectionDB.prepareStatement(sql);
 
-            selectPersona.setString(1, dni);
+            selectPersona.setString(1, id);
 
             ResultSet datosPersona = selectPersona.executeQuery();
 
-            String[] datosPersonaEnString = new String[5];
+            String[] datosPersonaEnString = new String[7];
 
             datosPersona.next();
 
-            for (int i = 0; i <= 4; i++) {
+            for (int i = 0; i <= 6; i++) {
                 datosPersonaEnString[i] = datosPersona.getString(i + 1);
             }
 
             contactoRecuperado = crearContacto(datosPersonaEnString);
 
         } catch (SQLException e) {
-            System.out.println("Error al realizar la consulta del dni " + dni + " " + e);
+            System.out.println("Error al realizar la consulta del id " + id + " " + e);
         }
 
 
@@ -111,23 +113,23 @@ public class ContactoDAOJDBC extends UtilDAO implements ContactoDAO {
     }
 
     @Override
-    public boolean borrarContacto(String dni) {
+    public boolean borrarContacto(String id) {
 
         boolean borrado = false;
 
-        String sql = "DELETE FROM contactos WHERE contactos.dni = ?";
+        String sql = "DELETE FROM contactos WHERE contactos.id = ?";
 
         try {
             PreparedStatement deletePersona = this.connectionDB.prepareStatement(sql);
 
-            deletePersona.setString(1, dni);
+            deletePersona.setString(1, id);
 
             deletePersona.execute();
 
             borrado = true;
 
         } catch (SQLException e) {
-            System.out.println("Error al realizar el borrado del dni " + dni + " " + e);
+            System.out.println("Error al realizar el borrado del id " + id + " " + e);
         }
 
         return borrado;
@@ -168,6 +170,69 @@ public class ContactoDAOJDBC extends UtilDAO implements ContactoDAO {
         }
 
         return modificado;
+    }
+
+    @Override
+    public ArrayList<Contacto> getContactosOf(String usuario) {
+        ArrayList<Contacto> allcontactos = new ArrayList<>();
+        Contacto contacto = null;
+
+        String sql = "SELECT id,nombre,apellidos,dni,fechaNacimiento,telefono,nombre_usuario FROM contactos WHERE contactos.nombre_usuario = ?";
+
+        try {
+            PreparedStatement selectAll = this.connectionDB.prepareStatement(sql);
+
+            selectAll.setString(1, usuario);
+
+            ResultSet datosPersona = selectAll.executeQuery();
+
+            String[] datosPersonaEnString = new String[7];
+
+            while (datosPersona.next()) {
+                for (int i = 0; i <= 6; i++) {
+                    datosPersonaEnString[i] = datosPersona.getString(i + 1);
+                }
+                contacto = crearContacto(datosPersonaEnString);
+                allcontactos.add(contacto);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al realizar la consulta " + e);
+        }
+
+        return allcontactos;
+    }
+
+    @Override
+    public ArrayList<Contacto> getContactosFromMonth(String usuario, String mes) {
+        ArrayList<Contacto> allcontactos = new ArrayList<>();
+        Contacto contacto = null;
+
+        String sql = "SELECT id,nombre,apellidos,dni,fechaNacimiento,telefono,nombre_usuario FROM contactos WHERE contactos.nombre_usuario = ? AND contactos.fechaNacimiento LIKE ?";
+
+        try {
+            PreparedStatement selectAll = this.connectionDB.prepareStatement(sql);
+
+            selectAll.setString(1, usuario);
+            selectAll.setString(2, "%"+mes+"%");
+
+            ResultSet datosPersona = selectAll.executeQuery();
+
+            String[] datosPersonaEnString = new String[7];
+
+            while (datosPersona.next()) {
+                for (int i = 0; i <= 6; i++) {
+                    datosPersonaEnString[i] = datosPersona.getString(i + 1);
+                }
+                contacto = crearContacto(datosPersonaEnString);
+                allcontactos.add(contacto);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al realizar la consulta " + e);
+        }
+
+        return allcontactos;
     }
 
 }

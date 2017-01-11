@@ -7,10 +7,10 @@ public class Agenda {
 
     private ContactoDAO contactoDao = FactoryDAO.getContactoDAO();
 
-    public String insertarPersona(String nombre, String apellidos, String dni, Fecha fecha, String telefono) {
+    public String insertarPersona(String nombre, String apellidos, String dni, Fecha fecha, String telefono, String nombre_usuario) {
 
-        Contacto contactoNuev0 = new Contacto(nombre, apellidos, dni, fecha, telefono);
-        boolean personaGuardadaCorrectamente = this.contactoDao.guardarContacto(contactoNuev0);
+        Contacto contactoNuevo = new Contacto(nombre, apellidos, dni, fecha, telefono, nombre_usuario);
+        boolean personaGuardadaCorrectamente = this.contactoDao.guardarContacto(contactoNuevo);
         String mensaje;
 
         if (personaGuardadaCorrectamente) {

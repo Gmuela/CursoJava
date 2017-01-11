@@ -2,22 +2,39 @@ package AgendaClasses;
 
 public class Contacto {
 
+    private Integer id;
     private String nombre;
     private String apellidos;
     private String dni;
     private Fecha fechaNacimiento;
     private String telefono;
 
+    private String nombre_usuario;
+
     public Contacto() {
         //Dafault constructor
     }
 
-    public Contacto(String nombre, String apellidos, String dni, Fecha fechaNacimiento, String telefono) {
+
+    public Contacto(String nombre, String apellidos, String dni, Fecha fechaNacimiento, String telefono, String nombre_usuario) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
         this.fechaNacimiento = fechaNacimiento;
         this.telefono = telefono;
+        this.nombre_usuario = nombre_usuario;
+    }
+
+    public String getNombre_usuario() {
+        return nombre_usuario;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String toString() {
