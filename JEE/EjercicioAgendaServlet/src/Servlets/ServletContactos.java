@@ -70,7 +70,7 @@ public class ServletContactos extends HttpServlet implements UtilHTML {
         writer.print(DOCTYPE + HTML + HEAD + BODY);
 
         writer.print("<b>Usuario: </b>" + nombreUsuario + BR);
-        writer.print("<a href='Agenda/logout'>Logout</a>" + BR);
+        writer.print("<div class='registerLink'><a href='/logout'>Logout</a></div>");
         writer.print(SELECT_MONTH);
         writer.print(TABLE);
         for (Contacto contacto : contactos) {

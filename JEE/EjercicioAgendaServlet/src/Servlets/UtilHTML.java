@@ -18,8 +18,8 @@ public interface UtilHTML {
     String CLOSE_TABLE = "</table>";
     String CLOSE_TR = "</tr>";
     String CLOSE_TD = "</td>";
-    String IMG_REMOVE = "<img src='/Resources/remove.png' class='icon'>";
-    String IMG_MODIFY = "<img src='/Resources/modify.png' class='icon'>";
+    String IMG_REMOVE = "<img src='/Resources/remove.png' class='iconR'>";
+    String IMG_MODIFY = "<img src='/Resources/modify.png' class='iconM'>";
     String BUTTON_REMOVE = "<div class='botones'><button type='submit' class='removeButton' name='button' value='remove'>"+IMG_REMOVE+"</button></div>";
     String BUTTON_UPDATE = "<div class='botones'><button type='submit' class='modifyButton' name='button' value='update'>"+IMG_MODIFY+"</button></div>";
     String FORM_UPDATE_REMOVE = "<form action='/contactos' method='post'>";
