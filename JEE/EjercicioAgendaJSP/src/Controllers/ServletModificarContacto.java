@@ -1,7 +1,7 @@
 package Controllers;
 
-import AgendaClasses.Contacto;
-import AgendaClasses.Fecha;
+import Beans.Contacto;
+import Beans.Fecha;
 import Model.DAO.ContactoDAO;
 import Model.Factories.FactoryDAO;
 
@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(name = "ServletModificarContacto", urlPatterns = "/modificarContacto")
 public class ServletModificarContacto extends HttpServlet implements UtilHTML {
@@ -35,23 +34,13 @@ public class ServletModificarContacto extends HttpServlet implements UtilHTML {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter writer = response.getWriter();
         HttpSession session = request.getSession(false);
         ContactoDAO contactoDAO = FactoryDAO.getContactoDAO();
 
-        Contacto contacto = (Contacto)session.getAttribute("contactoModificar");
+        String id = request.getParameter("idContacto");
+        Contacto contacto = contactoDAO.recuperarContacto(id);
+        session.setAttribute("contactoModificar", contacto);
 
-
-        response.setContentType(TEXT_HTML);
-
-        writer.print(DOCTYPE + HTML + HEAD + BODY);
-        writer.print("<fieldset><legend>Modificar Contacto</legend><form action=\"/modificarContacto\" method=\"post\">\n" +
-                "    <label for=\"nombre\">Nombre:</label><input type=\"text\" name=\"nombre\" id=\"nombre\" value='"+contacto.getNombre()+"'>\n" +
-                "    <label for=\"apellidos\">Apellidos:</label><input type=\"text\" name=\"apellidos\" id=\"apellidos\" value='"+contacto.getApellidos()+"'>\n" +
-                "    <label for=\"dni\">DNI:</label><input type=\"text\" name=\"dni\" id=\"dni\" value='"+contacto.getDni()+"'>\n" +
-                "    <label for=\"fechaNacimiento\">FechaNacimiento:</label><input type=\"text\" name=\"fechaNacimiento\" id=\"fechaNacimiento\" value='"+contacto.getFechaNacimiento()+"'>\n" +
-                "    <label for=\"telefono\">Teléfono:</label><input type=\"text\" name=\"telefono\" id=\"telefono\" value='"+contacto.getTelefono()+"'>\n" +
-                "    <div class='botones'><button type='submit' class='myButton' name='button' value='add'>Modificar Contacto</button></div>\n" +
-                "</form></fieldset>\n");
+        response.sendRedirect("/Agenda/modificarContacto.jsp");
     }
 }

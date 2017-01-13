@@ -1,6 +1,6 @@
 package Controllers;
 
-import AgendaClasses.Usuario;
+import Beans.Usuario;
 import Model.Factories.FactoryDAO;
 import Model.DAO.UsuarioDAO;
 
@@ -19,6 +19,7 @@ public class ServletLogin extends HttpServlet {
         String password = request.getParameter("password");
         UsuarioDAO usuarioDAO = FactoryDAO.getUsuarioDAO();
         Usuario usuario = usuarioDAO.getUsuario(nombre, password);
+        ValidationController.init();
         if(usuario != null){
             HttpSession session = request.getSession(true);
             session.setAttribute("nombreUsuario", usuario.getNombre());

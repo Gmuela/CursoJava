@@ -101,6 +101,7 @@ fieldset {
     width: 300px;
     padding-left: 15px;
     border-radius: 4px;
+    margin-bottom: 20px;
 }
 
 fieldset.login, fieldset.registro, fieldset.errorMsgFieldset, fieldset.successMsgFieldset {
@@ -118,47 +119,11 @@ h4 {
     margin-bottom: 5px;
 }
 
-span {
-    color: #52968B;
-    font-weight: bold;
-}
-
-.perfil {
-    color: white;
-    background-color: rgba(000, 000, 000, 0.7);
-    float: left;
-    width: 270px;
-    text-align: center;
-}
-
-.perfil img{
-    width: 256px;
-    height: 256px;
-}
-
-.cabeceraDato {
-    font-weight: bolder;
-    color: #EB675E;
-    font-size: 1.1em;
-}
-
 .datosPerfil {
     margin-bottom: 7px;
 }
 
-.otrosUsuarios{
-    color: white;
-    background-color: rgba(000, 000, 000, 0.7);
-    float: right;
-    width: 270px;
-    text-align: center;
-}
-
-.usuarioSeguido{
-    margin-bottom: 10px;
-}
-
-.nombreSeguido{
+.nombreUsuario{
     color: #EB675E;
     font-weight: bolder;
 }
@@ -227,12 +192,12 @@ button {
 }
 
 .myButton:hover {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #eb675e), color-stop(1, #e4685d));
-    background: -moz-linear-gradient(top, #eb675e 5%, #e4685d 100%);
-    background: -webkit-linear-gradient(top, #eb675e 5%, #e4685d 100%);
-    background: -o-linear-gradient(top, #eb675e 5%, #e4685d 100%);
-    background: -ms-linear-gradient(top, #eb675e 5%, #e4685d 100%);
-    background: linear-gradient(to bottom, #eb675e 5%, #e4685d 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #eb675e), color-stop(1, #b1584d));
+    background: -moz-linear-gradient(top, #eb675e 5%, #b1584d 100%);
+    background: -webkit-linear-gradient(top, #eb675e 5%, #b1584d 100%);
+    background: -o-linear-gradient(top, #eb675e 5%, #b1584d 100%);
+    background: -ms-linear-gradient(top, #eb675e 5%, #b1584d 100%);
+    background: linear-gradient(to bottom, #eb675e 5%, #b1584d 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eb675e', endColorstr='#e4685d', GradientType=0);
     background-color: #eb675e;
 }
@@ -332,6 +297,9 @@ button {
 }
 
 td > form{
+    width: 50%;
+}
+div.especial{
     width: 50%;
 }
 

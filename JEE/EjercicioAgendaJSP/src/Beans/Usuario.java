@@ -1,4 +1,4 @@
-package AgendaClasses;
+package Beans;
 
 public class Usuario {
     private String nombre;

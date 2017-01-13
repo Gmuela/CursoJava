@@ -1,6 +1,6 @@
 package Model.DAO;
 
-import AgendaClasses.Contacto;
+import Beans.Contacto;
 import Utils.UtilDB;
 
 import java.sql.*;
@@ -142,7 +142,7 @@ public class ContactoDAOJDBC extends UtilDAO implements ContactoDAO {
 
         boolean modificado = false;
 
-        String sql = "UPDATE contactos SET nombre = ?, apellidos = ?, dni = ?, fechaNacimiento = ?, telefono = ? WHERE contactos.dni = ?";
+        String sql = "UPDATE contactos SET nombre = ?, apellidos = ?, dni = ?, fechaNacimiento = ?, telefono = ? WHERE contactos.id = ?";
 
 
         try {
@@ -153,13 +153,14 @@ public class ContactoDAOJDBC extends UtilDAO implements ContactoDAO {
             String dni = datosPersona[2];
             String fechaNacimiento = datosPersona[3];
             String telefono = datosPersona[4];
+            String id = String.valueOf(contacto.getId());
 
             updatePersona.setString(1, nombre);
             updatePersona.setString(2, apellidos);
             updatePersona.setString(3, dni);
             updatePersona.setString(4, fechaNacimiento);
             updatePersona.setString(5, telefono);
-            updatePersona.setString(6, dni);
+            updatePersona.setString(6, id);
 
             updatePersona.executeUpdate();
 

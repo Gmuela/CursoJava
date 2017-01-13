@@ -1,6 +1,6 @@
 package Model.DAO;
 
-import AgendaClasses.Usuario;
+import Beans.Usuario;
 import Utils.UtilDB;
 
 import java.sql.Connection;

@@ -1,8 +1,8 @@
 package Model.DAO;
 
-import AgendaClasses.Contacto;
-import AgendaClasses.Fecha;
-import AgendaClasses.Usuario;
+import Beans.Contacto;
+import Beans.Fecha;
+import Beans.Usuario;
 
 class UtilDAO {
 

@@ -1,6 +1,6 @@
 package Model.DAO;
 
-import AgendaClasses.Contacto;
+import Beans.Contacto;
 
 import java.util.ArrayList;
 

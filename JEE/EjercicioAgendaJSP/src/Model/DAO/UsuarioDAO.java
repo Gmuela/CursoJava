@@ -1,6 +1,6 @@
 package Model.DAO;
 
-import AgendaClasses.Usuario;
+import Beans.Usuario;
 
 public interface UsuarioDAO {
     Usuario getUsuario(String nombre, String password);

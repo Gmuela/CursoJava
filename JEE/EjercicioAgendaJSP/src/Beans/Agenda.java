@@ -1,4 +1,4 @@
-package AgendaClasses;
+package Beans;
 
 import Model.Factories.FactoryDAO;
 import Model.DAO.ContactoDAO;

@@ -1,6 +1,6 @@
 package Controllers;
 
-import AgendaClasses.Usuario;
+import Beans.Usuario;
 import Model.Factories.FactoryDAO;
 import Model.DAO.UsuarioDAO;
 
