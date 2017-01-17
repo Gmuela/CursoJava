@@ -1,8 +1,8 @@
 package Controllers;
 
 import Beans.Usuario;
-import Model.Factories.FactoryDAO;
-import Model.DAO.UsuarioDAO;
+import Model.DAO.BasicDAO;
+import Model.DAO.UsuarioDAOJPA;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,9 +18,9 @@ public class ServletRegistro extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        UsuarioDAO usuarioDAO = FactoryDAO.getUsuarioDAO();
+        BasicDAO<Usuario> usuarioDAO = new UsuarioDAOJPA();
         Usuario usuario = new Usuario(nombre,email,password);
-        boolean success = usuarioDAO.registrarUsuario(usuario);
+        boolean success = usuarioDAO.insert(usuario);
 
         if(success){
             response.sendRedirect("Agenda/login.html");

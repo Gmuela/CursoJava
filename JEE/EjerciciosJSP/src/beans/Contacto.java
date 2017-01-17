@@ -1,40 +1,32 @@
 package Beans;
 
-import javax.persistence.*;
-import java.time.LocalDate;
-
-@Entity
-@SequenceGenerator(name = "id_contacto", sequenceName = "contacto_sequence")
 public class Contacto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_contacto")
     private Integer id;
     private String nombre;
     private String apellidos;
     private String dni;
-    private LocalDate fechaNacimiento;
+    private Fecha fechaNacimiento;
     private String telefono;
 
-    @ManyToOne(cascade = CascadeType.REFRESH)
-    private Usuario usuario;
+    private String nombre_usuario;
 
     public Contacto() {
         //Dafault constructor
     }
 
 
-    public Contacto(String nombre, String apellidos, String dni, LocalDate fechaNacimiento, String telefono, Usuario usuario) {
+    public Contacto(String nombre, String apellidos, String dni, Fecha fechaNacimiento, String telefono, String nombre_usuario) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
         this.fechaNacimiento = fechaNacimiento;
         this.telefono = telefono;
-        this.usuario = usuario;
+        this.nombre_usuario = nombre_usuario;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public String getNombre_usuario() {
+        return nombre_usuario;
     }
 
     public Integer getId() {
@@ -89,7 +81,7 @@ public class Contacto {
         return dni;
     }
 
-    public LocalDate getFechaNacimiento() {
+    public Fecha getFechaNacimiento() {
         return fechaNacimiento;
     }
 
@@ -109,7 +101,7 @@ public class Contacto {
         this.dni = dni;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+    public void setFechaNacimiento(Fecha fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

@@ -3,14 +3,11 @@ package Beans;
 import Model.Factories.FactoryDAO;
 import Model.DAO.ContactoDAO;
 
-import java.time.LocalDate;
-import java.time.Month;
-
 public class Agenda {
 
     private ContactoDAO contactoDao = FactoryDAO.getContactoDAO();
 
-    public String insertarPersona(String nombre, String apellidos, String dni, LocalDate fecha, String telefono, String nombre_usuario) {
+    public String insertarPersona(String nombre, String apellidos, String dni, Fecha fecha, String telefono, String nombre_usuario) {
 
         Contacto contactoNuevo = new Contacto(nombre, apellidos, dni, fecha, telefono, nombre_usuario);
         boolean personaGuardadaCorrectamente = this.contactoDao.guardarContacto(contactoNuevo);
@@ -52,9 +49,8 @@ public class Agenda {
 
     public void listarCumpleanios(String mes) {
         for (Contacto contacto : this.contactoDao.listarContactos()) {
-            LocalDate fechaNacimiento = contacto.getFechaNacimiento();
-            Month month = fechaNacimiento.getMonth();
-            String contactoMes = month.toString();
+            Fecha fechaNacimiento = contacto.getFechaNacimiento();
+            String contactoMes = fechaNacimiento.getMes();
             if (contactoMes.equalsIgnoreCase(mes)) {
                 System.out.println(contacto.toString() + "\n");
             }
@@ -71,7 +67,7 @@ public class Agenda {
             contacto.setApellidos(apellidos);
         }
         if(!fechaNacimiento.equalsIgnoreCase("")){
-            contacto.setFechaNacimiento(LocalDate.parse(fechaNacimiento));
+            contacto.setFechaNacimiento(new Fecha(fechaNacimiento));
         }
         if(!telefono.equalsIgnoreCase("")){
             contacto.setTelefono(telefono);

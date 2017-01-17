@@ -1,18 +1,21 @@
 package Model.Factories;
 
-import Model.DAO.*;
+import Model.DAO.ContactoDAO;
+import Model.DAO.ContactoDAOJDBC;
+import Model.DAO.UsuarioDAO;
+import Model.DAO.UsuarioDAOJDBC;
 
 public class FactoryDAO {
 
     public static ContactoDAO getContactoDAO(){
         ContactoDAO dao = null;
-        dao = new ContactoDAOJPA();
+        dao = new ContactoDAOJDBC();
         return dao;
     }
 
     public static UsuarioDAO getUsuarioDAO(){
         UsuarioDAO dao = null;
-        dao = new UsuarioDAOJPA();
+        dao = new UsuarioDAOJDBC();
         return dao;
     }
 }

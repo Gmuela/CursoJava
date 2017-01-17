@@ -1,42 +1,18 @@
 package Model.DAO;
 
-import Beans.Contacto;
+import Beans.Usuario;
 
-import java.util.ArrayList;
+import javax.persistence.*;
 
-public class UsuarioDAOJPA implements ContactoDAO {
-    @Override
-    public boolean guardarContacto(Contacto contacto) {
-        return false;
-    }
+public class UsuarioDAOJPA implements UsuarioDAO, BasicDAO<Usuario> {
 
     @Override
-    public Contacto recuperarContacto(String dni) {
-        return null;
-    }
-
-    @Override
-    public ArrayList<Contacto> listarContactos() {
-        return null;
-    }
-
-    @Override
-    public boolean borrarContacto(String id) {
-        return false;
-    }
-
-    @Override
-    public boolean modificarContacto(Contacto contacto) {
-        return false;
-    }
-
-    @Override
-    public ArrayList<Contacto> getContactosOf(String usuario) {
-        return null;
-    }
-
-    @Override
-    public ArrayList<Contacto> getContactosFromMonth(String nombreUsuario, String mes) {
-        return null;
+    public Usuario login(String nombre, String password) {
+        String prepareQuery = "select usuario from Beans.Usuario usuario where usuario.nombre = :nombre and usuario.password = :password";
+        Query query = manager.createQuery(prepareQuery);
+        query.setParameter("nombre", nombre);
+        query.setParameter("password", password);
+        Usuario usuario = (Usuario) query.getSingleResult();
+        return usuario;
     }
 }

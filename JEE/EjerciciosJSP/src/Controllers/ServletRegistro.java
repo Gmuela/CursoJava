@@ -9,23 +9,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "ServletLogin", urlPatterns = "/login")
-public class ServletLogin extends HttpServlet {
+@WebServlet(name = "ServletRegistro", urlPatterns = "/registro")
+public class ServletRegistro extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String nombre = request.getParameter("nombre");
+        String email = request.getParameter("email");
         String password = request.getParameter("password");
+
         UsuarioDAO usuarioDAO = FactoryDAO.getUsuarioDAO();
-        Usuario usuario = usuarioDAO.login(nombre, password);
-        ValidationController.init();
-        if(usuario != null){
-            HttpSession session = request.getSession(true);
-            session.setAttribute("usuario", usuario);
-            session.setAttribute("mes", "00");
-            response.sendRedirect("/contactos");
+        Usuario usuario = new Usuario(nombre,email,password);
+        boolean success = usuarioDAO.registrarUsuario(usuario);
+
+        if(success){
+            response.sendRedirect("Agenda/login.html");
         }
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

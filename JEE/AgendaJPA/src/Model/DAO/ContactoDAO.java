@@ -1,21 +1,18 @@
 package Model.DAO;
 
 import Beans.Contacto;
+import Beans.Usuario;
 
 import java.util.ArrayList;
 
 public interface ContactoDAO {
-    boolean guardarContacto(Contacto contacto);
+    ArrayList<Contacto> selectAll();
 
-    Contacto recuperarContacto(String dni);
+    Contacto selectContactoBy(String dni);
 
-    ArrayList<Contacto> listarContactos();
+    ArrayList<Contacto> selectContactosOf(Usuario usuario);
 
-    boolean borrarContacto(String id);
+    ArrayList<Contacto> selectContactosFromMonth(Usuario usuario, String mes);
 
-    boolean modificarContacto(Contacto contacto);
-
-    ArrayList<Contacto> getContactosOf(String usuario);
-
-    ArrayList<Contacto> getContactosFromMonth(String nombreUsuario, String mes);
+    boolean deleteContactoBy(String id);
 }

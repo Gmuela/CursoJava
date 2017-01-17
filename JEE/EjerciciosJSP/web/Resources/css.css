@@ -13,10 +13,16 @@ body {
     display: block;
 }
 
-td.noContacts {
+h1.indexTitle {
     text-align: center;
-    font-size: 3em;
+    font-size: 8em;
     color: #EB675E;
+    border-top: 20px;
+    border-left: 5px solid #EB675E;
+    border-right: 5px solid #EB675E;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    margin-top: 10px;
 }
 
 .divTitle{

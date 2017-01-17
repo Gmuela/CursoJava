@@ -1,9 +1,8 @@
 package Controllers;
 
 import Beans.Contacto;
-import Model.DAO.BasicDAO;
+import Beans.Fecha;
 import Model.DAO.ContactoDAO;
-import Model.DAO.ContactoDAOJPA;
 import Model.Factories.FactoryDAO;
 
 import javax.servlet.ServletException;
@@ -13,13 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.time.LocalDate;
 
 @WebServlet(name = "ServletModificarContacto", urlPatterns = "/modificarContacto")
-public class ServletModificarContacto extends HttpServlet {
+public class ServletModificarContacto extends HttpServlet implements UtilHTML {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        BasicDAO<Contacto> contactoDAO = new ContactoDAOJPA();
+        ContactoDAO contactoDAO = FactoryDAO.getContactoDAO();
 
         Contacto contacto = (Contacto)session.getAttribute("contactoModificar");
 
@@ -27,10 +25,10 @@ public class ServletModificarContacto extends HttpServlet {
         contacto.setApellidos(request.getParameter("apellidos"));
         contacto.setDni(request.getParameter("dni"));
         String fechaNacimiento = request.getParameter("fechaNacimiento");
-        contacto.setFechaNacimiento(LocalDate.parse(fechaNacimiento));
+        contacto.setFechaNacimiento(new Fecha(fechaNacimiento));
         contacto.setTelefono(request.getParameter("telefono"));
 
-        contactoDAO.update(contacto);
+        contactoDAO.modificarContacto(contacto);
 
         response.sendRedirect("/contactos");
     }
@@ -40,7 +38,7 @@ public class ServletModificarContacto extends HttpServlet {
         ContactoDAO contactoDAO = FactoryDAO.getContactoDAO();
 
         String id = request.getParameter("idContacto");
-        Contacto contacto = contactoDAO.selectContactoBy(id);
+        Contacto contacto = contactoDAO.recuperarContacto(id);
         session.setAttribute("contactoModificar", contacto);
 
         response.sendRedirect("/Agenda/modificarContacto.jsp");
