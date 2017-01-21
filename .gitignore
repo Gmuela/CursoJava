@@ -17,3 +17,4 @@ Wordpress/
 out/
 lib/*
 JEE/HolaContenedorWeb/lib/
+*.jar
