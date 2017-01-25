@@ -1,0 +1,17 @@
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="example" extends="struts-default">
+        <default-action-ref name="underConstruction"></default-action-ref>
+        <action name="HolaMundoAction" class="example.HolaMundoAction">
+            <result name="success">/HolaMundoVista.jsp</result>
+        </action>
+        <action name="login" class="example.LoginAction">
+            <result name="success">/logado.jsp</result>
+            <result name="login">/login.jsp</result>
+        </action>
+        <action name="underConstruction" class="example.UnderConstruction">
+            <result>/uc.html</result>
+        </action>
+    </package>
+</struts>
