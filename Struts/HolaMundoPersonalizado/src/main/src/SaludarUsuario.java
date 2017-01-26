@@ -64,4 +64,9 @@ public class SaludarUsuario extends ActionSupport {
     public void setHoy(LocalDate hoy) {
         this.hoy = hoy;
     }
+
+    @Override
+    public String toString() {
+        return "SaludarUsuario";
+    }
 }

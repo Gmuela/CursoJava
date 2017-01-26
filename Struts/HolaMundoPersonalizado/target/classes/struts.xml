@@ -3,17 +3,22 @@
 <struts>
     <package strict-method-invocation="false" name="example" extends="struts-default">
         <interceptors>
-            <interceptor name="simple" class="SimpleInterceptor"></interceptor>
+            <interceptor name="log" class="InterceptorLog"/>
+            <interceptor-stack name="myInterceptorStack">
+                <interceptor-ref name="log"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
         </interceptors>
-        <default-action-ref name="underConstruction"></default-action-ref>
+        <default-interceptor-ref name="myInterceptorStack"/>
+        <default-action-ref name="underConstruction"/>
         <global-results>
             <result name="login">/login.jsp</result>
         </global-results>
         <action name="login" class="SaludarUsuario">
-            <interceptor-ref name="defaultStack"></interceptor-ref>
-            <interceptor-ref name="simple"></interceptor-ref>
+            <interceptor-ref name="myInterceptorStack"/>
             <result name="success">/saludoUsuario.jsp</result>
             <result name="input">/login.jsp</result>
+            <result name="error">/uc.html</result>
         </action>
         <action name="underConstruction" class="com.opensymphony.xwork2.ActionSupport">
             <result>/uc.html</result>
