@@ -13,7 +13,8 @@ public class InterceptorLog extends AbstractInterceptor{
 
         String invoke = actionInvocation.invoke();
 
-        String nombreAction = " -> Nombre del action: " + actionInvocation.getAction().toString();
+        Object action = actionInvocation.getAction();
+        String nombreAction = " -> Nombre del action: " + action.toString();
         String result = " Result->" + invoke;
         String log = hour + nombreAction + result + " Interceptor llamado ->" +this.toString();
 
