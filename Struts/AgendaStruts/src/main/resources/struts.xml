@@ -1,0 +1,49 @@
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.configuration.xml.reload" value="true"/>
+    <package strict-method-invocation="false" name="example" extends="struts-default">
+        <!--<interceptors>-->
+        <!--<interceptor name="log" class="InterceptorLog"/>-->
+        <!--<interceptor-stack name="myInterceptorStack">-->
+        <!--<interceptor-ref name="log"/>-->
+        <!--<interceptor-ref name="defaultStack"/>-->
+        <!--</interceptor-stack>-->
+        <!--</interceptors>-->
+        <!--<default-interceptor-ref name="myInterceptorStack"/>-->
+        <default-action-ref name="underConstruction"/>
+        <global-results>
+            <result name="errorDesconocido">Agenda/errorPageDev.jsp</result>
+        </global-results>
+        <!--<global-results>-->
+        <!--<result name="login">/login.jsp</result>-->
+        <!--</global-results>-->
+        <!--<action name="login" class="SaludarUsuario">-->
+        <!--<interceptor-ref name="myInterceptorStack"/>-->
+        <!--<result name="success">/saludoUsuario.jsp</result>-->
+        <!--<result name="input">/login.jsp</result>-->
+        <!--<result name="error">/uc.html</result>-->
+        <!--</action>-->
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="errorDesconocido"/>
+        </global-exception-mappings>
+        <action name="registro" class="Controllers.ActionRegistro">
+            <result name="success">Agenda/login.html</result>
+            <result name="input">Agenda/login.html</result>
+            <result name="error">Agenda/errorPage.html</result>
+        </action>
+        <action name="login" class="Controllers.ActionLogin">
+            <result name="success">Agenda/listaContactos.jsp</result>
+            <result name="input">Agenda/login.html</result>
+            <result name="error">Agenda/errorPage.html</result>
+        </action>
+        <action name="logout" class="Controllers.ActionLogout">
+            <result name="success">Agenda/login.html</result>
+            <result name="error">Agenda/errorPage.html</result>
+        </action>
+        <action name="underConstruction">
+            <result>Agenda/errorPage.html</result>
+        </action>
+    </package>
+</struts>

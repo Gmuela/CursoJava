@@ -1,60 +1,34 @@
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 
 import java.time.LocalDate;
 
-public class SaludarUsuario extends ActionSupport {
+public class SaludarUsuario extends ActionSupport implements ModelDriven<Usuario> {
 
-    //private Usuario usuario;
-
-    private String nombre;
-    private Integer edad;
-    private String error = "";
+    private Usuario usuario = new Usuario();
     private LocalDate hoy;
-
-    /*public Usuario getUsuario() {
-        return usuario;
-    }*/
-
-    /*public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }*/
 
     @Override
     public String execute() throws Exception {
 
         String result = SUCCESS;
 
-        if(nombre == null || edad == null){
+        if(usuario.getNombre() == null || usuario.getEdad() == null){
             result = LOGIN;
-        } else if(edad < 18){
+        } else if(usuario.getEdad() < 18){
             addActionError("Eres menor de edad");
             result = LOGIN;
         }
         return result;
     }
 
-    public String getNombre() {
-        return nombre;
+    @Override
+    public String toString() {
+        return "SaludarUsuario";
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Integer getEdad() {
-        return edad;
-    }
-
-    public void setEdad(Integer edad) {
-        this.edad = edad;
-    }
-
-    public String getError() {
-        return error;
-    }
-
-    public void setError(String error) {
-        this.error = error;
+    public Usuario getModel() {
+        return usuario;
     }
 
     public LocalDate getHoy() {
@@ -63,10 +37,5 @@ public class SaludarUsuario extends ActionSupport {
 
     public void setHoy(LocalDate hoy) {
         this.hoy = hoy;
-    }
-
-    @Override
-    public String toString() {
-        return "SaludarUsuario";
     }
 }

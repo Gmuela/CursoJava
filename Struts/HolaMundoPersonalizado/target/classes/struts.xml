@@ -1,6 +1,8 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.configuration.xml.reload" value="true"/>
     <package strict-method-invocation="false" name="example" extends="struts-default">
         <interceptors>
             <interceptor name="log" class="InterceptorLog"/>
