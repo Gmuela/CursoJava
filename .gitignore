@@ -3,18 +3,16 @@
 # Example .gitignore files: https://github.com/github/gitignore
 /bower_components/
 /node_modules/
-/~WRL0003.tmp
-/~$Ej1.docx
 *.dia~
-PHP/perfiles/
 PHP/POO/userImages/
 PHP/POODB/View/Resources/userImages/
 .idea/
-Java/prueba/target/
 .iml
 *.iml
 Wordpress/
 out/
 lib/*
-JEE/HolaContenedorWeb/lib/
 *.jar
+*.war
+!/settings.jar
+/Struts/ExampleStruts/target/
