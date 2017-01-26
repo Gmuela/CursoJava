@@ -15,4 +15,4 @@ lib/*
 *.jar
 *.war
 !/settings.jar
-/Struts/ExampleStruts/target/
+/Struts/*/target/
