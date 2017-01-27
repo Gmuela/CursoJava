@@ -42,6 +42,11 @@
             <result name="success">Agenda/login.html</result>
             <result name="error">Agenda/errorPage.html</result>
         </action>
+        <action name="contacto" class="Controllers.ActionContactos">
+            <result name="success">Agenda/listaContactos.jsp</result>
+            <result name="modificar">Agenda/modificarContacto.jsp</result>
+            <result name="error">Agenda/errorPage.html</result>
+        </action>
         <action name="underConstruction">
             <result>Agenda/errorPage.html</result>
         </action>

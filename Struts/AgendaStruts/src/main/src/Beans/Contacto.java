@@ -1,7 +1,6 @@
 package Beans;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 @SequenceGenerator(name = "id_contacto", sequenceName = "contacto_sequence")
@@ -13,7 +12,7 @@ public class Contacto {
     private String nombre;
     private String apellidos;
     private String dni;
-    private LocalDate fechaNacimiento;
+    private String fechaNacimiento;
     private String telefono;
 
     @ManyToOne(cascade = CascadeType.REFRESH)
@@ -23,8 +22,15 @@ public class Contacto {
         //Dafault constructor
     }
 
+    public Contacto(String nombre, String apellidos, String dni, String fechaNacimiento, String telefono) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.dni = dni;
+        this.fechaNacimiento = fechaNacimiento;
+        this.telefono = telefono;
+    }
 
-    public Contacto(String nombre, String apellidos, String dni, LocalDate fechaNacimiento, String telefono, Usuario usuario) {
+    public Contacto(String nombre, String apellidos, String dni, String fechaNacimiento, String telefono, Usuario usuario) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
@@ -35,6 +41,10 @@ public class Contacto {
 
     public Usuario getUsuario() {
         return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public Integer getId() {
@@ -52,7 +62,7 @@ public class Contacto {
         String nombre = "Nombre: " + this.nombre;
         String apellidos = "Apellidos: " + this.apellidos;
         String dni = "DNI: " + this.dni;
-        String fecha = "Fecha: " + this.fechaNacimiento.toString();
+        String fecha = "Fecha: " + this.fechaNacimiento;
         String telefono = "Teléfono: " + this.telefono;
 
         String separadorVertical = "\n";
@@ -68,7 +78,7 @@ public class Contacto {
         String nombre = this.nombre;
         String apellidos = this.apellidos;
         String dni = this.dni;
-        String fecha = this.fechaNacimiento.toString();
+        String fecha = this.fechaNacimiento;
         String telefono = this.telefono;
 
         String separadorVertical = " ";
@@ -89,7 +99,7 @@ public class Contacto {
         return dni;
     }
 
-    public LocalDate getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
@@ -109,7 +119,7 @@ public class Contacto {
         this.dni = dni;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

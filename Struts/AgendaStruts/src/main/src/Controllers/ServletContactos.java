@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 @WebServlet(name = "ServletContactos", urlPatterns = "/contactos")
@@ -42,14 +41,9 @@ public class ServletContactos extends HttpServlet {
             String apellidos = request.getParameter("apellidos");
             String dni = request.getParameter("dni");
             String fechaNacimiento = request.getParameter("fechaNacimiento");
-            String[] fechaSeparada = fechaNacimiento.split("/");
-            int year = 2;
-            int month = 1;
-            int day = 0;
-            fechaNacimiento = fechaSeparada[year] + "-" + fechaSeparada[month] + "-" + fechaSeparada[day];
             String telefono = request.getParameter("telefono");
             Usuario usuario = (Usuario) session.getAttribute("usuario");
-            Contacto contacto = new Contacto(nombre, apellidos, dni, LocalDate.parse(fechaNacimiento), telefono, usuario);
+            Contacto contacto = new Contacto(nombre, apellidos, dni, fechaNacimiento, telefono, usuario);
             basicDAO.insert(contacto);
             doGet(request, response);
 

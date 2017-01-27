@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.time.LocalDate;
 
 @WebServlet(name = "ServletModificarContacto", urlPatterns = "/modificarContacto")
 public class ServletModificarContacto extends HttpServlet {
@@ -27,7 +26,7 @@ public class ServletModificarContacto extends HttpServlet {
         contacto.setApellidos(request.getParameter("apellidos"));
         contacto.setDni(request.getParameter("dni"));
         String fechaNacimiento = request.getParameter("fechaNacimiento");
-        contacto.setFechaNacimiento(LocalDate.parse(fechaNacimiento));
+        contacto.setFechaNacimiento(fechaNacimiento);
         contacto.setTelefono(request.getParameter("telefono"));
 
         contactoDAO.update(contacto);
