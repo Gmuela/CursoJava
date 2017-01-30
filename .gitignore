@@ -15,5 +15,8 @@ lib/*
 *.jar
 *.war
 !/settings.jar
-/Struts/*/target/
+target/*
 Documentacion/Modulo_2/Spring/ejercicios/~$ercicios Spring Core.docx
+/*/*/target/
+/*/*/classes/
+*.class
