@@ -1,9 +1,11 @@
 package ejemplo;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 
+@Component
 public class Direccion implements Serializable {
 
     private String calle;

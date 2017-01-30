@@ -1,61 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-    <bean id="direccion" class="ejemplo.Direccion">
-        <property name="calle" value="Una calle de París"/>
-        <property name="codigoPostal" value="28514"/>
-    </bean>
-    <bean id="guille" class="ejemplo.Persona" >
-        <property name="nombre" value="Guillermo"/>
-        <property name="altura" value="1.8"/>
-        <property name="edad" value="24"/>
-        <property name="pareja" ref="maria"/>
-        <property name="colores">
-            <list value-type="java.lang.String">
-                <value type="java.lang.String">Negro</value>
-                <value type="java.lang.String">Rojo</value>
-                <value type="java.lang.String">Naranja</value>
-            </list>
-        </property>
-        <property name="emails">
-            <map value-type="java.lang.String">
-                <entry value="gmuela92@gmail.com" key="gmail"/>
-                <entry value="gmuelabasura@gmail.com" key="gmail-basura"/>
-            </map>
-        </property>
-        <property name="amigos">
-            <list value-type="ejemplo.Persona">
-                <ref bean="alan"/>
-                <ref bean="dario"/>
-            </list>
-        </property>
-    </bean>
-    <bean id="maria" class="ejemplo.Persona">
-        <property name="nombre" value="Maria"/>
-        <property name="edad" value="21"/>
-        <property name="altura" value="1.8"/>
-        <property name="pareja" ref="guille"/>
-        <property name="colores">
-            <list value-type="java.lang.String">
-                <value type="java.lang.String">Azul</value>
-                <value type="java.lang.String">Morado</value>
-                <value type="java.lang.String">Plata</value>
-            </list>
-        </property>
-        <property name="emails">
-            <map value-type="java.lang.String">
-                <entry value="maria@gmail.com" key="gmail"/>
-                <entry value="mariak@hotmail.com" key="hotmail"/>
-            </map>
-        </property>
-    </bean>
-    <bean id="alan" class="ejemplo.Persona">
-        <property name="nombre" value="Alan"/>
-    </bean>
-    <bean id="dario" class="ejemplo.Persona">
-        <property name="nombre" value="Dario"/>
-    </bean>
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:component-scan base-package="ejemplo"/>
+    <!--<bean id="personaFactoria" class="ejemplo.PersonaFactoria" factory-method="getInstance"/>-->
+    <!--<bean id="guille" class="ejemplo.Persona" >-->
+        <!--<property name="nombre" value="Guillermo"/>-->
+        <!--<property name="altura" value="1.8"/>-->
+        <!--<property name="edad" value="24"/>-->
+        <!--<property name="pareja" ref="maria"/>-->
+        <!--<property name="colores">-->
+            <!--<list value-type="java.lang.String">-->
+                <!--<value type="java.lang.String">Negro</value>-->
+                <!--<value type="java.lang.String">Rojo</value>-->
+                <!--<value type="java.lang.String">Naranja</value>-->
+            <!--</list>-->
+        <!--</property>-->
+        <!--<property name="emails">-->
+            <!--<map value-type="java.lang.String">-->
+                <!--<entry value="gmuela92@gmail.com" key="gmail"/>-->
+                <!--<entry value="gmuelabasura@gmail.com" key="gmail-basura"/>-->
+            <!--</map>-->
+        <!--</property>-->
+        <!--<property name="amigos">-->
+            <!--<list value-type="ejemplo.Persona">-->
+                <!--<ref bean="alan"/>-->
+                <!--<ref bean="dario"/>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+    <!--<bean id="maria" class="ejemplo.Persona">-->
+        <!--<property name="nombre" value="Maria"/>-->
+        <!--<property name="edad" value="21"/>-->
+        <!--<property name="altura" value="1.8"/>-->
+        <!--<property name="pareja" ref="guille"/>-->
+        <!--<property name="colores">-->
+            <!--<list value-type="java.lang.String">-->
+                <!--<value type="java.lang.String">Azul</value>-->
+                <!--<value type="java.lang.String">Morado</value>-->
+                <!--<value type="java.lang.String">Plata</value>-->
+            <!--</list>-->
+        <!--</property>-->
+        <!--<property name="emails">-->
+            <!--<map value-type="java.lang.String">-->
+                <!--<entry value="maria@gmail.com" key="gmail"/>-->
+                <!--<entry value="mariak@hotmail.com" key="hotmail"/>-->
+            <!--</map>-->
+        <!--</property>-->
+    <!--</bean>-->
+    <!--<bean id="alan" class="ejemplo.Persona">-->
+        <!--<property name="nombre" value="Alan"/>-->
+    <!--</bean>-->
+    <!--<bean id="dario" class="ejemplo.Persona">-->
+        <!--<property name="nombre" value="Dario"/>-->
+    <!--</bean>-->
+    <!--<bean id="direccion" class="ejemplo.Direccion">-->
+        <!--<property name="calle" value="Una calle de París"/>-->
+        <!--<property name="codigoPostal" value="28514"/>-->
+    <!--</bean>-->
+    <!--<bean id="personaDireccion" class="ejemplo.PersonaDireccion" autowire="byName">-->
+        <!--<property name="nombre" value="Pepe"/>-->
+        <!--<property name="altura" value="2.3"/>-->
+        <!--<property name="edad" value="31"/>-->
+    <!--</bean>-->
 </beans>
