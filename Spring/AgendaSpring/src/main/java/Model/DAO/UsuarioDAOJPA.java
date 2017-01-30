@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 
-@Repository
 public class UsuarioDAOJPA implements UsuarioDAO, BasicDAO<Usuario> {
 
     @Override
@@ -14,7 +13,6 @@ public class UsuarioDAOJPA implements UsuarioDAO, BasicDAO<Usuario> {
         Query query = manager.createQuery(prepareQuery);
         query.setParameter("nombre", nombre);
         query.setParameter("password", password);
-        Usuario usuario = (Usuario) query.getSingleResult();
-        return usuario;
+        return (Usuario) query.getSingleResult();
     }
 }

@@ -7,15 +7,14 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.*;
 import java.util.ArrayList;
 
-@Repository
+@Repository(value = "ContactoDAOJPA")
 public class ContactoDAOJPA implements ContactoDAO, BasicDAO<Contacto> {
 
     @Override
     public ArrayList<Contacto> selectAll() {
         String prepareQuery = "select contacto from Beans.Contacto contacto";
         Query query = manager.createQuery(prepareQuery);
-        ArrayList<Contacto> resultList = (ArrayList<Contacto>) query.getResultList();
-        return resultList;
+        return (ArrayList<Contacto>) query.getResultList();
     }
 
     @Override
@@ -24,8 +23,7 @@ public class ContactoDAOJPA implements ContactoDAO, BasicDAO<Contacto> {
         String prepareQuery = "select contacto from Beans.Contacto contacto where id = :id";
         Query query = manager.createQuery(prepareQuery);
         query.setParameter("id", idInteger);
-        Contacto contacto = (Contacto) query.getSingleResult();
-        return contacto;
+        return (Contacto) query.getSingleResult();
     }
 
     @Override
@@ -33,8 +31,7 @@ public class ContactoDAOJPA implements ContactoDAO, BasicDAO<Contacto> {
         String prepareQuery = "select contacto from Beans.Contacto contacto where contacto.usuario = :usuario";
         Query query = manager.createQuery(prepareQuery);
         query.setParameter("usuario", usuario);
-        ArrayList<Contacto> resultList = (ArrayList<Contacto>) query.getResultList();
-        return resultList;
+        return (ArrayList<Contacto>) query.getResultList();
     }
 
     @Override
@@ -44,8 +41,7 @@ public class ContactoDAOJPA implements ContactoDAO, BasicDAO<Contacto> {
         Query query = manager.createQuery(prepareQuery);
         query.setParameter("usuario", usuario);
         query.setParameter("mes", mesInteger);
-        ArrayList<Contacto> resultList = (ArrayList<Contacto>) query.getResultList();
-        return resultList;
+        return (ArrayList<Contacto>) query.getResultList();
     }
 
     @Override

@@ -7,10 +7,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-@Repository
+@Repository(value = "BasicDAO")
 public interface BasicDAO<T> {
 
-    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("AgendaJPA");
+    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("AgendaSpring");
     EntityManager manager = entityManagerFactory.createEntityManager();
 
     default boolean insert(T object) {

@@ -20,6 +20,7 @@ public class Lanzador {
         PersonaDireccion personaDireccion = applicationContext.getBean(PersonaDireccion.class);
         String nombre = personaDireccion.getNombre();
         System.out.println(nombre);
+        System.out.println(personaDireccion.getDireccion());
     }
 
 }

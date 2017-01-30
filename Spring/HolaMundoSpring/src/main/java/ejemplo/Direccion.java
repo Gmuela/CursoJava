@@ -8,8 +8,8 @@ import java.io.Serializable;
 @Component
 public class Direccion implements Serializable {
 
-    private String calle;
-    private Integer codigoPostal;
+    private String calle="una calle de paris";
+    private Integer codigoPostal=28514;
 
     public String getCalle() {
         return calle;

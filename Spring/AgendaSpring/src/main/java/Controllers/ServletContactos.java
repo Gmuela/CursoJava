@@ -6,7 +6,13 @@ import Model.DAO.BasicDAO;
 import Model.DAO.ContactoDAO;
 import Model.DAO.ContactoDAOJPA;
 import Model.Factories.FactoryDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,17 +23,22 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+@Component
 @WebServlet(name = "ServletContactos", urlPatterns = "/contactos")
-public class ServletContactos extends HttpServlet {
+public class ServletContactos extends HttpServlet{
+
+    @Autowired
+    @Qualifier("ContactoDAOJPA")
+    private BasicDAO<Contacto> basicDAO;
+
+    @Autowired
+    @Qualifier("ContactoDAOJPA")
+    private ContactoDAO contactoDAO;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         String button = request.getParameter("button");
         String id = request.getParameter("idContacto");
-        //TODO anotaciones y mirar como hace una inyección de otra clase y usar el factory
-        BasicDAO<Contacto> basicDAO = new ContactoDAOJPA();
-        ContactoDAO contactoDAO = FactoryDAO.getContactoDAO();
-
 
         if (button.equalsIgnoreCase("remove")) {
             contactoDAO.deleteContactoBy(id);

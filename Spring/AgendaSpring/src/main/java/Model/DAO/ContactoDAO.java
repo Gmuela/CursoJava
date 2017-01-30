@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 
-@Repository
+@Repository(value = "ContactoDAO")
 public interface ContactoDAO {
     ArrayList<Contacto> selectAll();
 
