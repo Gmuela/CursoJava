@@ -1,10 +1,7 @@
-<% Usuario usuario = (Usuario) session.getAttribute("usuario"); %>
-<%@ page import="Beans.Contacto" %>
-<%@ page import="Beans.Usuario" %>
-<%@ page import="java.time.LocalDate" %>
-<%@ page import="java.time.format.DateTimeFormatter" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="format" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>JContacts</title>
@@ -14,7 +11,7 @@
 <body>
 <fieldset>
     <legend>Datos Usuario</legend>
-<span class="nombreUsuario">Usuario: </span><%=usuario.getNombre()%>
+<span class="nombreUsuario">Usuario: </span><core:out value="${sessionScope.usuario.nombre}"/>
 <div class='registerLink'>
     <a href='/logout'>Logout</a>
 </div>
@@ -52,47 +49,39 @@
         <th>Modificar</th>
         <th>Borrar</th></tr>
     <tr>
-    <%
-        ArrayList<Contacto> listaContactos = (ArrayList<Contacto>)session.getAttribute("listaContactos");
-        if(listaContactos.size() == 0){
-%><tr><td class="noContacts" colspan="7">Contactos no encontrados</td></tr><%
-        } else{
-            for (Contacto contacto : listaContactos) {
-                LocalDate fechaNacimiento = contacto.getFechaNacimiento();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MMMM/YYYY");
-                String fechaFormateada = fechaNacimiento.format(formatter);
-                %>
-                <td><%=contacto.getNombre()%></td>
-                <td><%=contacto.getApellidos()%></td>
-                <td><%=contacto.getDni()%></td>
-                <td><%=fechaFormateada%></td>
-                <td><%=contacto.getTelefono()%></td>
-                <td>
-                    <form action='/modificarContacto' method='get'>
-                        <div class='botones'>
-                            <button type='submit' class='modifyButton'>
-                                <img src='/Resources/modify.png' class='iconM'>
-                            </button>
-                        </div>
-                        <input type='hidden' name='idContacto' value='<%=contacto.getId()%>'/>
-                    </form>
-                </td>
-                <td>
-                    <form action='/contactos' method='post'>
-                        <div class='botones'>
-                            <button type='submit' class='removeButton' name='button' value='remove'>
-                                <img src='/Resources/remove.png' class='iconR'>
-                            </button>
-                        </div>
-                        <input type='hidden' name='idContacto' value='<%=contacto.getId()%>'/>
-                    </form>
-                </td>
-            </tr>
-        <%
-            }
-        };
-    %>
-
+    <core:if test="${fn:length(sessionScope.listaContactos) == 0}">
+        <tr><td class="noContacts" colspan="7">Contactos no encontrados</td></tr>
+    </core:if>
+    <core:if test="${fn:length(sessionScope.listaContactos) > 0}">
+        <core:forEach var="contacto" items="${sessionScope.listaContactos}">
+            <td><core:out value="${contacto.nombre}"/></td>
+            <td><core:out value="${contacto.apellidos}"/></td>
+            <td><core:out value="${contacto.dni}"/></td>
+            <td><core:out value="${contacto.fechaNacimiento}"/></td>
+            <td><core:out value="${contacto.telefono}"/></td>
+            <td>
+                <form action='/modificarContacto' method='get'>
+                    <div class='botones'>
+                        <button type='submit' class='modifyButton'>
+                            <img src='/Resources/modify.png' class='iconM'>
+                        </button>
+                    </div>
+                    <input type='hidden' name='idContacto' value='${contacto.id}'/>
+                </form>
+            </td>
+            <td>
+                <form action='/contactos' method='post'>
+                    <div class='botones'>
+                        <button type='submit' class='removeButton' name='button' value='remove'>
+                            <img src='/Resources/remove.png' class='iconR'>
+                        </button>
+                    </div>
+                    <input type='hidden' name='idContacto' value='${contacto.id}'/>
+                </form>
+            </td>
+    <tr>
+        </core:forEach>
+    </core:if>
 </table>
 <a class='linkEspecial' href='/Agenda/addContacto.html'>
     <button class='myButton'>Añadir</button>
