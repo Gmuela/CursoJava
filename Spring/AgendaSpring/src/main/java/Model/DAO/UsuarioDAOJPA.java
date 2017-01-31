@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.Query;
 
 @Repository("UsuarioDAOJPA")
-public class UsuarioDAOJPA implements UsuarioDAO, BasicDAO<Usuario> {
+public class UsuarioDAOJPA extends BasicDAO<Usuario> implements UsuarioDAO{
 
     @Override
     public Usuario login(String nombre, String password) {

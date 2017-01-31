@@ -2,30 +2,21 @@ package Model.DAO;
 
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 
 @Repository(value = "BasicDAO")
-public interface BasicDAO<T> {
+public class BasicDAO<T> {
 
-    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("AgendaSpring");
-    EntityManager manager = entityManagerFactory.createEntityManager();
+    @PersistenceContext
+    EntityManager manager;
 
-    default boolean insert(T object) {
-        EntityTransaction transaction = manager.getTransaction();
-        transaction.begin();
+    public boolean insert(T object) {
         manager.persist(object);
-        transaction.commit();
         return true;
     }
 
-    default boolean update(T object) {
-        EntityTransaction transaction = manager.getTransaction();
-        transaction.begin();
+    public boolean update(T object) {
         manager.merge(object);
-        transaction.commit();
         return true;
     }
 }

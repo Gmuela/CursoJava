@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 
 @Repository(value = "ContactoDAOJPA")
-public class ContactoDAOJPA implements ContactoDAO, BasicDAO<Contacto> {
+public class ContactoDAOJPA extends BasicDAO<Contacto> implements ContactoDAO {
 
     @Override
     public ArrayList<Contacto> selectAll() {
@@ -46,12 +46,9 @@ public class ContactoDAOJPA implements ContactoDAO, BasicDAO<Contacto> {
 
     @Override
     public boolean deleteContactoBy(String id) {
-        EntityTransaction transaction = manager.getTransaction();
         Integer idInteger = Integer.parseInt(id);
         Contacto contacto = manager.find(Contacto.class, idInteger);
-        transaction.begin();
         manager.remove(contacto);
-        transaction.commit();
         return true;
     }
 }
