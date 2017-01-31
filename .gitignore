@@ -6,7 +6,7 @@
 *.dia~
 PHP/POO/userImages/
 PHP/POODB/View/Resources/userImages/
-.idea/
+.idea
 .iml
 *.iml
 Wordpress/
@@ -19,6 +19,7 @@ target/*
 Documentacion/Modulo_2/Spring/ejercicios/~$ercicios Spring Core.docx
 /*/*/target/
 /*/*/classes/
-*.class
+.class
 /Spring/AgendaSpring/classes/
 /Spring/AgendaSpring/target/
+/Spring/AgendaSpring/out/

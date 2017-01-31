@@ -3,8 +3,9 @@ package Model.DAO;
 import Beans.Usuario;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.*;
+import javax.persistence.Query;
 
+@Repository("UsuarioDAOJPA")
 public class UsuarioDAOJPA implements UsuarioDAO, BasicDAO<Usuario> {
 
     @Override

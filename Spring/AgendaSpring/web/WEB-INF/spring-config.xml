@@ -5,5 +5,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="Controllers"/>
-    <context:component-scan base-package="Model.DAO"/>
+    <context:component-scan base-package="Model"/>
+    <context:component-scan base-package="Business"/>
 </beans>

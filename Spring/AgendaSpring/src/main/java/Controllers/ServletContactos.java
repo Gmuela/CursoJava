@@ -2,20 +2,11 @@ package Controllers;
 
 import Beans.Contacto;
 import Beans.Usuario;
-import Model.DAO.BasicDAO;
-import Model.DAO.ContactoDAO;
-import Model.DAO.ContactoDAOJPA;
-import Model.Factories.FactoryDAO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import Business.ContactoBusiness;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -25,27 +16,25 @@ import java.util.ArrayList;
 
 @Component
 @WebServlet(name = "ServletContactos", urlPatterns = "/contactos")
-public class ServletContactos extends HttpServlet{
+public class ServletContactos extends GenericServlet<ContactoBusiness>{
 
-    @Autowired
-    @Qualifier("ContactoDAOJPA")
-    private BasicDAO<Contacto> basicDAO;
-
-    @Autowired
-    @Qualifier("ContactoDAOJPA")
-    private ContactoDAO contactoDAO;
+    /*@Autowired
+    @Qualifier("ContactoBusiness")
+    private ContactoBusiness contactoBusiness;*/
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         String button = request.getParameter("button");
         String id = request.getParameter("idContacto");
 
+        ContactoBusiness contactoBusiness = getBeanFromClass(ContactoBusiness.class);
+
         if (button.equalsIgnoreCase("remove")) {
-            contactoDAO.deleteContactoBy(id);
+            contactoBusiness.removeContacto(id);
             doGet(request, response);
 
         } else if (button.equalsIgnoreCase("update")) {
-            Contacto contacto = contactoDAO.selectContactoBy(id);
+            Contacto contacto = contactoBusiness.getContactoWithId(id);
             session.setAttribute("contactoModificar", contacto);
             response.sendRedirect("/modificarContacto");
 
@@ -62,7 +51,7 @@ public class ServletContactos extends HttpServlet{
             String telefono = request.getParameter("telefono");
             Usuario usuario = (Usuario) session.getAttribute("usuario");
             Contacto contacto = new Contacto(nombre, apellidos, dni, LocalDate.parse(fechaNacimiento), telefono, usuario);
-            basicDAO.insert(contacto);
+            contactoBusiness.createContacto(contacto);
             doGet(request, response);
 
         } else if (button.equalsIgnoreCase("filter")) {
@@ -77,13 +66,14 @@ public class ServletContactos extends HttpServlet{
         HttpSession session = request.getSession(false);
         Usuario usuario = (Usuario) session.getAttribute("usuario");
 
-        ContactoDAO contactoDAO = FactoryDAO.getContactoDAO();
+        ContactoBusiness contactoBusiness = getBeanFromClass(ContactoBusiness.class);
+
         ArrayList<Contacto> contactos;
         if (session.getAttribute("mes").equals("00")) {
-            contactos = contactoDAO.selectContactosOf(usuario);
+            contactos = contactoBusiness.getContactosOf(usuario);
 
         } else {
-            contactos = contactoDAO.selectContactosFromMonth(usuario, (String) session.getAttribute("mes"));
+            contactos = contactoBusiness.getContactosWithMonth(usuario, (String) session.getAttribute("mes"));
         }
 
         session.setAttribute("listaContactos", contactos);
