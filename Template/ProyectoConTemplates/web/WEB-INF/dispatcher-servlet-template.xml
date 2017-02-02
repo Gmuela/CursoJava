@@ -9,19 +9,19 @@
     <!--Configuración Spring/JPA-->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/agendaspring?serverTimezone=UTC" />
+        <property name="url" value="jdbc:mysql://localhost:3306/NOMBRE?serverTimezone=UTC" /><!--NOMBRE DE BASE DE DATOS-->
         <property name="username" value="root" />
         <property name="password" value="iesrey" />
     </bean>
     <bean id="factory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="Beans"/>
+        <property name="packagesToScan" value="PACKAGECONENTIDADES"/><!--PACKAGE DONDE SE ENCUENTRAN LAS ENTIDADES-->
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
         </property>
         <property name="jpaProperties">
             <props>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop><!--TIPO DE ACCESO A BASE DE DATOS-->
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
             </props>
         </property>
@@ -32,15 +32,12 @@
     <tx:annotation-driven transaction-manager="transactionManager"/>
     <!--//////////////////////////////////////////////////////-->
 
-    <context:component-scan base-package="Controller"/>
-    <context:component-scan base-package="Business"/>
-    <context:component-scan base-package="Model"/>
-    <context:component-scan base-package="Beans"/>
+    <context:component-scan base-package="Package"/><!--PACKAGES CON COMPONENTES DE SPRING-->
     <mvc:annotation-driven/>
 
     <bean id="resolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/Agenda/"/>
-        <property name="suffix" value=".jsp"/>
+        <property name="prefix" value="/PREFIJO/"/><!--PREFIJO DE LAS VISTAS-->
+        <property name="suffix" value=".jsp"/><!--SUFIJO DE LAS VISTAS-->
     </bean>
 
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">

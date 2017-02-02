@@ -1,18 +1,20 @@
-package Business;
+package Negocio;
 
 import org.springframework.stereotype.Component;
 
-@Component("Business")
+@Component
 public class Business implements ParentBusiness {
-    public void foo(String palabra) {
+    @Override
+    public void foo(String foo) {
         System.out.println("*******************");
-        System.out.println("Dentro de Business.foo()");
+        System.out.println("Dentro de Negocio.foo()");
         System.out.println("*******************");
     }
 
-    public void ant(String palabra) {
+    @Override
+    public void ant(String ant) {
         System.out.println("*******************");
-        System.out.println("Dentro de Business.ant()");
+        System.out.println("Dentro de Negocio.ant()");
         System.out.println("*******************");
     }
 }
