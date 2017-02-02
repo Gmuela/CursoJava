@@ -5,7 +5,13 @@
        xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <context:component-scan base-package="Negocio"/>
-    <context:component-scan base-package="Aspects"/>
     <aop:aspectj-autoproxy/>
+
+    <context:component-scan base-package="Business"/>
+    <context:component-scan base-package="Aspects"/>
+
+
+    <!--<bean id="business" class="Business.MiNegocioo"/>-->
+    <!--<bean id="ascodemierda" class="Aspects.MiAspectoBueno"/>-->
+
 </beans>
