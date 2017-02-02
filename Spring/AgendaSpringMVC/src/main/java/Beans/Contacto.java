@@ -1,5 +1,7 @@
 package Beans;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -13,6 +15,7 @@ public class Contacto {
     private String nombre;
     private String apellidos;
     private String dni;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate fechaNacimiento;
     private String telefono;
 
@@ -115,5 +118,9 @@ public class Contacto {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

@@ -1,24 +1,26 @@
+<%@ taglib prefix="spf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sptag" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>JContacts</title>
-    <link rel='stylesheet' type='text/css' href='/Resources/cssTable.css'/>
-    <link rel='stylesheet' type='text/css' href='/Resources/css.css'/>
+    <title><sptag:message code="title"/></title>
+    <link rel='stylesheet' type='text/css' href=<sptag:message code="cssTable"/>/>
+    <link rel='stylesheet' type='text/css' href=<sptag:message code="css"/>/>
 </head>
 <body>
 <fieldset>
-    <legend>Login</legend>
-    <form action="/login" method="post">
-        <label for="nombre">Nombre: </label>
+    <legend><sptag:message code="legend.login"/></legend>
+    <form action="${pageContext.request.contextPath}/login.do" method="post">
+        <label for="nombre"><sptag:message code="label.userName"/></label>
         <input type="text" name="nombre" id="nombre">
-        <label for="password">Contraseña: </label>
+        <label for="password"><sptag:message code="label.password"/></label>
         <input type="password" name="password" id="password">
-        <button type="submit" class="myButton">Entrar</button>
+        <button type="submit" class="myButton"><sptag:message code="button.login"/></button>
 
     </form>
-    <div class="registerLink"><a href="registro.jsp">¿Aún no tienes cuenta?, pincha aquí</a></div>
+    <div class="registerLink"><a href="registro.jsp"><sptag:message code="register.message"/></a></div>
 </fieldset>
 </body>
 </html>

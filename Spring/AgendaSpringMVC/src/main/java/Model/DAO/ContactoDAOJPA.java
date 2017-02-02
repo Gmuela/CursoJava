@@ -20,7 +20,7 @@ public class ContactoDAOJPA extends BasicDAO<Contacto> implements ContactoDAO {
     @Override
     public Contacto selectContactoBy(String id) {
         Integer idInteger = Integer.parseInt(id);
-        String prepareQuery = "select contacto from Beans.Contacto contacto where id = :id";
+        String prepareQuery = "select contacto from Contacto contacto where id = :id";
         Query query = manager.createQuery(prepareQuery);
         query.setParameter("id", idInteger);
         return (Contacto) query.getSingleResult();

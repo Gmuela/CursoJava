@@ -12,7 +12,8 @@
 <body>
 <spf:form modelAttribute="busquedaOferta" method="post">
     <spt:message code="label.Price"/><br>
-    <spf:input path="precio"/> <spf:errors path="precio"/><br>
+    <spf:input path="precio"/>
+    <spf:errors path="precio"/><br>
     <spt:message code="label.Nights"/><br>
     <spf:select path="numNoches">
         <spf:option value="1">1</spf:option>
