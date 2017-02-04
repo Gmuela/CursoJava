@@ -31,29 +31,29 @@
         <action name="registro" class="Controllers.ActionRegistro">
             <result name="success">Agenda/login.html</result>
             <result name="input">Agenda/login.html</result>
-            <result name="error">Agenda/errorPage.html</result>
+            <result name="error">Agenda/errorPageDev.jsp</result>
         </action>
         <action name="login" class="Controllers.ActionLogin">
             <result name="success">Agenda/listaContactos.jsp</result>
             <result name="input">Agenda/login.html</result>
-            <result name="error">Agenda/errorPage.html</result>
+            <result name="error">Agenda/errorPageDev.jsp</result>
         </action>
         <action name="logout" class="Controllers.ActionLogout">
             <result name="success">Agenda/login.html</result>
-            <result name="error">Agenda/errorPage.html</result>
+            <result name="error">Agenda/errorPageDev.jsp</result>
         </action>
         <action name="contacto" class="Controllers.ActionContactos">
             <result name="success">Agenda/listaContactos.jsp</result>
             <result name="modificar">Agenda/modificarContacto.jsp</result>
-            <result name="error">Agenda/errorPage.html</result>
+            <result name="error">Agenda/errorPageDev.jsp</result>
         </action>
         <action name="contactoModificar" class="Controllers.ActionModificarContacto">
             <result type="chain" name="success">contacto</result>
             <result name="modificar">Agenda/modificarContacto.jsp</result>
-            <result name="error">Agenda/errorPage.html</result>
+            <result name="error">Agenda/errorPageDev.jsp</result>
         </action>
         <action name="underConstruction">
-            <result>Agenda/errorPage.html</result>
+            <result>Agenda/errorPageDev.jsp</result>
         </action>
     </package>
 </struts>
