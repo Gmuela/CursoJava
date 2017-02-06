@@ -39,91 +39,51 @@ public class Contacto {
         this.usuario = usuario;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String toString() {
-
-        String info;
-
-        String nombre = "Nombre: " + this.nombre;
-        String apellidos = "Apellidos: " + this.apellidos;
-        String dni = "DNI: " + this.dni;
-        String fecha = "Fecha: " + this.fechaNacimiento;
-        String telefono = "Teléfono: " + this.telefono;
-
-        String separadorVertical = "\n";
-
-        info = nombre + separadorVertical + apellidos + separadorVertical + dni + separadorVertical + fecha + separadorVertical + telefono;
-        return info;
-    }
-
-    public String returnData() {
-
-        String info;
-
-        String nombre = this.nombre;
-        String apellidos = this.apellidos;
-        String dni = this.dni;
-        String fecha = this.fechaNacimiento;
-        String telefono = this.telefono;
-
-        String separadorVertical = " ";
-
-        info = nombre + separadorVertical + apellidos + separadorVertical + dni + separadorVertical + fecha + separadorVertical + telefono;
-        return info;
-    }
-
     public String getNombre() {
         return nombre;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public String getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public String getTelefono() {
-        return telefono;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    public String getApellidos() {
+        return apellidos;
+    }
+
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
+    }
+
+    public String getDni() {
+        return dni;
     }
 
     public void setDni(String dni) {
         this.dni = dni;
     }
 
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
     public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
+    public String getTelefono() {
+        return telefono;
+    }
+
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

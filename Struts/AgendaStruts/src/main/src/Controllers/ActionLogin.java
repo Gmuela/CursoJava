@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 public class ActionLogin extends ActionSupport implements ModelDriven<Usuario> {
+
     private Usuario usuario = new Usuario();
     private UsuarioBusiness usuarioBusiness = new UsuarioBusiness();
 
