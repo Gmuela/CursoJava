@@ -12,7 +12,9 @@ import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 @Repository("ContactoDAOMongo")
 public class ContactoDAOMongoDB implements ContactoDAO, BasicDAO<Contacto> {
@@ -29,8 +31,11 @@ public class ContactoDAOMongoDB implements ContactoDAO, BasicDAO<Contacto> {
 
     @Override
     public boolean update(Contacto contacto) {
-
-        return false;
+        MongoCollection<Document> contactos = database.getCollection("contactos");
+        Document where = new Document();
+        where.put("_id", contacto.get_id());
+        contactos.updateOne(where, contacto.getDocument());
+        return true;
     }
 
     @Override
@@ -40,22 +45,54 @@ public class ContactoDAOMongoDB implements ContactoDAO, BasicDAO<Contacto> {
 
     @Override
     public Contacto selectContactoBy(String id) {
-        return null;
+        MongoCollection<Document> contactos = database.getCollection("contactos");
+
+        Document where = new Document();
+        where.put("_id", new ObjectId(id));
+
+        FindIterable<Document> documents = contactos.find(where);
+        Document first = documents.first();
+
+        ObjectId _id = first.get("_id", ObjectId.class);
+        String nombre = first.get("nombre", String.class);
+        String apellidos = first.get("apellidos", String.class);
+        String dni = first.get("dni", String.class);
+        LocalDate fechaNacimiento = LocalDate.parse(first.get("fechaNacimiento", String.class));
+        String telefono = first.get("telefono", String.class);
+
+        List<Document> usuarios = first.get("usuario", List.class);
+
+        List<Usuario> listaUsuarios = new ArrayList<>();
+
+        for (Document usuario : usuarios) {
+            ObjectId objectId = usuario.get("_id", ObjectId.class);
+            String nombreUsuario = usuario.get("nombre", String.class);
+            String email = usuario.get("email", String.class);
+            String password = usuario.get("password", String.class);
+
+            listaUsuarios.add(new Usuario(objectId, nombreUsuario, email, password));
+        }
+
+        return new Contacto(_id, nombre, apellidos, dni, fechaNacimiento, telefono, listaUsuarios);
     }
 
     @Override
     public ArrayList<Contacto> selectContactosOf(Usuario usuario) {
-        MongoCollection<Document> usuarios = database.getCollection("usuarios");
+        MongoCollection<Document> contactos = database.getCollection("contactos");
         Document where = new Document();
-        where.put("nombre", usuario.getNombre());
-        where.put("password", usu);
-        FindIterable<Document> documents = usuarios.find(where);
-        Document first = documents.first();
-        ObjectId _id = first.get("_id", ObjectId.class);
-        String nombreUsuario = first.get("nombre", String.class);
-        String email = first.get("email", String.class);
-        String passwordUsuario = first.get("password", String.class);
-        return new Usuario(_id, nombreUsuario, email, passwordUsuario);
+        where.put("usuario", usuario.getDocument());
+        FindIterable<Document> documents = contactos.find(where);
+        ArrayList<Contacto> listaContactos = new ArrayList<>();
+        for (Document document : documents) {
+            ObjectId _id = document.get("_id", ObjectId.class);
+            String nombre = document.get("nombre", String.class);
+            String apellidos = document.get("apellidos", String.class);
+            String dni = document.get("dni", String.class);
+            LocalDate fechaNacimiento = LocalDate.parse(document.get("fechaNacimiento", String.class));
+            String telefono = document.get("telefono", String.class);
+            listaContactos.add(new Contacto(_id, nombre, apellidos, dni, fechaNacimiento, telefono, null));
+        }
+        return listaContactos;
     }
 
     @Override
@@ -65,6 +102,10 @@ public class ContactoDAOMongoDB implements ContactoDAO, BasicDAO<Contacto> {
 
     @Override
     public boolean deleteContactoBy(String id) {
-        return false;
+        MongoCollection<Document> contactos = database.getCollection("contactos");
+        Document where = new Document();
+        where.put("_id", new ObjectId(id));
+        contactos.deleteOne(where);
+        return true;
     }
 }

@@ -67,7 +67,7 @@
                             <img src='${pageContext.request.contextPath}/Resources/modify.png' class='iconM'>
                         </button>
                     </div>
-                    <input type='hidden' name='idContacto' value='${contacto.id}'/>
+                    <input type='hidden' name='idContacto' value='${contacto._id}'/>
                 </form>
             </td>
             <td>
@@ -77,7 +77,7 @@
                             <img src='${pageContext.request.contextPath}/Resources/remove.png' class='iconR'>
                         </button>
                     </div>
-                    <input type='hidden' name='idContacto' value='${contacto.id}'/>
+                    <input type='hidden' name='idContacto' value='${contacto._id}'/>
                 </form>
             </td>
     <tr>

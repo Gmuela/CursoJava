@@ -21,7 +21,7 @@ public class ContactosController implements ParentController {
 
     @RequestMapping(value = "crearContacto.do", method = RequestMethod.POST)
     public String crearContacto(HttpSession session, Contacto contacto) {
-        contacto.setUsuario((Usuario) session.getAttribute("usuario"));
+        contacto.addUsuario((Usuario) session.getAttribute("usuario"));
         contactoBusiness.createContacto(contacto);
         modificarListaContactos(session);
         return LISTA_CONTACTOS;
@@ -42,7 +42,7 @@ public class ContactosController implements ParentController {
     }
 
     @RequestMapping(value = "updateContacto.do", method = RequestMethod.POST)
-    public String updateUsuario(HttpSession session, @SessionAttribute("contactoModificar") Contacto contacto, Contacto nuevosDatos){
+    public String updateContacto(HttpSession session, @SessionAttribute("contactoModificar") Contacto contacto, Contacto nuevosDatos){
         contacto.setNombre(nuevosDatos.getNombre());
         contacto.setApellidos(nuevosDatos.getApellidos());
         contacto.setDni(nuevosDatos.getDni());

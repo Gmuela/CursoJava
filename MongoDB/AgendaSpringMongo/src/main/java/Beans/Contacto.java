@@ -5,6 +5,7 @@ import org.bson.types.ObjectId;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Contacto {
 
@@ -16,17 +17,19 @@ public class Contacto {
     private LocalDate fechaNacimiento;
     private String telefono;
 
-    private Usuario usuario;
+    private List<Usuario> usuarios;
 
 
-    public Document getDocument(){
+    public Document getDocument() {
         Document document = new Document();
-        document.put("nombre",this.nombre);
-        document.put("apellidos",this.apellidos);
-        document.put("dni",this.dni);
-        document.put("fechaNacimiento",this.fechaNacimiento.toString());
-        document.put("telefono",this.telefono);
-        document.put("usuario",this.usuario.getDocument());
+        document.put("nombre", this.nombre);
+        document.put("apellidos", this.apellidos);
+        document.put("dni", this.dni);
+        document.put("fechaNacimiento", this.fechaNacimiento.toString());
+        document.put("telefono", this.telefono);
+        for (Usuario usuario : usuarios) {
+            document.put("usuarios", usuario.getDocument());
+        }
         return document;
     }
 
@@ -34,18 +37,22 @@ public class Contacto {
         //Dafault constructor
     }
 
-
-    public Contacto(String nombre, String apellidos, String dni, LocalDate fechaNacimiento, String telefono, Usuario usuario) {
+    public Contacto(ObjectId _id, String nombre, String apellidos, String dni, LocalDate fechaNacimiento, String telefono, List<Usuario> usuarios) {
+        this._id = _id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
         this.fechaNacimiento = fechaNacimiento;
         this.telefono = telefono;
-        this.usuario = usuario;
+        this.usuarios = usuarios;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 
     public ObjectId get_id() {
@@ -54,38 +61,6 @@ public class Contacto {
 
     public void set_id(ObjectId _id) {
         this._id = _id;
-    }
-
-    public String toString() {
-
-        String info;
-
-        String nombre = "Nombre: " + this.nombre;
-        String apellidos = "Apellidos: " + this.apellidos;
-        String dni = "DNI: " + this.dni;
-        String fecha = "Fecha: " + this.fechaNacimiento.toString();
-        String telefono = "Teléfono: " + this.telefono;
-
-        String separadorVertical = "\n";
-
-        info = nombre + separadorVertical + apellidos + separadorVertical + dni + separadorVertical + fecha + separadorVertical + telefono;
-        return info;
-    }
-
-    public String returnData() {
-
-        String info;
-
-        String nombre = this.nombre;
-        String apellidos = this.apellidos;
-        String dni = this.dni;
-        String fecha = this.fechaNacimiento.toString();
-        String telefono = this.telefono;
-
-        String separadorVertical = " ";
-
-        info = nombre + separadorVertical + apellidos + separadorVertical + dni + separadorVertical + fecha + separadorVertical + telefono;
-        return info;
     }
 
     public String getNombre() {
@@ -128,7 +103,7 @@ public class Contacto {
         this.telefono = telefono;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void addUsuario(Usuario usuario) {
+        this.usuarios.add(usuario);
     }
 }
