@@ -2,14 +2,32 @@ package Model.DAO.JPA;
 
 import Beans.Contacto;
 import Beans.Usuario;
+import Model.DAO.BasicDAO;
 import Model.DAO.ContactoDAO;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.ArrayList;
 
 //@Repository(value = "ContactoDAOJPA")
-public class ContactoDAOJPA extends BasicDAOJPA<Contacto> implements ContactoDAO {
+public class ContactoDAOJPA implements ContactoDAO, BasicDAO<Contacto> {
+
+    @PersistenceContext
+    private EntityManager manager;
+
+    @Override
+    public boolean insert(Contacto contacto) {
+        manager.persist(contacto);
+        return true;
+    }
+
+    @Override
+    public boolean update(Contacto contacto) {
+        manager.merge(contacto);
+        return true;
+    }
 
     @Override
     public ArrayList<Contacto> selectAll() {

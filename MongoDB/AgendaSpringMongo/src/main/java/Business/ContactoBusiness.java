@@ -2,8 +2,8 @@ package Business;
 
 import Beans.Contacto;
 import Beans.Usuario;
-import Model.DAO.JPA.BasicDAOJPA;
 import Model.DAO.ContactoDAO;
+import Model.DAO.BasicDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -15,12 +15,12 @@ import java.util.ArrayList;
 public class ContactoBusiness {
 
     @Autowired
-    @Qualifier("ContactoDAOJPA")
+    @Qualifier("ContactoDAOMongo")
     private ContactoDAO contactoDAO;
 
     @Autowired
-    @Qualifier("ContactoDAOJPA")
-    private BasicDAOJPA<Contacto> basicDAOJPA;
+    @Qualifier("ContactoDAOMongo")
+    private BasicDAO<Contacto> basicDAO;
 
     @Transactional
     public ArrayList<Contacto> getAllContactos(){
@@ -50,13 +50,13 @@ public class ContactoBusiness {
 
     @Transactional
     public boolean createContacto(Contacto contacto){
-        basicDAOJPA.insert(contacto);
+        basicDAO.insert(contacto);
         return true;
     }
 
     @Transactional
     public boolean modifyContacto(Contacto contacto){
-        basicDAOJPA.update(contacto);
+        basicDAO.update(contacto);
         return true;
     }
 

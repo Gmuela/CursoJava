@@ -1,24 +1,40 @@
 package Beans;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.bson.Document;
+import org.bson.types.ObjectId;
 
-@Entity
 public class Usuario {
 
-    @Id
+    private ObjectId _id;
     private String nombre;
     private String email;
     private String password;
 
-    public Usuario() {
-        //Default constructor
+    public Document getDocument(){
+        Document document = new Document();
+        document.put("nombre",this.nombre);
+        document.put("email",this.email);
+        document.put("password",this.password);
+        return document;
     }
 
-    public Usuario(String nombre, String email, String password) {
+    public Usuario() {
+        //Default
+    }
+
+    public Usuario(ObjectId _id, String nombre, String email, String password) {
+        this._id = _id;
         this.nombre = nombre;
         this.email = email;
         this.password = password;
+    }
+
+    public ObjectId getId() {
+        return this._id;
+    }
+
+    public void setId(ObjectId id) {
+        this._id = id;
     }
 
     public String getNombre() {

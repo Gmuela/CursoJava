@@ -1,7 +1,7 @@
 package Business;
 
 import Beans.Usuario;
-import Model.DAO.JPA.BasicDAOJPA;
+import Model.DAO.BasicDAO;
 import Model.DAO.UsuarioDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,16 +13,16 @@ public class UsuarioBusiness {
 
 
     @Autowired
-    @Qualifier("UsuarioDAOJPA")
+    @Qualifier("UsuarioDAOMongo")
     private UsuarioDAO usuarioDAO;
 
     @Autowired
-    @Qualifier("UsuarioDAOJPA")
-    private BasicDAOJPA<Usuario> basicDAOJPA;
+    @Qualifier("UsuarioDAOMongo")
+    private BasicDAO<Usuario> basicDAO;
 
     @Transactional
     public boolean registrarUsuario(Usuario usuario) {
-        basicDAOJPA.insert(usuario);
+        basicDAO.insert(usuario);
         return true;
     }
 

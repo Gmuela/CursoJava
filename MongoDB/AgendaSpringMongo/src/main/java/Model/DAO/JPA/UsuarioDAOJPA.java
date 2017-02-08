@@ -1,13 +1,31 @@
 package Model.DAO.JPA;
 
 import Beans.Usuario;
+import Model.DAO.BasicDAO;
 import Model.DAO.UsuarioDAO;
-import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 //@Repository("UsuarioDAOJPA")
-public class UsuarioDAOJPA extends BasicDAOJPA<Usuario> implements UsuarioDAO {
+public class UsuarioDAOJPA implements UsuarioDAO, BasicDAO<Usuario> {
+
+    @PersistenceContext
+    private EntityManager manager;
+
+
+    @Override
+    public boolean insert(Usuario usuario){
+        manager.persist(usuario);
+        return true;
+    }
+
+    @Override
+    public boolean update(Usuario usuario) {
+        manager.merge(usuario);
+        return true;
+    }
 
     @Override
     public Usuario login(String nombre, String password) {

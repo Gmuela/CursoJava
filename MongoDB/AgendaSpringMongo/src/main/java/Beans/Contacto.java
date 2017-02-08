@@ -1,17 +1,14 @@
 package Beans;
 
+import org.bson.Document;
+import org.bson.types.ObjectId;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 
-@Entity
-@SequenceGenerator(name = "id_contacto", sequenceName = "contacto_sequence")
 public class Contacto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_contacto")
-    private Integer id;
+    private ObjectId _id;
     private String nombre;
     private String apellidos;
     private String dni;
@@ -19,8 +16,19 @@ public class Contacto {
     private LocalDate fechaNacimiento;
     private String telefono;
 
-    @ManyToOne(cascade = CascadeType.REFRESH)
     private Usuario usuario;
+
+
+    public Document getDocument(){
+        Document document = new Document();
+        document.put("nombre",this.nombre);
+        document.put("apellidos",this.apellidos);
+        document.put("dni",this.dni);
+        document.put("fechaNacimiento",this.fechaNacimiento.toString());
+        document.put("telefono",this.telefono);
+        document.put("usuario",this.usuario.getDocument());
+        return document;
+    }
 
     public Contacto() {
         //Dafault constructor
@@ -40,12 +48,12 @@ public class Contacto {
         return usuario;
     }
 
-    public Integer getId() {
-        return id;
+    public ObjectId get_id() {
+        return _id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void set_id(ObjectId _id) {
+        this._id = _id;
     }
 
     public String toString() {
