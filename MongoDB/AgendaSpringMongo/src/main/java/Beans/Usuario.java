@@ -29,12 +29,12 @@ public class Usuario {
         this.password = password;
     }
 
-    public ObjectId getId() {
-        return this._id;
+    public ObjectId get_id() {
+        return _id;
     }
 
-    public void setId(ObjectId id) {
-        this._id = id;
+    public void set_id(ObjectId _id) {
+        this._id = _id;
     }
 
     public String getNombre() {

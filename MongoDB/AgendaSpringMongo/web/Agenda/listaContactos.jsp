@@ -14,7 +14,7 @@
     <legend><sptag:message code="legend.userData"/></legend>
 <span class="nombreUsuario"><sptag:message code="label.contactName"/> </span><core:out value="${sessionScope.usuario.nombre}"/>
 <div class='registerLink'>
-    <a href='/logout'><sptag:message code="logout"/></a>
+    <a href='/logout.do'><sptag:message code="logout"/></a>
 </div>
 </fieldset>
 <div>

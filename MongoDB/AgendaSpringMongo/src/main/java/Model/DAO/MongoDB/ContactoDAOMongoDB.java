@@ -60,7 +60,7 @@ public class ContactoDAOMongoDB implements ContactoDAO, BasicDAO<Contacto> {
         LocalDate fechaNacimiento = LocalDate.parse(first.get("fechaNacimiento", String.class));
         String telefono = first.get("telefono", String.class);
 
-        List<Document> usuarios = first.get("usuario", List.class);
+        List<Document> usuarios = first.get("usuarios", List.class);
 
         List<Usuario> listaUsuarios = new ArrayList<>();
 
@@ -90,7 +90,8 @@ public class ContactoDAOMongoDB implements ContactoDAO, BasicDAO<Contacto> {
             String dni = document.get("dni", String.class);
             LocalDate fechaNacimiento = LocalDate.parse(document.get("fechaNacimiento", String.class));
             String telefono = document.get("telefono", String.class);
-            listaContactos.add(new Contacto(_id, nombre, apellidos, dni, fechaNacimiento, telefono, null));
+
+            listaContactos.add(new Contacto(_id, nombre, apellidos, dni, fechaNacimiento, telefono, listaUsuarios));
         }
         return listaContactos;
     }

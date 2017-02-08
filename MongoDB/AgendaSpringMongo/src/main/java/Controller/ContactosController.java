@@ -21,6 +21,7 @@ public class ContactosController implements ParentController {
 
     @RequestMapping(value = "crearContacto.do", method = RequestMethod.POST)
     public String crearContacto(HttpSession session, Contacto contacto) {
+        contacto.setUsuarios(new ArrayList<>());
         contacto.addUsuario((Usuario) session.getAttribute("usuario"));
         contactoBusiness.createContacto(contacto);
         modificarListaContactos(session);
