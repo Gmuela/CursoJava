@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">HelloAndroid</string>
+    <string name="app_name">Wut</string>
+    <string name="hola_mundo_d">Wut? Wut? Wut?</string>
+    <string name="Escribe_nombre">Escribe tu nombre</string>
+    <string name="enviar">Enviar</string>
+    <string name="nombre">Nombre</string>
+    <string name="nombre_hint">Nombre</string>
+    <string name="Click">Click</string>
+    <string name="Aceptar">Aceptar</string>
+    <string name="Cancelar">Cancelar</string>
 </resources>

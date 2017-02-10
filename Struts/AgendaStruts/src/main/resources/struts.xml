@@ -42,13 +42,13 @@
             <result name="success">Agenda/login.html</result>
             <result name="error">Agenda/errorPageDev.jsp</result>
         </action>
-        <action name="contacto" class="Controllers.ActionContactos">
+        <action name="contactos" class="Controllers.ActionContactos">
             <result name="success">Agenda/listaContactos.jsp</result>
             <result name="modificar">Agenda/modificarContacto.jsp</result>
             <result name="error">Agenda/errorPageDev.jsp</result>
         </action>
         <action name="contactoModificar" class="Controllers.ActionModificarContacto">
-            <result type="chain" name="success">contacto</result>
+            <result type="chain" name="success">contactos</result>
             <result name="modificar">Agenda/modificarContacto.jsp</result>
             <result name="error">Agenda/errorPageDev.jsp</result>
         </action>
