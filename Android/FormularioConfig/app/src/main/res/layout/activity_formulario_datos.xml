@@ -11,59 +11,93 @@
     tools:context="com.example.cursomaana.formularioconfig.FormularioDatos">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
         android:weightSum="1">
 
-        <EditText
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/fd_nombre_label"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/name"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:hint="Introduzca el nombre" />
+            android:layout_height="wrap_content">
 
-        <EditText
+            <EditText
+                android:id="@+id/fd_nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:drawableLeft="@drawable/ic_usuario"
+                android:ems="10"
+                android:hint="Introduzca el nombre"
+                android:inputType="textPersonName" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/fd_email_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/fd_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/nombreFinal"
+                android:layout_below="@+id/nombreFinal"
+                android:layout_marginTop="19dp"
+                android:drawableLeft="@drawable/ic_email"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/fd_password_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:layout_below="@+id/name"
-            android:layout_alignStart="@+id/name"
-            android:layout_marginTop="19dp"
-            android:id="@+id/email"
-            android:hint="Email"
-            android:layout_marginBottom="335dp"/>
+            android:layout_marginBottom="165dp">
+
+            <EditText
+                android:id="@+id/fd_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/nombreFinal"
+                android:layout_below="@+id/nombreFinal"
+                android:layout_marginTop="19dp"
+                android:drawableLeft="@drawable/ic_password"
+                android:ems="10"
+                android:hint="Contraseña"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:showDividers="middle"
-            android:divider="?android:attr/dividerVertical">
+            android:layout_alignParentTop="true"
+            android:divider="?android:attr/dividerVertical"
+            android:orientation="horizontal"
+            android:showDividers="middle">
 
             <Button
-                android:text="Aceptar"
+                android:id="@+id/fd_cancelButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/acceptButton"
                 android:layout_weight="1"
-                style="@style/Widget.AppCompat.Button.Borderless" />
+                android:text="Cancelar" />
 
             <Button
-                android:text="Cancelar"
+                android:id="@+id/fd_acceptButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/cancelButton"
                 android:layout_weight="1"
-                style="@style/Widget.AppCompat.Button.Borderless" />
+                android:text="Aceptar" />
         </LinearLayout>
 
     </LinearLayout>

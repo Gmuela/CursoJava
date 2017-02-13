@@ -47,7 +47,7 @@
             <result name="modificar">Agenda/modificarContacto.jsp</result>
             <result name="error">Agenda/errorPageDev.jsp</result>
         </action>
-        <action name="contactoModificar" class="Controllers.ActionModificarContacto">
+        <action name="modificarContacto" class="Controllers.ActionModificarContacto">
             <result type="chain" name="success">contactos</result>
             <result name="modificar">Agenda/modificarContacto.jsp</result>
             <result name="error">Agenda/errorPageDev.jsp</result>

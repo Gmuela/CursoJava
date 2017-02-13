@@ -22,7 +22,7 @@ public class ContactoBusiness {
         return contactoDAO.selectAll();
     }
 
-    public Contacto getContactoWithId(String id){
+    public Contacto getContactoWithId(Integer id){
         return contactoDAO.selectContactoBy(id);
     }
 

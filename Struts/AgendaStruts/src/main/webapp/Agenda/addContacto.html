@@ -10,15 +10,15 @@
 
     <fieldset>
         <legend>Añadir Contacto</legend>
-        <form action="/contactos" method="get">
+        <form action="/contactos" method="post">
         <label for="nombre">Nombre:</label><input type="text" name="nombre" id="nombre">
         <label for="apellidos">Apellidos:</label><input type="text" name="apellidos" id="apellidos">
         <label for="dni">DNI:</label><input type="text" name="dni" id="dni">
         <label for="fechaNacimiento">FechaNacimiento:</label><input type="text" name="fechaNacimiento" id="fechaNacimiento">
         <label for="telefono">Teléfono:</label><input type="text" name="telefono" id="telefono">
+        <input type="hidden" name="button" value="add">
         <div class="botones">
             <button class="myButton" type='submit'>Añadir Contacto</button>
-            <input type="hidden" name="button" value="add">
         </div>
         </form>
     </fieldset>

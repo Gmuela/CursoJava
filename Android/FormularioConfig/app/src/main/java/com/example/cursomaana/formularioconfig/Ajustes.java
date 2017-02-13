@@ -2,6 +2,7 @@ package com.example.cursomaana.formularioconfig;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +13,7 @@ public class Ajustes extends AppCompatActivity {
 
     private Switch privateSwitch;
     private ToggleButton batteryToggle;
-    private Button reset;
+    private FloatingActionButton reset;
     private Button backButton;
     private Button okButton;
 
@@ -20,17 +21,19 @@ public class Ajustes extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajustes);
-        reset = (Button) findViewById(R.id.reset);
-        backButton = (Button) findViewById(R.id.backButton);
-        okButton = (Button) findViewById(R.id.okButton);
-        privateSwitch = (Switch) findViewById(R.id.privateSwitch);
-        batteryToggle = (ToggleButton) findViewById(R.id.batteryToggle);
+
+        privateSwitch = (Switch) findViewById(R.id.aj_privateSwitch);
+        batteryToggle = (ToggleButton) findViewById(R.id.aj_batteryToggle);
+
+        reset = (FloatingActionButton) findViewById(R.id.aj_reset);
+        backButton = (Button) findViewById(R.id.aj_backButton);
+        okButton = (Button) findViewById(R.id.aj_okButton);
 
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 privateSwitch.setChecked(false);
-                privateSwitch.setChecked(false);
+                batteryToggle.setChecked(false);
             }
         });
 
@@ -45,14 +48,14 @@ public class Ajustes extends AppCompatActivity {
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToNext = getIntent();
+                Intent lastIntent = getIntent();
 
-                String nombre = goToNext.getStringExtra("nombre");
-                Intent nextIntent = new Intent(Ajustes.this, PantallaFinal.class);
+                String nombre = lastIntent.getStringExtra("nombreUsuario");
+                Intent nextIntent = new Intent(Ajustes.this, PaginaFinal.class);
                 nextIntent.putExtra("nombreUsuario", nombre);
                 nextIntent.putExtra("privateSwitch", privateSwitch.isChecked());
                 nextIntent.putExtra("batteryToggle", batteryToggle.isChecked());
-                startActivity(goToNext);
+                startActivity(nextIntent);
             }
         });
     }

@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Ajustes"></activity>
+        <activity android:name=".Ajustes" />
+        <activity android:name=".PaginaFinal"></activity>
     </application>
 
 </manifest>
