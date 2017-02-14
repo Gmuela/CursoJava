@@ -60,13 +60,13 @@
             <td><core:out value="${contacto.fechaNacimiento}"/></td>
             <td><core:out value="${contacto.telefono}"/></td>
             <td>
-                <form action='/modificarContacto' method='get'>
+                <form action='/modificarContacto' method='post'>
                     <div class='botones'>
                         <button type='submit' class='modifyButton'>
                             <img src='/Resources/modify.png' class='iconM'>
                         </button>
                     </div>
-                    <input type='hidden' name='idContacto' value='${contacto.id}'/>
+                    <input type='hidden' name='id' value='${contacto.id}'/>
                 </form>
             </td>
             <td>

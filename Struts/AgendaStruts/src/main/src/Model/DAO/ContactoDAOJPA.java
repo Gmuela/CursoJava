@@ -18,11 +18,10 @@ public class ContactoDAOJPA implements ContactoDAO, BasicDAO<Contacto> {
     }
 
     @Override
-    public Contacto selectContactoBy(String id) {
-        Integer idInteger = Integer.parseInt(id);
+    public Contacto selectContactoBy(Integer id) {
         String prepareQuery = "select contacto from Beans.Contacto contacto where id = :id";
         Query query = manager.createQuery(prepareQuery);
-        query.setParameter("id", idInteger);
+        query.setParameter("id", id);
         Contacto contacto = (Contacto) query.getSingleResult();
         return contacto;
     }

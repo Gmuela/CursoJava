@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array_tonos">
+        <item>Campana</item>
+        <item>Campana aguda</item>
+        <item>Wololooo</item>
+        <item>Gaaayy</item>
+    </string-array>
+</resources>

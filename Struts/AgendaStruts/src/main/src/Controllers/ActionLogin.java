@@ -1,6 +1,7 @@
 package Controllers;
 
 import Beans.Usuario;
+import Business.ContactoBusiness;
 import Business.UsuarioBusiness;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -13,6 +14,7 @@ public class ActionLogin extends ActionSupport implements ModelDriven<Usuario> {
 
     private Usuario usuario = new Usuario();
     private UsuarioBusiness usuarioBusiness = new UsuarioBusiness();
+    private ContactoBusiness contactoBusiness = new ContactoBusiness();
 
     @Override
     public String execute() throws Exception {
@@ -22,6 +24,8 @@ public class ActionLogin extends ActionSupport implements ModelDriven<Usuario> {
             HttpServletRequest request = ServletActionContext.getRequest();
             HttpSession session = request.getSession();
             session.setAttribute("usuario", usuarioLogado);
+            session.setAttribute("listaContactos", contactoBusiness.getContactosOf(usuario));
+            session.setAttribute("mes","00");
             result = SUCCESS;
         }
         return result;

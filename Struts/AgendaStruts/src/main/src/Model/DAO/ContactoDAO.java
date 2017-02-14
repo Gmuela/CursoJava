@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public interface ContactoDAO {
     ArrayList<Contacto> selectAll();
 
-    Contacto selectContactoBy(String id);
+    Contacto selectContactoBy(Integer id);
 
     ArrayList<Contacto> selectContactosOf(Usuario usuario);
 
