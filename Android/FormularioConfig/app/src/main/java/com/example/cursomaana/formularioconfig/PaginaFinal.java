@@ -13,14 +13,25 @@ public class PaginaFinal extends AppCompatActivity {
     private TextView nombre;
     private TextView privacidad;
     private TextView battery;
+    private TextView wifi;
+    private TextView red;
+    private TextView tema;
+    private TextView tono;
+
     private Button volver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pagina_final);
+
         nombre = (TextView) findViewById(R.id.f_nombre);
         battery = (TextView) findViewById(R.id.f_battery);
+        wifi = (TextView) findViewById(R.id.f_wifi);
+        red = (TextView) findViewById(R.id.f_red);
+        tema = (TextView) findViewById(R.id.f_tema);
+        tono = (TextView) findViewById(R.id.f_tono);
+
         privacidad = (TextView) findViewById(R.id.f_privacidad);
         volver = (Button) findViewById(R.id.f_volver);
 
@@ -34,11 +45,14 @@ public class PaginaFinal extends AppCompatActivity {
 
         Intent lastIntent = getIntent();
 
-        String nombreUsuario = lastIntent.getStringExtra("nombreUsuario");
         boolean privateSwitch = lastIntent.getBooleanExtra("privateSwitch", false);
         boolean batteryToggle = lastIntent.getBooleanExtra("batteryToggle", false);
+        boolean wifiCheck = lastIntent.getBooleanExtra("wifi", false);
 
-        nombre.setText(nombreUsuario);
+        String nombreUsuario = lastIntent.getStringExtra("nombreUsuario");
+        String redString = lastIntent.getStringExtra("red");
+        String temaString = lastIntent.getStringExtra("tema");
+        String tonoString = lastIntent.getStringExtra("tono");
 
         if(batteryToggle){
             battery.setTextColor(Color.GREEN);
@@ -55,5 +69,18 @@ public class PaginaFinal extends AppCompatActivity {
             privacidad.setTextColor(Color.RED);
             privacidad.setText("No activado");
         }
+        if(wifiCheck){
+            wifi.setTextColor(Color.GREEN);
+            wifi.setText("Activado");
+        } else {
+            wifi.setTextColor(Color.RED);
+            wifi.setText("No activado");
+        }
+
+        nombre.setText(nombreUsuario);
+        red.setText(redString);
+        tema.setText(temaString);
+        tono.setText(tonoString);
+
     }
 }

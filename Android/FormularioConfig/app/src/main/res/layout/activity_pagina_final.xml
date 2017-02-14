@@ -44,9 +44,8 @@
 
         <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="162dp"
-            android:rowCount="3"
-            android:layout_weight="0.37">
+            android:layout_height="150dp"
+            android:rowCount="7">
 
             <TextView
                 android:text="Su configuración es la siguiente:"
@@ -91,6 +90,68 @@
                 android:id="@+id/ahorro"
                 android:layout_row="1"
                 android:layout_column="0" />
+
+            <TextView
+                android:text="Tono"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/f_tono_label"
+                android:layout_row="6"
+                android:layout_column="0" />
+
+            <TextView
+                android:text="Tema"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/f_tema_label"
+                android:layout_row="5"
+                android:layout_column="0" />
+
+            <TextView
+                android:text="Resultado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/f_tono"
+                android:layout_row="6"
+                android:layout_column="1" />
+
+            <TextView
+                android:text="Resultado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/f_tema"
+                android:layout_row="5"
+                android:layout_column="1" />
+
+            <TextView
+                android:text="Resultado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/f_red"
+                android:layout_row="4"
+                android:layout_column="1" />
+
+            <TextView
+                android:text="Red Móvil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/f_red_label"
+                android:layout_row="4"
+                android:layout_column="0" />
+
+            <TextView
+                android:text="Solo WIFI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/f_wifi_label"
+                android:layout_row="3"
+                android:layout_column="0" />
+
+            <TextView
+                android:text="Resultado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/f_wifi" />
         </GridLayout>
 
         <LinearLayout
@@ -105,7 +166,7 @@
             <Button
                 android:text="Volver al inicio"
                 android:layout_width="wrap_content"
-                android:layout_height="67dp"
+                android:layout_height="128dp"
                 android:id="@+id/f_volver"
                 android:layout_weight="1"
                 style="@style/Widget.AppCompat.Button.Borderless" />

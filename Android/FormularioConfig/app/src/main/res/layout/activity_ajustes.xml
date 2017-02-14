@@ -12,108 +12,198 @@
     tools:context="com.example.cursomaana.formularioconfig.Ajustes">
 
     <android.support.design.widget.FloatingActionButton
-        android:layout_height="71dp"
-        android:clickable="true"
-        app:srcCompat="@drawable/ic_escoba"
         android:id="@+id/aj_reset"
-        android:layout_marginLeft="250dp"
-        android:layout_marginBottom="103dp"
-        app:backgroundTint="?android:attr/colorMultiSelectHighlight"
         android:layout_width="78dp"
-        app:fabSize="normal"
+        android:layout_height="71dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="7dp" />
+        android:layout_marginBottom="50dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginLeft="250dp"
+        android:clickable="true"
+        app:backgroundTint="?android:attr/colorMultiSelectHighlight"
+        app:fabSize="normal"
+        app:srcCompat="@drawable/ic_escoba" />
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:showDividers="middle"
-        android:divider="?android:attr/dividerVertical"
-        android:layout_alignTop="@+id/aj_reset"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="121dp">
+        android:layout_alignTop="@+id/aj_reset"
+        android:layout_marginTop="70dp"
+        android:divider="?android:attr/dividerVertical"
+        android:orientation="horizontal"
+        android:showDividers="middle">
 
         <Button
-            android:text="Atrás"
-            android:drawableLeft="@drawable/left_arrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/aj_backButton"
-            android:layout_weight="1"
-            style="@style/Widget.AppCompat.Button.Borderless" />
-
-        <Button
-            android:text="Ok"
-            android:drawableRight="@drawable/check"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/aj_okButton"
             android:layout_weight="1"
-            style="@style/Widget.AppCompat.Button.Borderless" />
+            android:drawableLeft="@drawable/left_arrow"
+            android:text="Atrás" />
+
+        <Button
+            android:id="@+id/aj_okButton"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableRight="@drawable/check"
+            android:text="Ok" />
     </LinearLayout>
 
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnCount="10"
-        android:rowCount="20"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:columnCount="10"
+        android:rowCount="20">
 
         <TextView
-            android:text="Ajustes"
+            android:id="@+id/Ajustes_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView3"
             android:layout_columnSpan="5"
+            android:text="Ajustes"
+            android:textAlignment="center"
             android:textSize="18sp"
-            android:textStyle="normal|bold"
-            android:textAlignment="center" />
-
-        <TextView
-            android:text="Ahorro batería"
-            android:layout_width="wrap_content"
-            android:layout_height="31dp"
-            android:id="@+id/textView"
-            android:textColor="@android:color/background_dark"
-            android:layout_row="2"
-            android:layout_column="0" />
+            android:textStyle="normal|bold" />
 
         <Switch
-            android:text="Privacidad"
+            android:id="@+id/aj_privateSwitch"
             android:layout_width="275dp"
             android:layout_height="wrap_content"
-            android:id="@+id/aj_privateSwitch"
-            android:layout_marginBottom="20dp"
+            android:layout_column="0"
             android:layout_columnSpan="3"
+            android:layout_marginBottom="20dp"
             android:layout_row="1"
-            android:layout_column="0" />
-
-        <ToggleButton
-            android:layout_width="48dp"
-            android:layout_height="59dp"
-            android:id="@+id/aj_batteryToggle"
-            style="@android:style/Widget.DeviceDefault.Button.Borderless"
-            android:background="@drawable/selector_battery"
-            android:textOn=''
-            android:textOff=''
-            android:layout_row="2"
-            android:layout_column="2" />
+            android:text="Privacidad" />
 
         <TextView
-            android:text="Ahorro batería"
+            android:id="@+id/wifi_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/wifi"
-            android:textColor="@android:color/background_dark"
-            android:layout_row="3"
-            android:layout_column="0"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="59dp"
-            android:textAlignment="viewStart" />
+            android:layout_column="0"
+            android:layout_row="3"
+            android:text="Solo WIFI"
+            android:textAlignment="viewStart"
+            android:textColor="@android:color/background_dark" />
+
+        <CheckBox
+            android:id="@+id/aj_wifi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="3" />
+
+        <TextView
+            android:id="@+id/Ahorro_label"
+            android:layout_width="wrap_content"
+            android:layout_height="31dp"
+            android:layout_column="0"
+            android:layout_row="2"
+            android:text="Ahorro batería"
+            android:textColor="@android:color/background_dark" />
+
+        <TextView
+            android:id="@+id/Red_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="4"
+            android:text="Propiedades de Red"
+            android:textColor="@android:color/background_dark" />
+
+        <TextView
+            android:id="@+id/tono_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="10"
+            android:text="Tono"
+            android:textColor="@android:color/background_dark" />
+
+        <Spinner
+            android:id="@+id/aj_tema"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="8" />
+
+        <Spinner
+            android:id="@+id/aj_tono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="10" />
+
+        <TextView
+            android:id="@+id/tema_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="8"
+            android:text="Tema"
+            android:textColor="@android:color/black" />
+
+        <ToggleButton
+            android:id="@+id/aj_batteryToggle"
+            style="@android:style/Widget.DeviceDefault.Button.Borderless"
+            android:layout_width="35dp"
+            android:layout_height="40dp"
+            android:layout_column="2"
+            android:layout_row="2"
+            android:background="@drawable/selector_battery"
+            android:textOff=''
+            android:textOn='' />
+
+        <RadioGroup
+            android:id="@+id/aj_redRadioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="4"
+            android:orientation="vertical"
+            android:checkedButton="@+id/aj_G">
+
+            <RadioButton
+                android:id="@+id/aj_G"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_row="4"
+                android:text="G" />
+
+            <RadioButton
+                android:id="@+id/aj_3G"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_row="5"
+                android:text="3G" />
+
+            <RadioButton
+                android:id="@+id/aj_4G"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_row="6"
+                android:text="4G" />
+
+            <RadioButton
+                android:id="@+id/aj_Automatico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_row="7"
+                android:text="Automático" />
+
+        </RadioGroup>
 
     </GridLayout>
 
