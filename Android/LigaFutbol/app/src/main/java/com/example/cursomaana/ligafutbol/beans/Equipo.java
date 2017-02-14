@@ -1,20 +1,20 @@
-package com.example.cursomaana.ligafutbol;
+package com.example.cursomaana.ligafutbol.beans;
 
 public class Equipo {
 
     private String nombreEquipo;
     private String estado;
-    private String estadio;
-    private String entranador;
+    private String nombreEstadio;
+    private String entrenador;
     private boolean isLocal;
     private int idImagen;
     private int imagenEstadio;
 
-    public Equipo(String nombreEquipo, String estado, String estadio, String entranador, int idImagen, int imagenEstadio) {
+    public Equipo(String nombreEquipo, String estado, String nombreEstadio, String entrenador, int idImagen, int imagenEstadio) {
         this.nombreEquipo = nombreEquipo;
         this.estado = estado;
-        this.estadio = estadio;
-        this.entranador = entranador;
+        this.nombreEstadio = nombreEstadio;
+        this.entrenador = entrenador;
         this.idImagen = idImagen;
         this.imagenEstadio = imagenEstadio;
     }
@@ -35,12 +35,12 @@ public class Equipo {
         this.estado = estado;
     }
 
-    public String getEstadio() {
-        return estadio;
+    public String getNombreEstadio() {
+        return nombreEstadio;
     }
 
-    public void setEstadio(String estadio) {
-        this.estadio = estadio;
+    public void setNombreEstadio(String nombreEstadio) {
+        this.nombreEstadio = nombreEstadio;
     }
 
     public boolean isLocal() {
@@ -51,12 +51,12 @@ public class Equipo {
         isLocal = local;
     }
 
-    public String getEntranador() {
-        return entranador;
+    public String getEntrenador() {
+        return entrenador;
     }
 
-    public void setEntranador(String entranador) {
-        this.entranador = entranador;
+    public void setEntrenador(String entrenador) {
+        this.entrenador = entrenador;
     }
 
     public int getIdImagen() {
@@ -65,5 +65,13 @@ public class Equipo {
 
     public void setIdImagen(int idImagen) {
         this.idImagen = idImagen;
+    }
+
+    public int getImagenEstadio() {
+        return imagenEstadio;
+    }
+
+    public void setImagenEstadio(int imagenEstadio) {
+        this.imagenEstadio = imagenEstadio;
     }
 }

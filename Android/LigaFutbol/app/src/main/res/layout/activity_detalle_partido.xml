@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_detalle_partido"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.cursomaana.ligafutbol.DetallePartido">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:weightSum="1">
 
         <TextView
             android:text="Bernabeu"
@@ -30,16 +24,90 @@
         <ImageView
             android:layout_width="117dp"
             android:layout_height="123dp"
-            app:srcCompat="@android:drawable/sym_def_app_icon"
-            android:id="@+id/imagen_estadio" />
+            app:srcCompat="@mipmap/ic_estadio"
+            android:id="@+id/imagen_estadio"/>
+
+        <TextView
+            android:text="Equipo Local"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout"
+            android:layout_alignParentStart="true"
+            android:id="@+id/local_label"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="normal|bold"
+            android:textColor="@android:color/background_dark"
+            android:layout_marginTop="25dp"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/ic_madrid"
+            android:id="@+id/imagen_equipo_local"
+            android:layout_weight="0.65" />
+
+        <TextView
+            android:text="Nombre equipo local"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout"
+            android:layout_alignParentStart="true"
+            android:id="@+id/nombre_equipo_local"
+            android:textColor="@android:color/background_dark"
+            android:textAlignment="center" />
+
+        <TextView
+            android:text="Estado equipo local"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/estado_equipo_local"
+            android:textColor="@android:color/background_dark"
+            android:textAlignment="center" />
+
+        <TextView
+            android:text="Nombre entrenador local"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/nombre_entrenador_local"
+            android:textColor="@android:color/background_dark"
+            android:textAlignment="center" />
+
+        <TextView
+            android:text="Equipo Visitante"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/visitante_label"
+            android:textAlignment="center"
+            android:textStyle="normal|bold"
+            android:textSize="24sp"
+            android:layout_marginTop="25dp"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/ic_barca"
+            android:id="@+id/imagen_equipo_visitante" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/nombre_equipo_visitante"
+            android:text="Nombre equipo visitante"
+            android:textAlignment="center" />
+
+        <TextView
+            android:text="Estado equipo visitante"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/estado_equipo_visitante"
+            android:textAlignment="center" />
+
+        <TextView
+            android:text="Nombre entrenador equipo visitante"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/nombre_entrenador_visitante"
+            android:textAlignment="center" />
     </LinearLayout>
-
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:rowCount="5"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
-
-    </GridLayout>
-</RelativeLayout>
+</ScrollView>

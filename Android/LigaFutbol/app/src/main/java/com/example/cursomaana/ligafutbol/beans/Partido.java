@@ -1,4 +1,4 @@
-package com.example.cursomaana.ligafutbol;
+package com.example.cursomaana.ligafutbol.beans;
 
 public class Partido {
 
@@ -8,16 +8,21 @@ public class Partido {
     private String fecha;
     private String hora;
     private String estadio;
+    private int imagenEstadio;
 
-    public Partido(int id, Equipo equipoLocal, Equipo equipoVisitante, String fecha, String hora) {
+    public Partido(int id, Equipo equipoLocal, String fecha, String hora, Equipo equipoVisitante) {
+
         this.id = id;
+
         this.equipoLocal = equipoLocal;
+        this.equipoLocal.setLocal(true);
         this.fecha = fecha;
         this.hora = hora;
-        this.equipoLocal.setLocal(true);
         this.equipoVisitante = equipoVisitante;
         this.equipoVisitante.setLocal(false);
-        this.estadio = equipoLocal.getEstadio();
+
+        this.estadio = equipoLocal.getNombreEstadio();
+        this.imagenEstadio = equipoLocal.getImagenEstadio();
     }
 
     public Equipo getEquipoLocal() {
@@ -66,5 +71,13 @@ public class Partido {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getImagenEstadio() {
+        return imagenEstadio;
+    }
+
+    public void setImagenEstadio(int imagenEstadio) {
+        this.imagenEstadio = imagenEstadio;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.cursomaana.ligafutbol;
+package com.example.cursomaana.ligafutbol.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,14 +8,18 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-class AdaptadorPartidos extends ArrayAdapter<Partido> {
+import com.example.cursomaana.ligafutbol.beans.Equipo;
+import com.example.cursomaana.ligafutbol.beans.Partido;
+import com.example.cursomaana.ligafutbol.R;
+
+public class AdaptadorPartidos extends ArrayAdapter<Partido> {
     public AdaptadorPartidos(Context context, Partido[] datos) {
-        super(context, R.layout.lista_main, datos);
+        super(context, R.layout.formato_lista_partidos, datos);
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        View itemView = inflater.inflate(R.layout.lista_main, null);
+        View itemView = inflater.inflate(R.layout.formato_lista_partidos, null);
 
         ImageView imagen_local = (ImageView) itemView.findViewById(R.id.imagen_local);
         ImageView imagen_visitante = (ImageView) itemView.findViewById(R.id.imagen_visitante);
