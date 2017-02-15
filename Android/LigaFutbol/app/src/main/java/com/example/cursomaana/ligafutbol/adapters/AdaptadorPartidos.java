@@ -19,38 +19,61 @@ public class AdaptadorPartidos extends ArrayAdapter<Partido> {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = LayoutInflater.from(getContext());
-        View itemView = inflater.inflate(R.layout.formato_lista_partidos, null);
 
-        ImageView imagen_local = (ImageView) itemView.findViewById(R.id.imagen_local);
-        ImageView imagen_visitante = (ImageView) itemView.findViewById(R.id.imagen_visitante);
+        View itemView = convertView;
+        ViewHolder holder;
 
-        TextView nombreLocal = (TextView) itemView.findViewById(R.id.nombre_equipo_local);
-        TextView nombreVisitante = (TextView) itemView.findViewById(R.id.nombre_equipo_visitante);
-        TextView fecha = (TextView) itemView.findViewById(R.id.fecha_partido);
-        TextView hora = (TextView) itemView.findViewById(R.id.hora_partido);
+        if (itemView == null) {
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            itemView = inflater.inflate(R.layout.formato_lista_partidos, null);
+            holder = new ViewHolder();
+
+            holder.imagen_local = (ImageView) itemView.findViewById(R.id.imagen_local);
+            holder.imagen_visitante = (ImageView) itemView.findViewById(R.id.imagen_visitante);
+
+            holder.nombreLocal = (TextView) itemView.findViewById(R.id.nombre_equipo_local);
+            holder.nombreVisitante = (TextView) itemView.findViewById(R.id.nombre_equipo_visitante);
+            holder.fecha = (TextView) itemView.findViewById(R.id.fecha_partido);
+            holder.hora = (TextView) itemView.findViewById(R.id.hora_partido);
+
+            itemView.setTag(holder);
+
+        } else{
+            holder = (ViewHolder) itemView.getTag();
+        }
 
         Partido partido = getItem(position);
 
         Equipo equipoLocal = partido.getEquipoLocal();
         Equipo equipoVisitante = partido.getEquipoVisitante();
 
-        imagen_local.setImageResource(equipoLocal.getIdImagen());
-        imagen_visitante.setImageResource(equipoVisitante.getIdImagen());
+        holder.imagen_local.setImageResource(equipoLocal.getIdImagen());
+        holder.imagen_visitante.setImageResource(equipoVisitante.getIdImagen());
+
+        holder.nombreLocal.setText(equipoLocal.getNombreEquipo());
+        holder.nombreVisitante.setText(equipoVisitante.getNombreEquipo());
 
         if(partido.isJugado()){
-            fecha.setText(partido.getResultado());
-            fecha.setTextColor(Color.BLUE);
-            fecha.setTextSize(25f);
-            hora.setText("");
+            holder.fecha.setText(partido.getResultado());
+            holder.fecha.setTextColor(Color.BLUE);
+            holder.fecha.setTextSize(25f);
+            holder.hora.setText("");
         } else {
-            fecha.setText(partido.getFecha());
-            hora.setText(partido.getHora());
+            holder.fecha.setText(partido.getFecha());
+            holder.hora.setText(partido.getHora());
         }
 
-        nombreLocal.setText(equipoLocal.getNombreEquipo());
-        nombreVisitante.setText(equipoVisitante.getNombreEquipo());
 
         return (itemView);
+    }
+
+    private class ViewHolder {
+        ImageView imagen_local;
+        ImageView imagen_visitante;
+
+        TextView nombreLocal;
+        TextView nombreVisitante;
+        TextView fecha;
+        TextView hora;
     }
 }

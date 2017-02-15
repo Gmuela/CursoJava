@@ -3,6 +3,7 @@ package com.example.cursomaana.ligafutbol.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -44,35 +45,21 @@ public class DetallePartidoActivity extends AppCompatActivity {
 
     }
 
-    private void getVisitanteTeamInfo(Partido partido) {
-        Equipo equipoVisitante = partido.getEquipoVisitante();
-
-        imagenEquipoVisitante = (ImageView) findViewById(R.id.imagen_equipo_visitante);
-        imagenEquipoVisitante.setImageResource(equipoVisitante.getIdImagen());
-
-        nombreEquipoVisitante = (TextView) findViewById(R.id.nombre_equipo_visitante);
-        nombreEquipoVisitante.setText(equipoVisitante.getNombreEquipo());
-
-        estadoEquipoVisitante = (TextView) findViewById(R.id.estado_equipo_visitante);
-        estadoEquipoVisitante.setText(equipoVisitante.getEstado());
-
-        entrenadorEquipoVisitante = (TextView) findViewById(R.id.nombre_entrenador_visitante);
-        entrenadorEquipoVisitante.setText(equipoVisitante.getEntrenador());
-    }
-
-    private void getStadiumInfo(Partido partido) {
-        nombreEstadio = (TextView) findViewById(R.id.nombre_estadio);
-        nombreEstadio.setText(partido.getEstadio());
-
-        imagenEstadio = (ImageView) findViewById(R.id.imagen_estadio);
-        imagenEstadio.setImageResource(partido.getImagenEstadio());
-    }
-
     private void getLocalTeamInfo(Partido partido) {
-        Equipo equipoLocal = partido.getEquipoLocal();
+
+        final Equipo equipoLocal = partido.getEquipoLocal();
 
         imagenEquipoLocal = (ImageView) findViewById(R.id.imagen_equipo_local);
         imagenEquipoLocal.setImageResource(equipoLocal.getIdImagen());
+
+        imagenEquipoLocal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextIntent = new Intent(DetallePartidoActivity.this, DetalleEquipo.class);
+                nextIntent.putExtra("equipo", equipoLocal.getId());
+                startActivity(nextIntent);
+            }
+        });
 
         nombreEquipoLocal = (TextView) findViewById(R.id.nombre_equipo_local);
         nombreEquipoLocal.setText(equipoLocal.getNombreEquipo());
@@ -81,6 +68,39 @@ public class DetallePartidoActivity extends AppCompatActivity {
         estadoEquipoLocal.setText(equipoLocal.getEstado());
 
         entrenadorEquipoLocal = (TextView) findViewById(R.id.nombre_entrenador_local);
-        entrenadorEquipoLocal.setText(equipoLocal.getEntrenador());
+        entrenadorEquipoLocal.setText(equipoLocal.getEntrenador().getNombre());
+    }
+
+    private void getVisitanteTeamInfo(final Partido partido) {
+        final Equipo equipoVisitante = partido.getEquipoVisitante();
+
+        imagenEquipoVisitante = (ImageView) findViewById(R.id.imagen_equipo_visitante);
+        imagenEquipoVisitante.setImageResource(equipoVisitante.getIdImagen());
+
+        imagenEquipoVisitante.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextIntent = new Intent(DetallePartidoActivity.this, DetalleEquipo.class);
+                nextIntent.putExtra("equipo", equipoVisitante.getId());
+                startActivity(nextIntent);
+            }
+        });
+
+        nombreEquipoVisitante = (TextView) findViewById(R.id.nombre_equipo_visitante);
+        nombreEquipoVisitante.setText(equipoVisitante.getNombreEquipo());
+
+        estadoEquipoVisitante = (TextView) findViewById(R.id.estado_equipo_visitante);
+        estadoEquipoVisitante.setText(equipoVisitante.getEstado());
+
+        entrenadorEquipoVisitante = (TextView) findViewById(R.id.nombre_entrenador_visitante);
+        entrenadorEquipoVisitante.setText(equipoVisitante.getEntrenador().getNombre());
+    }
+
+    private void getStadiumInfo(Partido partido) {
+        nombreEstadio = (TextView) findViewById(R.id.nombre_estadio);
+        nombreEstadio.setText(partido.getEstadio());
+
+        imagenEstadio = (ImageView) findViewById(R.id.imagen_estadio);
+        imagenEstadio.setImageResource(partido.getImagenEstadio());
     }
 }

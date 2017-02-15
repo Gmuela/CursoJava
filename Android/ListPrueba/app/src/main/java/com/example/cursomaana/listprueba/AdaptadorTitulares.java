@@ -13,12 +13,26 @@ class AdaptadorTitulares extends ArrayAdapter<Titular> {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = LayoutInflater.from(getContext());
-        View itemView = inflater.inflate(R.layout.vista_titular, null);
-        TextView lblTitulo = (TextView) itemView.findViewById(R.id.titulo);
-        lblTitulo.setText(getItem(position).getTitular());
-        TextView lblSubtitulo = (TextView) itemView.findViewById(R.id.subtitulo);
-        lblSubtitulo.setText(getItem(position).getSubtitular());
+
+        View itemView = convertView;
+        ViewHolder holder;
+        if (itemView == null) {
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            itemView = inflater.inflate(R.layout.vista_titular, null);
+            holder = new ViewHolder();
+            holder.titulo = (TextView) itemView.findViewById(R.id.titulo);
+            holder.subtitulo = (TextView) itemView.findViewById(R.id.subtitulo);
+            itemView.setTag(holder);
+        } else{
+            holder = (ViewHolder) itemView.getTag();
+        }
+        holder.titulo.setText(getItem(position).getTitular());
+        holder.subtitulo.setText(getItem(position).getSubtitular());
         return (itemView);
+    }
+
+    class ViewHolder{
+        TextView titulo;
+        TextView subtitulo;
     }
 }

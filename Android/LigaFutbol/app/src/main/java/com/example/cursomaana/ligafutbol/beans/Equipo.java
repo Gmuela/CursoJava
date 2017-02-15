@@ -1,20 +1,26 @@
 package com.example.cursomaana.ligafutbol.beans;
 
+import java.util.List;
+
 public class Equipo {
 
+    private int id;
     private String nombreEquipo;
     private String estado;
     private String nombreEstadio;
-    private String entrenador;
+    private Entrenador entrenador;
+    private List<Jugador> jugadores;
     private boolean isLocal;
     private int idImagen;
     private int imagenEstadio;
 
-    public Equipo(String nombreEquipo, String estado, String nombreEstadio, String entrenador, int idImagen, int imagenEstadio) {
+    public Equipo(int id, String nombreEquipo, String estado, String nombreEstadio, Entrenador entrenador, List<Jugador> jugadores, int idImagen, int imagenEstadio) {
+        this.id = id;
         this.nombreEquipo = nombreEquipo;
         this.estado = estado;
         this.nombreEstadio = nombreEstadio;
         this.entrenador = entrenador;
+        this.jugadores = jugadores;
         this.idImagen = idImagen;
         this.imagenEstadio = imagenEstadio;
     }
@@ -43,20 +49,28 @@ public class Equipo {
         this.nombreEstadio = nombreEstadio;
     }
 
+    public Entrenador getEntrenador() {
+        return entrenador;
+    }
+
+    public void setEntrenador(Entrenador entrenador) {
+        this.entrenador = entrenador;
+    }
+
+    public List<Jugador> getJugadores() {
+        return jugadores;
+    }
+
+    public void setJugadores(List<Jugador> jugadores) {
+        this.jugadores = jugadores;
+    }
+
     public boolean isLocal() {
         return isLocal;
     }
 
     public void setLocal(boolean local) {
         isLocal = local;
-    }
-
-    public String getEntrenador() {
-        return entrenador;
-    }
-
-    public void setEntrenador(String entrenador) {
-        this.entrenador = entrenador;
     }
 
     public int getIdImagen() {
@@ -73,5 +87,13 @@ public class Equipo {
 
     public void setImagenEstadio(int imagenEstadio) {
         this.imagenEstadio = imagenEstadio;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
