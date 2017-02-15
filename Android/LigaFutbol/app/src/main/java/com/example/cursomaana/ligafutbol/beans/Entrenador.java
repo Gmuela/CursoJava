@@ -4,8 +4,8 @@ public class Entrenador extends Persona {
 
     private boolean isEntrenador;
 
-    public Entrenador(String nombre, Integer edad, int idImagen, boolean isEntrenador) {
-        super(nombre, edad, idImagen);
+    public Entrenador(int id, String nombre, Integer edad, int idImagen, boolean isEntrenador) {
+        super(id, nombre, edad, idImagen);
         this.isEntrenador = isEntrenador;
     }
 

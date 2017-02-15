@@ -21,12 +21,12 @@ public class AdaptadorPartidos extends ArrayAdapter<Partido> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View itemView = convertView;
-        ViewHolder holder;
+        ViewHolderPartidos holder;
 
         if (itemView == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             itemView = inflater.inflate(R.layout.formato_lista_partidos, null);
-            holder = new ViewHolder();
+            holder = new ViewHolderPartidos();
 
             holder.imagen_local = (ImageView) itemView.findViewById(R.id.imagen_local);
             holder.imagen_visitante = (ImageView) itemView.findViewById(R.id.imagen_visitante);
@@ -39,7 +39,7 @@ public class AdaptadorPartidos extends ArrayAdapter<Partido> {
             itemView.setTag(holder);
 
         } else{
-            holder = (ViewHolder) itemView.getTag();
+            holder = (ViewHolderPartidos) itemView.getTag();
         }
 
         Partido partido = getItem(position);
@@ -67,7 +67,7 @@ public class AdaptadorPartidos extends ArrayAdapter<Partido> {
         return (itemView);
     }
 
-    private class ViewHolder {
+    private class ViewHolderPartidos {
         ImageView imagen_local;
         ImageView imagen_visitante;
 

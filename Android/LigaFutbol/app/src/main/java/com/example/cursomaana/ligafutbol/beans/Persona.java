@@ -2,14 +2,24 @@ package com.example.cursomaana.ligafutbol.beans;
 
 public class Persona {
 
+    private int id;
     private String nombre;
     private Integer edad;
     private int idImagen;
 
-    public Persona(String nombre, Integer edad, int idImagen) {
+    public Persona(int id, String nombre, Integer edad, int idImagen) {
+        this.id = id;
         this.nombre = nombre;
         this.edad = edad;
         this.idImagen = idImagen;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {

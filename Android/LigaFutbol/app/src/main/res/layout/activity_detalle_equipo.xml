@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_detalle_equipo"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.cursomaana.ligafutbol.activities.DetalleEquipo">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:gravity="center">
 
         <TextView
             android:text="Real Madrid"
@@ -23,15 +16,14 @@
             android:layout_height="wrap_content"
             android:id="@+id/nombre_equipo"
             android:textAlignment="center"
-            android:textSize="24sp"
+            android:textSize="36sp"
             android:textStyle="normal|bold" />
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="196dp"
             app:srcCompat="@mipmap/ic_madrid"
-            android:id="@+id/imagen_escudo"
-            android:layout_weight="0.20" />
+            android:id="@+id/imagen_escudo" />
 
         <TextView
             android:text="Bernabeu"
@@ -39,14 +31,13 @@
             android:layout_height="wrap_content"
             android:id="@+id/nombre_estadio"
             android:textAlignment="center"
-            android:textSize="18sp" />
+            android:textSize="30sp" />
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="187dp"
             app:srcCompat="@mipmap/ic_estadio_madrid"
-            android:id="@+id/imagen_estadio"
-            android:layout_weight="0.14" />
+            android:id="@+id/imagen_estadio" />
 
         <TextView
             android:text="Zidane"
@@ -54,14 +45,33 @@
             android:layout_height="wrap_content"
             android:id="@+id/nombre_entrenador"
             android:textAlignment="center"
-            android:textSize="18sp" />
+            android:textSize="30sp" />
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="181dp"
             app:srcCompat="@mipmap/entrenador_zidane"
-            android:id="@+id/imagen_entrenador"
-            android:layout_weight="0.17" />
+            android:id="@+id/imagen_entrenador" />
+
+        <TextView
+            android:text="Jugadores"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/jugadores_label"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="normal|bold" />
+
+        <GridView
+            android:layout_width="match_parent"
+            android:layout_height="1000dp"
+            android:columnWidth="150dp"
+            android:numColumns="auto_fit"
+            android:horizontalSpacing="5dp"
+            android:verticalSpacing="10dp"
+            android:stretchMode="columnWidth"
+            android:id="@+id/grid_jugadores"
+            android:gravity="center" />
 
     </LinearLayout>
-</RelativeLayout>
+</ScrollView>

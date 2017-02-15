@@ -5,8 +5,8 @@ public class Jugador extends Persona {
     private Integer dorsal;
     private String posicion;
 
-    public Jugador(String nombre, Integer edad, int idImagen, Integer dorsal, String posicion) {
-        super(nombre, edad, idImagen);
+    public Jugador(int id, String nombre, Integer edad, int idImagen, Integer dorsal, String posicion) {
+        super(id, nombre, edad, idImagen);
         this.dorsal = dorsal;
         this.posicion = posicion;
     }

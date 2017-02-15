@@ -21,7 +21,8 @@
         </activity>
         <activity android:name=".activities.ListaPartidosActivity" />
         <activity android:name=".activities.DetallePartidoActivity" />
-        <activity android:name=".activities.DetalleEquipo"></activity>
+        <activity android:name=".activities.DetalleEquipo" />
+        <activity android:name=".activities.DetalleJugador"></activity>
     </application>
 
 </manifest>

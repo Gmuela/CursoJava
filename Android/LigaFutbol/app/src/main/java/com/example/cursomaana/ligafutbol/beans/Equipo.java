@@ -1,7 +1,5 @@
 package com.example.cursomaana.ligafutbol.beans;
 
-import java.util.List;
-
 public class Equipo {
 
     private int id;
@@ -9,12 +7,12 @@ public class Equipo {
     private String estado;
     private String nombreEstadio;
     private Entrenador entrenador;
-    private List<Jugador> jugadores;
+    private Jugador[] jugadores;
     private boolean isLocal;
     private int idImagen;
     private int imagenEstadio;
 
-    public Equipo(int id, String nombreEquipo, String estado, String nombreEstadio, Entrenador entrenador, List<Jugador> jugadores, int idImagen, int imagenEstadio) {
+    public Equipo(int id, String nombreEquipo, String estado, String nombreEstadio, Entrenador entrenador, Jugador[] jugadores, int idImagen, int imagenEstadio) {
         this.id = id;
         this.nombreEquipo = nombreEquipo;
         this.estado = estado;
@@ -57,11 +55,11 @@ public class Equipo {
         this.entrenador = entrenador;
     }
 
-    public List<Jugador> getJugadores() {
+    public Jugador[] getJugadores() {
         return jugadores;
     }
 
-    public void setJugadores(List<Jugador> jugadores) {
+    public void setJugadores(Jugador[] jugadores) {
         this.jugadores = jugadores;
     }
 
