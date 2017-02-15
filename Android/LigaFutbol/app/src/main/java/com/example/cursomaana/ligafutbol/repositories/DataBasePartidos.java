@@ -23,15 +23,21 @@ public class DataBasePartidos {
     private Partido partido3 = new Partido(2, bayern, "15/02", "20:45", arsenal);
     private Partido partido4 = new Partido(3, madrid, "15/02", "20:45", napoli);
 
-
     private Partido[] partidos = {partido1,partido2,partido3,partido4};
 
+    public void terminarPartidos(){
+        partido1.setJugado(true);
+        partido1.setResultado("1 - 0");
+        partido2.setJugado(true);
+        partido2.setResultado("4 - 0");
+    }
+
     public Partido[] getPartidos() {
+        terminarPartidos();
         return partidos;
     }
 
     public Partido getPartido(int id) {
-
         for (Partido partido : partidos) {
             if (partido.getId() == id) {
                 return partido;

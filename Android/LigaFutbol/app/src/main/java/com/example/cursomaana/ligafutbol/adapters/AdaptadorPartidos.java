@@ -1,6 +1,7 @@
 package com.example.cursomaana.ligafutbol.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,8 +38,15 @@ public class AdaptadorPartidos extends ArrayAdapter<Partido> {
         imagen_local.setImageResource(equipoLocal.getIdImagen());
         imagen_visitante.setImageResource(equipoVisitante.getIdImagen());
 
-        fecha.setText(partido.getFecha());
-        hora.setText(partido.getHora());
+        if(partido.isJugado()){
+            fecha.setText(partido.getResultado());
+            fecha.setTextColor(Color.BLUE);
+            fecha.setTextSize(25f);
+            hora.setText("");
+        } else {
+            fecha.setText(partido.getFecha());
+            hora.setText(partido.getHora());
+        }
 
         nombreLocal.setText(equipoLocal.getNombreEquipo());
         nombreVisitante.setText(equipoVisitante.getNombreEquipo());

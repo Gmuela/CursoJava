@@ -3,6 +3,7 @@ package com.example.cursomaana.ligafutbol.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,13 +30,11 @@ public class DetallePartidoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_detalle_partido);
 
         Intent lastIntent = getIntent();
-//        String id = lastIntent.getExtras().getString("id");
-//        String id = lastIntent.getStringExtra("id");//TODO no funciona el getExtra
-        String id = "2";
-        Integer idPartido = Integer.valueOf(id);
+        Integer idPartido = lastIntent.getIntExtra("id", 0);
         DataBasePartidos dataBasePartidos = new DataBasePartidos();
         Partido partido = dataBasePartidos.getPartido(idPartido);
 

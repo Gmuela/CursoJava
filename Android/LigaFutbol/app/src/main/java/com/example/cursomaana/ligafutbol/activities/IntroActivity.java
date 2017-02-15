@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MotionEvent;
 import android.view.View;
 
 import com.example.cursomaana.ligafutbol.R;
@@ -18,7 +17,7 @@ public class IntroActivity extends AppCompatActivity {
 
     private static final boolean AUTO_HIDE = true;
 
-    private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
+    private static final int AUTO_HIDE_DELAY_MILLIS = 0;
 
     private static final int UI_ANIMATION_DELAY = 0;
     private final Handler mHideHandler = new Handler();
@@ -41,7 +40,6 @@ public class IntroActivity extends AppCompatActivity {
     private final Runnable mShowPart2Runnable = new Runnable() {
         @Override
         public void run() {
-            // Delayed display of UI elements
             ActionBar actionBar = getSupportActionBar();
             if (actionBar != null) {
                 actionBar.show();
@@ -49,21 +47,12 @@ public class IntroActivity extends AppCompatActivity {
             mControlsView.setVisibility(View.VISIBLE);
         }
     };
+
     private boolean mVisible;
     private final Runnable mHideRunnable = new Runnable() {
         @Override
         public void run() {
             hide();
-        }
-    };
-
-    private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            if (AUTO_HIDE) {
-                delayedHide(AUTO_HIDE_DELAY_MILLIS);
-            }
-            return false;
         }
     };
 
@@ -89,6 +78,7 @@ public class IntroActivity extends AppCompatActivity {
                 IntroActivity.this.runOnUiThread(new Runnable() {
                     public void run() {
                         startActivity(new Intent(IntroActivity.this, ListaPartidosActivity.class));
+                        finish();
                     }
                 });
             }
