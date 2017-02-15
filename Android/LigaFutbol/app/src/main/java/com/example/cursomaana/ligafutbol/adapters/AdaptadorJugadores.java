@@ -37,7 +37,7 @@ public class AdaptadorJugadores extends ArrayAdapter<Jugador> {
 
         final Jugador jugador = getItem(position);
 
-        holder.imagenJugador.setImageResource(jugador.getIdImagen());
+        holder.imagenJugador.setImageResource(jugador.getImagen());
         holder.nombreDorsal.setText(jugador.getNombre() + " #"+jugador.getDorsal());
 
         return (itemView);

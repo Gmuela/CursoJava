@@ -8,10 +8,11 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.cursomaana.ligafutbol.repositories.DataBasePartidos;
+import com.example.cursomaana.ligafutbol.R;
 import com.example.cursomaana.ligafutbol.beans.Equipo;
 import com.example.cursomaana.ligafutbol.beans.Partido;
-import com.example.cursomaana.ligafutbol.R;
+import com.example.cursomaana.ligafutbol.repositories.DataBasePartidos;
+import com.example.cursomaana.ligafutbol.repositories.RepositoryFactory;
 
 public class DetallePartidoActivity extends AppCompatActivity {
 
@@ -35,13 +36,13 @@ public class DetallePartidoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detalle_partido);
 
         Intent lastIntent = getIntent();
-        Integer idPartido = lastIntent.getIntExtra("id", 0);
-        DataBasePartidos dataBasePartidos = new DataBasePartidos();
-        Partido partido = dataBasePartidos.getPartido(idPartido);
+        Integer partido = lastIntent.getIntExtra("partido", 0);
+        DataBasePartidos dataBasePartidos = RepositoryFactory.getInstance();;
+        Partido partidoDetalle = dataBasePartidos.getPartido(partido);
 
-        getStadiumInfo(partido);
-        getLocalTeamInfo(partido);
-        getVisitanteTeamInfo(partido);
+        getStadiumInfo(partidoDetalle);
+        getLocalTeamInfo(partidoDetalle);
+        getVisitanteTeamInfo(partidoDetalle);
 
     }
 
@@ -50,12 +51,12 @@ public class DetallePartidoActivity extends AppCompatActivity {
         final Equipo equipoLocal = partido.getEquipoLocal();
 
         imagenEquipoLocal = (ImageView) findViewById(R.id.imagen_equipo_local);
-        imagenEquipoLocal.setImageResource(equipoLocal.getIdImagen());
+        imagenEquipoLocal.setImageResource(equipoLocal.getImagenEscudo());
 
         imagenEquipoLocal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent nextIntent = new Intent(DetallePartidoActivity.this, DetalleEquipo.class);
+                Intent nextIntent = new Intent(DetallePartidoActivity.this, DetalleEquipoActivity.class);
                 nextIntent.putExtra("equipo", equipoLocal.getId());
                 startActivity(nextIntent);
             }
@@ -75,12 +76,12 @@ public class DetallePartidoActivity extends AppCompatActivity {
         final Equipo equipoVisitante = partido.getEquipoVisitante();
 
         imagenEquipoVisitante = (ImageView) findViewById(R.id.imagen_equipo_visitante);
-        imagenEquipoVisitante.setImageResource(equipoVisitante.getIdImagen());
+        imagenEquipoVisitante.setImageResource(equipoVisitante.getImagenEscudo());
 
         imagenEquipoVisitante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent nextIntent = new Intent(DetallePartidoActivity.this, DetalleEquipo.class);
+                Intent nextIntent = new Intent(DetallePartidoActivity.this, DetalleEquipoActivity.class);
                 nextIntent.putExtra("equipo", equipoVisitante.getId());
                 startActivity(nextIntent);
             }

@@ -23,7 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="196dp"
             app:srcCompat="@mipmap/ic_madrid"
-            android:id="@+id/imagen_escudo" />
+            android:id="@+id/imagen_escudo"
+            android:layout_marginBottom="5dp"/>
 
         <TextView
             android:text="Bernabeu"
@@ -37,7 +38,8 @@
             android:layout_width="match_parent"
             android:layout_height="187dp"
             app:srcCompat="@mipmap/ic_estadio_madrid"
-            android:id="@+id/imagen_estadio" />
+            android:id="@+id/imagen_estadio"
+            android:layout_marginBottom="5dp"/>
 
         <TextView
             android:text="Zidane"
@@ -51,7 +53,8 @@
             android:layout_width="match_parent"
             android:layout_height="181dp"
             app:srcCompat="@mipmap/entrenador_zidane"
-            android:id="@+id/imagen_entrenador" />
+            android:id="@+id/imagen_entrenador"
+            android:layout_marginBottom="5dp"/>
 
         <TextView
             android:text="Jugadores"
@@ -71,7 +74,9 @@
             android:verticalSpacing="10dp"
             android:stretchMode="columnWidth"
             android:id="@+id/grid_jugadores"
-            android:gravity="center" />
+            android:gravity="center"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="5dp"/>
 
     </LinearLayout>
 </ScrollView>

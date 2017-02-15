@@ -47,8 +47,8 @@ public class AdaptadorPartidos extends ArrayAdapter<Partido> {
         Equipo equipoLocal = partido.getEquipoLocal();
         Equipo equipoVisitante = partido.getEquipoVisitante();
 
-        holder.imagen_local.setImageResource(equipoLocal.getIdImagen());
-        holder.imagen_visitante.setImageResource(equipoVisitante.getIdImagen());
+        holder.imagen_local.setImageResource(equipoLocal.getImagenEscudo());
+        holder.imagen_visitante.setImageResource(equipoVisitante.getImagenEscudo());
 
         holder.nombreLocal.setText(equipoLocal.getNombreEquipo());
         holder.nombreVisitante.setText(equipoVisitante.getNombreEquipo());

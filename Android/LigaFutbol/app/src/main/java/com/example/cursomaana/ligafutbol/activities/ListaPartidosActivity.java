@@ -12,6 +12,7 @@ import com.example.cursomaana.ligafutbol.R;
 import com.example.cursomaana.ligafutbol.adapters.AdaptadorPartidos;
 import com.example.cursomaana.ligafutbol.beans.Partido;
 import com.example.cursomaana.ligafutbol.repositories.DataBasePartidos;
+import com.example.cursomaana.ligafutbol.repositories.RepositoryFactory;
 
 public class ListaPartidosActivity extends AppCompatActivity {
 
@@ -23,7 +24,7 @@ public class ListaPartidosActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_lista_partidos);
 
-        DataBasePartidos dataBasePartidos = new DataBasePartidos();
+        DataBasePartidos dataBasePartidos = RepositoryFactory.getInstance();;
 
         final AdaptadorPartidos adaptador = new AdaptadorPartidos(this, dataBasePartidos.getPartidos());
 
@@ -35,7 +36,7 @@ public class ListaPartidosActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Partido partidoClickado = (Partido)parent.getItemAtPosition(position);
                 Intent nextIntent = new Intent(ListaPartidosActivity.this, DetallePartidoActivity.class);
-                nextIntent.putExtra("id", partidoClickado.getId());
+                nextIntent.putExtra("partido", partidoClickado.getId());
                 startActivity(nextIntent);
             }
         });

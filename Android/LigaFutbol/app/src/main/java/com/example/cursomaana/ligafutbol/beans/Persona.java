@@ -5,13 +5,13 @@ public class Persona {
     private int id;
     private String nombre;
     private Integer edad;
-    private int idImagen;
+    private int imagen;
 
-    public Persona(int id, String nombre, Integer edad, int idImagen) {
+    public Persona(int id, String nombre, Integer edad, int imagen) {
         this.id = id;
         this.nombre = nombre;
         this.edad = edad;
-        this.idImagen = idImagen;
+        this.imagen = imagen;
     }
 
     public int getId() {
@@ -38,11 +38,11 @@ public class Persona {
         this.edad = edad;
     }
 
-    public int getIdImagen() {
-        return idImagen;
+    public int getImagen() {
+        return imagen;
     }
 
-    public void setIdImagen(int idImagen) {
-        this.idImagen = idImagen;
+    public void setImagen(int imagen) {
+        this.imagen = imagen;
     }
 }

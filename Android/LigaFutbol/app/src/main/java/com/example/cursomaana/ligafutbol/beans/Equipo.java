@@ -9,17 +9,17 @@ public class Equipo {
     private Entrenador entrenador;
     private Jugador[] jugadores;
     private boolean isLocal;
-    private int idImagen;
+    private int imagenEscudo;
     private int imagenEstadio;
 
-    public Equipo(int id, String nombreEquipo, String estado, String nombreEstadio, Entrenador entrenador, Jugador[] jugadores, int idImagen, int imagenEstadio) {
+    public Equipo(int id, String nombreEquipo, String estado, String nombreEstadio, Entrenador entrenador, Jugador[] jugadores, int imagenEscudo, int imagenEstadio) {
         this.id = id;
         this.nombreEquipo = nombreEquipo;
         this.estado = estado;
         this.nombreEstadio = nombreEstadio;
         this.entrenador = entrenador;
         this.jugadores = jugadores;
-        this.idImagen = idImagen;
+        this.imagenEscudo = imagenEscudo;
         this.imagenEstadio = imagenEstadio;
     }
 
@@ -71,12 +71,12 @@ public class Equipo {
         isLocal = local;
     }
 
-    public int getIdImagen() {
-        return idImagen;
+    public int getImagenEscudo() {
+        return imagenEscudo;
     }
 
-    public void setIdImagen(int idImagen) {
-        this.idImagen = idImagen;
+    public void setImagenEscudo(int imagenEscudo) {
+        this.imagenEscudo = imagenEscudo;
     }
 
     public int getImagenEstadio() {

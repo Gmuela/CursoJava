@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_detalle_jugador"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.cursomaana.ligafutbol.activities.DetallePersonaActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/jugador_marcelo"
+            android:id="@+id/imagen_jugador_detalle"
+            android:layout_weight="0.60" />
+
+        <TextView
+            android:text="Marcelo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/nombre_jugador_detalle"
+            android:textAlignment="center"
+            android:textSize="36sp"
+            android:textStyle="normal|bold" />
+
+        <TextView
+            android:text="X años"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edad_jugador_detalle"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+
+        <TextView
+            android:text="Dorsal NUM"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dorsal_jugador_detalle"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
+        <TextView
+            android:text="Posición"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/posicion_jugador_detalle"
+            android:textSize="24sp"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+</RelativeLayout>
