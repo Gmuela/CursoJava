@@ -37,7 +37,7 @@ public class DetallePartidoActivity extends AppCompatActivity {
 
         Intent lastIntent = getIntent();
         Integer partido = lastIntent.getIntExtra("partido", 0);
-        DataBasePartidos dataBasePartidos = RepositoryFactory.getInstance();;
+        DataBasePartidos dataBasePartidos = RepositoryFactory.getInstance();
         Partido partidoDetalle = dataBasePartidos.getPartido(partido);
 
         getStadiumInfo(partidoDetalle);

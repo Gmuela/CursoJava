@@ -15,11 +15,11 @@ import com.example.cursomaana.ligafutbol.repositories.RepositoryFactory;
 
 public class DetallePersonaActivity extends AppCompatActivity {
 
-    private ImageView imagenJugador;
-    private TextView nombreJugador;
-    private TextView dorsalJugador;
-    private TextView posicionJugador;
-    private TextView edadJugador;
+    private ImageView imagenPersona;
+    private TextView nombrePersona;
+    private TextView dorsalPersona;
+    private TextView posicionPersona;
+    private TextView edadPersona;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,33 +27,33 @@ public class DetallePersonaActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_detalle_persona);
 
-        imagenJugador = (ImageView) findViewById(R.id.imagen_jugador_detalle);
-        nombreJugador = (TextView) findViewById(R.id.nombre_jugador_detalle);
-        dorsalJugador = (TextView) findViewById(R.id.dorsal_jugador_detalle);
-        posicionJugador = (TextView) findViewById(R.id.posicion_jugador_detalle);
-        edadJugador = (TextView) findViewById(R.id.edad_jugador_detalle);
+        imagenPersona = (ImageView) findViewById(R.id.imagen_persona_detalle);
+        nombrePersona = (TextView) findViewById(R.id.nombre_persona_detalle);
+        dorsalPersona = (TextView) findViewById(R.id.dorsal_persona_detalle);
+        posicionPersona = (TextView) findViewById(R.id.posicion_persona_detalle);
+        edadPersona = (TextView) findViewById(R.id.edad_persona_detalle);
 
         Intent lastIntent = getIntent();
 
         int persona = lastIntent.getIntExtra("persona", 0);
         boolean isJugador = lastIntent.getBooleanExtra("isJugador",false);
 
-        DataBasePartidos dataBasePartidos = RepositoryFactory.getInstance();;
+        DataBasePartidos dataBasePartidos = RepositoryFactory.getInstance();
 
         if(isJugador){
             Jugador jugadorDetalle = dataBasePartidos.getJugador(persona);
-            imagenJugador.setImageResource(jugadorDetalle.getImagen());
-            nombreJugador.setText(jugadorDetalle.getNombre());
-            dorsalJugador.setText(String.valueOf("#" + jugadorDetalle.getDorsal()));
-            posicionJugador.setText(jugadorDetalle.getPosicion());
-            edadJugador.setText(String.valueOf("Edad: " + jugadorDetalle.getEdad()));
+            imagenPersona.setImageResource(jugadorDetalle.getImagen());
+            nombrePersona.setText(jugadorDetalle.getNombre());
+            dorsalPersona.setText(String.valueOf("#" + jugadorDetalle.getDorsal()));
+            posicionPersona.setText(jugadorDetalle.getPosicion());
+            edadPersona.setText(String.valueOf("Edad: " + jugadorDetalle.getEdad()));
         }else{
             Entrenador jugadorDetalle = dataBasePartidos.getEntrenador(persona);
-            imagenJugador.setImageResource(jugadorDetalle.getImagen());
-            nombreJugador.setText(jugadorDetalle.getNombre());
-            dorsalJugador.setText("");
-            posicionJugador.setText("");
-            edadJugador.setText(String.valueOf("Edad: " + jugadorDetalle.getEdad()));
+            imagenPersona.setImageResource(jugadorDetalle.getImagen());
+            nombrePersona.setText(jugadorDetalle.getNombre());
+            dorsalPersona.setText("");
+            posicionPersona.setText("");
+            edadPersona.setText(String.valueOf("Edad: " + jugadorDetalle.getEdad()));
         }
 
     }
