@@ -47,18 +47,35 @@ public class DetalleEquipoActivity extends AppCompatActivity {
 
     }
 
-    private void getTeamInfo(Equipo equipoDetalle) {
+    private void getTeamInfo(final Equipo equipoDetalle) {
         nombreEquipo = (TextView) findViewById(R.id.nombre_equipo);
         escudoEquipo = (ImageView) findViewById(R.id.imagen_escudo);
         nombreEquipo.setText(equipoDetalle.getNombreEquipo());
         escudoEquipo.setImageResource(equipoDetalle.getImagenEscudo());
+        escudoEquipo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentURL = new Intent(Intent.ACTION_VIEW);
+                intentURL.setData(equipoDetalle.getUri());
+                startActivity(intentURL);
+            }
+        });
     }
 
-    private void getStadiumInfo(Equipo equipoDetalle) {
+    private void getStadiumInfo(final Equipo equipoDetalle) {
         nombreEstadio = (TextView) findViewById(R.id.nombre_estadio);
         imagenEstadio = (ImageView) findViewById(R.id.imagen_estadio);
-        nombreEstadio.setText(equipoDetalle.getNombreEstadio());
-        imagenEstadio.setImageResource(equipoDetalle.getImagenEstadio());
+        nombreEstadio.setText(equipoDetalle.getEstadio().getNombre());
+        imagenEstadio.setImageResource(equipoDetalle.getEstadio().getImagenEstadio());
+
+        imagenEstadio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentURL = new Intent(Intent.ACTION_VIEW);
+                intentURL.setData(equipoDetalle.getEstadio().getUri());
+                startActivity(intentURL);
+            }
+        });
     }
 
     private void getTrainerInfo(Equipo equipoDetalle) {

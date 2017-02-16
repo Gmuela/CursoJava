@@ -7,8 +7,7 @@ public class Partido {
     private Equipo equipoVisitante;
     private String fecha;
     private String hora;
-    private String estadio;
-    private int imagenEstadio;
+    private Estadio estadio;
     private boolean jugado;
     private String resultado;
 
@@ -23,8 +22,7 @@ public class Partido {
         this.equipoVisitante = equipoVisitante;
         this.equipoVisitante.setLocal(false);
 
-        this.estadio = equipoLocal.getNombreEstadio();
-        this.imagenEstadio = equipoLocal.getImagenEstadio();
+        this.estadio = equipoLocal.getEstadio();
         this.jugado = false;
         this.resultado="No jugado";
     }
@@ -61,11 +59,11 @@ public class Partido {
         this.hora = hora;
     }
 
-    public String getEstadio() {
+    public Estadio getEstadio() {
         return estadio;
     }
 
-    public void setEstadio(String estadio) {
+    public void setEstadio(Estadio estadio) {
         this.estadio = estadio;
     }
 
@@ -75,14 +73,6 @@ public class Partido {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getImagenEstadio() {
-        return imagenEstadio;
-    }
-
-    public void setImagenEstadio(int imagenEstadio) {
-        this.imagenEstadio = imagenEstadio;
     }
 
     public boolean isJugado() {

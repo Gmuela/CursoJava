@@ -1,6 +1,7 @@
 package com.example.cursomaana.ligafutbol.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +10,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.cursomaana.ligafutbol.R;
+import com.example.cursomaana.ligafutbol.activities.DetalleEquipoActivity;
 import com.example.cursomaana.ligafutbol.beans.Equipo;
 import com.example.cursomaana.ligafutbol.beans.Partido;
-import com.example.cursomaana.ligafutbol.R;
 
 public class AdaptadorPartidos extends ArrayAdapter<Partido> {
     public AdaptadorPartidos(Context context, Partido[] datos) {
@@ -43,12 +45,28 @@ public class AdaptadorPartidos extends ArrayAdapter<Partido> {
         }
 
         Partido partido = getItem(position);
-
-        Equipo equipoLocal = partido.getEquipoLocal();
-        Equipo equipoVisitante = partido.getEquipoVisitante();
+        final Equipo equipoLocal = partido.getEquipoLocal();
+        final Equipo equipoVisitante = partido.getEquipoVisitante();
 
         holder.imagen_local.setImageResource(equipoLocal.getImagenEscudo());
+        holder.imagen_local.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextIntent = new Intent(getContext(), DetalleEquipoActivity.class);
+                nextIntent.putExtra("equipo", equipoLocal.getId());
+                getContext().startActivity(nextIntent);
+            }
+        });
+
         holder.imagen_visitante.setImageResource(equipoVisitante.getImagenEscudo());
+        holder.imagen_visitante.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextIntent = new Intent(getContext(), DetalleEquipoActivity.class);
+                nextIntent.putExtra("equipo", equipoVisitante.getId());
+                getContext().startActivity(nextIntent);
+            }
+        });
 
         holder.nombreLocal.setText(equipoLocal.getNombreEquipo());
         holder.nombreVisitante.setText(equipoVisitante.getNombreEquipo());

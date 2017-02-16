@@ -3,6 +3,7 @@ package com.example.cursomaana.ligafutbol.repositories;
 import com.example.cursomaana.ligafutbol.R;
 import com.example.cursomaana.ligafutbol.beans.Entrenador;
 import com.example.cursomaana.ligafutbol.beans.Equipo;
+import com.example.cursomaana.ligafutbol.beans.Estadio;
 import com.example.cursomaana.ligafutbol.beans.Jugador;
 import com.example.cursomaana.ligafutbol.beans.Partido;
 
@@ -32,17 +33,26 @@ public class DataBasePartidos {
     private Jugador[] jugadores = {ronaldo, benzema, isco, marcelo, modric, varane, navas, ramos, kroos, lucas, casemiro};
     private Entrenador[] entrenadores = {rui, thomas, unai, luis, carlo, arsene, zidane, sarri};
 
-    private Equipo benfica = new Equipo(1, "Benfica", "Ebrios de la noche anterior", "Estadio da Luz", rui, jugadores, R.mipmap.ic_benfica, R.mipmap.ic_estadio_benfica);
-    private Equipo dortmund = new Equipo(2, "Dortmund", "Motivados", "Signal Iduna Park", thomas, jugadores, R.mipmap.ic_dortmund, R.mipmap.ic_estadio_dortmund);
+    private Estadio estadioBenfica = new Estadio("Estadio da Luz", "https://es.wikipedia.org/wiki/Est%C3%A1dio_da_Luz", R.mipmap.ic_estadio_benfica);
+    private Estadio estadioDortmund = new Estadio("Signal Iduna Park", "https://es.wikipedia.org/wiki/Signal_Iduna_Park", R.mipmap.ic_estadio_dortmund);
+    private Estadio estadioPSG = new Estadio("Parc des Princess", "https://es.wikipedia.org/wiki/Parc_des_Princes", R.mipmap.ic_estadio_psg);
+    private Estadio estadioBarca = new Estadio("Camp Nou", "https://es.wikipedia.org/wiki/Camp_Nou", R.mipmap.ic_estadio_barca);
+    private Estadio estadioBayern = new Estadio("Allianz Arena", "https://es.wikipedia.org/wiki/Allianz_Arena", R.mipmap.ic_estadio_bayern);
+    private Estadio estadioArsenal = new Estadio("Emirates Stadium", "https://es.wikipedia.org/wiki/Emirates_Stadium", R.mipmap.ic_estadio_arsenal);
+    private Estadio estadioMadrid = new Estadio("Santiago Bernabéu", "https://es.wikipedia.org/wiki/Estadio_Santiago_Bernab%C3%A9u", R.mipmap.ic_estadio_madrid);
+    private Estadio estadioNapoli = new Estadio("Estadio San Paolo", "https://es.wikipedia.org/wiki/Estadio_San_Paolo", R.mipmap.ic_estadio_napoli);
 
-    private Equipo paris = new Equipo(3, "PSG", "En la torre eiffel", "Parc des Princes", unai, jugadores, R.mipmap.ic_paris, R.mipmap.ic_estadio_psg);
-    private Equipo barca = new Equipo(4, "Barça", "Evadiendo impuestos", "Camp Nou", luis, jugadores, R.mipmap.ic_barca, R.mipmap.ic_estadio_barca);
+    private Equipo benfica = new Equipo(1, "Benfica", "Ebrios de la noche anterior", estadioBenfica, rui, jugadores, R.mipmap.ic_benfica, "http://www.slbenfica.pt/");
+    private Equipo dortmund = new Equipo(2, "Dortmund", "Motivados", estadioDortmund, thomas, jugadores, R.mipmap.ic_dortmund, "http://www.bvb.de/");
 
-    private Equipo bayern = new Equipo(5, "Bayern", "Comiendo salchichens grossens", "Allianz Arena", carlo, jugadores, R.mipmap.ic_bayern, R.mipmap.ic_estadio_bayern);
-    private Equipo arsenal = new Equipo(6, "Arsenal", "Tohmandu el tíh de las twelve", "Emirates Stadium", arsene, jugadores, R.mipmap.ic_arsenal, R.mipmap.ic_estadio_arsenal);
+    private Equipo paris = new Equipo(3, "PSG", "En la torre eiffel", estadioPSG, unai, jugadores, R.mipmap.ic_paris, "http://www.psg.fr/es/Accueil/0/Home");
+    private Equipo barca = new Equipo(4, "Barça", "Evadiendo impuestos", estadioBarca, luis, jugadores, R.mipmap.ic_barca, "https://www.fcbarcelona.es/");
 
-    private Equipo madrid = new Equipo(7, "Real Madrid", "Viendo el careto de Ronaldo mientras grita", "Estadio Santiago Bernabéu", zidane, jugadores, R.mipmap.ic_madrid, R.mipmap.ic_estadio_madrid);
-    private Equipo napoli = new Equipo(8, "Napoli", "Pesto di queso di questo di esto", "Estadio San Paolo", sarri, jugadores, R.mipmap.ic_napoli, R.mipmap.ic_estadio_napoli);
+    private Equipo bayern = new Equipo(5, "Bayern", "Comiendo salchichens grossens", estadioBayern, carlo, jugadores, R.mipmap.ic_bayern, "https://fcbayern.com/us");
+    private Equipo arsenal = new Equipo(6, "Arsenal", "Tohmandu el tíh de las twelve", estadioArsenal, arsene, jugadores, R.mipmap.ic_arsenal, "http://www.arsenal.com/home");
+
+    private Equipo madrid = new Equipo(7, "Real Madrid", "Viendo el careto de Ronaldo mientras grita", estadioMadrid, zidane, jugadores, R.mipmap.ic_madrid, "http://www.realmadrid.com/");
+    private Equipo napoli = new Equipo(8, "Napoli", "Pesto di queso di questo di esto", estadioNapoli, sarri, jugadores, R.mipmap.ic_napoli, "http://www.sscnapoli.it/prehome/html/index.html");
 
     private Partido partido1 = new Partido(0, benfica, "14/02", "20:45", dortmund);
     private Partido partido2 = new Partido(1, paris, "14/02", "20:45", barca);

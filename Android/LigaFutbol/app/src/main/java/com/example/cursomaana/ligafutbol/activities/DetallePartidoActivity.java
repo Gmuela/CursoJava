@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.cursomaana.ligafutbol.R;
 import com.example.cursomaana.ligafutbol.beans.Equipo;
+import com.example.cursomaana.ligafutbol.beans.Estadio;
 import com.example.cursomaana.ligafutbol.beans.Partido;
 import com.example.cursomaana.ligafutbol.repositories.DataBasePartidos;
 import com.example.cursomaana.ligafutbol.repositories.RepositoryFactory;
@@ -98,10 +99,20 @@ public class DetallePartidoActivity extends AppCompatActivity {
     }
 
     private void getStadiumInfo(Partido partido) {
+        final Estadio estadio = partido.getEstadio();
+
         nombreEstadio = (TextView) findViewById(R.id.nombre_estadio);
-        nombreEstadio.setText(partido.getEstadio());
+        nombreEstadio.setText(estadio.getNombre());
 
         imagenEstadio = (ImageView) findViewById(R.id.imagen_estadio);
-        imagenEstadio.setImageResource(partido.getImagenEstadio());
+        imagenEstadio.setImageResource(estadio.getImagenEstadio());
+        imagenEstadio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentURL = new Intent(Intent.ACTION_VIEW);
+                intentURL.setData(estadio.getUri());
+                startActivity(intentURL);
+            }
+        });
     }
 }

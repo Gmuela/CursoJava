@@ -1,26 +1,28 @@
 package com.example.cursomaana.ligafutbol.beans;
 
+import android.net.Uri;
+
 public class Equipo {
 
     private int id;
     private String nombreEquipo;
     private String estado;
-    private String nombreEstadio;
+    private Estadio estadio;
     private Entrenador entrenador;
     private Jugador[] jugadores;
     private boolean isLocal;
     private int imagenEscudo;
-    private int imagenEstadio;
+    private String paginaOficial;
 
-    public Equipo(int id, String nombreEquipo, String estado, String nombreEstadio, Entrenador entrenador, Jugador[] jugadores, int imagenEscudo, int imagenEstadio) {
+    public Equipo(int id, String nombreEquipo, String estado, Estadio estadio, Entrenador entrenador, Jugador[] jugadores, int imagenEscudo, String paginaOficial) {
         this.id = id;
         this.nombreEquipo = nombreEquipo;
         this.estado = estado;
-        this.nombreEstadio = nombreEstadio;
+        this.estadio = estadio;
         this.entrenador = entrenador;
         this.jugadores = jugadores;
         this.imagenEscudo = imagenEscudo;
-        this.imagenEstadio = imagenEstadio;
+        this.paginaOficial = paginaOficial;
     }
 
     public String getNombreEquipo() {
@@ -39,12 +41,12 @@ public class Equipo {
         this.estado = estado;
     }
 
-    public String getNombreEstadio() {
-        return nombreEstadio;
+    public Estadio getEstadio() {
+        return estadio;
     }
 
-    public void setNombreEstadio(String nombreEstadio) {
-        this.nombreEstadio = nombreEstadio;
+    public void setEstadio(Estadio estadio) {
+        this.estadio = estadio;
     }
 
     public Entrenador getEntrenador() {
@@ -79,19 +81,23 @@ public class Equipo {
         this.imagenEscudo = imagenEscudo;
     }
 
-    public int getImagenEstadio() {
-        return imagenEstadio;
-    }
-
-    public void setImagenEstadio(int imagenEstadio) {
-        this.imagenEstadio = imagenEstadio;
-    }
-
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Uri getUri(){
+        return Uri.parse(paginaOficial);
+    }
+
+    public String getPaginaOficial() {
+        return paginaOficial;
+    }
+
+    public void setPaginaOficial(String paginaOficial) {
+        this.paginaOficial = paginaOficial;
     }
 }
