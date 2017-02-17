@@ -46,9 +46,9 @@
     </FrameLayout>
 
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="133dp"
-        app:srcCompat="@mipmap/ic_champions"
+        android:layout_width="346dp"
+        android:layout_height="320dp"
+        app:srcCompat="@drawable/champions"
         android:id="@+id/imageView"
         android:layout_gravity="center"
         android:layout_weight="1.06" />
