@@ -1,4 +1,4 @@
-package ejemplogoogleapi.cursomaana.example.com.ejemplostorage.model;
+package ejemplogoogleapi.cursomaana.example.com.ejemplostorage.model.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,15 +9,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ejemplogoogleapi.cursomaana.example.com.ejemplostorage.beans.Usuario;
+import ejemplogoogleapi.cursomaana.example.com.ejemplostorage.model.helpers.UsuarioSQLHelper;
 
-public class UsuarioDAO {
+public class UsuarioSQLiteDAO implements UsuarioDAO{
 
     private UsuarioSQLHelper sqlHelper;
+    private String table;
 
-    public UsuarioDAO(Context context) {
+    public UsuarioSQLiteDAO(Context context) {
         this.sqlHelper = new UsuarioSQLHelper(context, "DBUsuarios", null, 15);
+        this.table = "Usuarios";
     }
 
+    @Override
     public void insert(Usuario usuario) {
         SQLiteDatabase writableDatabase = sqlHelper.getWritableDatabase();
         ContentValues nuevoUsuario = new ContentValues();
@@ -30,9 +34,10 @@ public class UsuarioDAO {
         writableDatabase.close();
     }
 
-    public List<Usuario> selectAll(String from) {
+    @Override
+    public List<Usuario> selectAll() {
         SQLiteDatabase readableDatabase = sqlHelper.getReadableDatabase();
-        Cursor cursor = readableDatabase.rawQuery("SELECT * FROM " + from, null);
+        Cursor cursor = readableDatabase.rawQuery("SELECT * FROM " + table, null);
         Usuario usuario = new Usuario();
         List<Usuario> usuarios = new ArrayList<>();
 
@@ -51,6 +56,7 @@ public class UsuarioDAO {
         return usuarios;
     }
 
+    @Override
     public Usuario select(int idUsuario) {
         SQLiteDatabase readableDatabase = sqlHelper.getReadableDatabase();
         Cursor cursor = readableDatabase.rawQuery("SELECT * FROM Usuarios WHERE _id = " + idUsuario, null);
@@ -66,12 +72,14 @@ public class UsuarioDAO {
         return usuario;
     }
 
+    @Override
     public void delete(Usuario usuarioBorrar) {
         SQLiteDatabase writableDatabase = sqlHelper.getWritableDatabase();
         String[] bindParams = new String[]{String.valueOf(usuarioBorrar.getId())};
         writableDatabase.delete("Usuarios","_id = ?", bindParams);
     }
 
+    @Override
     public void update(Usuario usuarioActualizar) {
         ContentValues valores = new ContentValues();
         valores.put("nombre",usuarioActualizar.getNombre());

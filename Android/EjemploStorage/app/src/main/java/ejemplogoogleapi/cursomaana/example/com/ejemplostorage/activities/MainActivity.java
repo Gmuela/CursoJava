@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private Button crearUsuario;
     private Button verListaUsuarios;
 
-    private TextView tipoP;
+    private TextView tipoPersistencia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +32,21 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor editor = preferences.edit();
 
-        editor.putString("tipoPersistencia", "sqlite");
-        editor.apply();
+        int tipoPersistencia = preferences.getInt("tipoPersistencia", 0);
+        this.tipoPersistencia = (TextView) findViewById(R.id.tipoPersistenciaElegida);
 
-        String string = preferences.getString("tipoPersistencia", "hola");
-        tipoP = (TextView) findViewById(R.id.tipoPersistenciaElegida);
-        tipoP.setText(string);
+        if (tipoPersistencia == 0) {
+            editor.putInt("tipoPersistencia", R.integer.SQLITE);
+            editor.apply();
+            this.tipoPersistencia.setText(R.string.SQLite_Activado);
+        } else {
+
+            if (tipoPersistencia == (R.integer.SQLITE)) {
+                this.tipoPersistencia.setText(R.string.SQLite_Activado);
+            } else if (tipoPersistencia == (R.integer.SHARED)) {
+                this.tipoPersistencia.setText(R.string.Shared_Activado);
+            }
+        }
 
         crearUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,22 +73,26 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = preferences.edit();
 
         switch (item.getItemId()) {
-            case R.id.shared_preferences:
-                editor.putString("tipoPersistencia", "shared");
+            case R.id.sqlite:
+                editor.putInt("tipoPersistencia",R.integer.SQLITE);
                 editor.apply();
-                Toast msgChangedPersistenceShared = Toast.makeText(getApplicationContext(), R.string.MSG_SUCCESS_CHANGED_PERSISTENCE_SHARED, Toast.LENGTH_SHORT);
-                msgChangedPersistenceShared.show();
+                toastMessageAndUpdateTypePersistence(R.string.MSG_SUCCESS_CHANGED_PERSISTENCE_SQLITE, R.string.SQLite_Activado);
                 break;
 
-            case R.id.sqlite:
-                editor.putString("tipoPersistencia", "sqlite");
+            case R.id.shared_preferences:
+                editor.putInt("tipoPersistencia", R.integer.SHARED);
                 editor.apply();
-                Toast msgChangedPersistenceSQLite = Toast.makeText(getApplicationContext(), R.string.MSG_SUCCESS_CHANGED_PERSISTENCE_SQLITE, Toast.LENGTH_SHORT);
-                msgChangedPersistenceSQLite.show();
+                toastMessageAndUpdateTypePersistence(R.string.MSG_SUCCESS_CHANGED_PERSISTENCE_SHARED, R.string.Shared_Activado);
                 break;
         }
 
         return true;
+    }
+
+    private void toastMessageAndUpdateTypePersistence(int msgSuccessChangedPersistenceSqlite, int sqLite_activado) {
+        Toast msgChangedPersistenceSQLite = Toast.makeText(getApplicationContext(), msgSuccessChangedPersistenceSqlite, Toast.LENGTH_SHORT);
+        msgChangedPersistenceSQLite.show();
+        tipoPersistencia.setText(sqLite_activado);
     }
 
     @Override

@@ -10,35 +10,34 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-
 import ejemplogoogleapi.cursomaana.example.com.ejemplostorage.R;
 import ejemplogoogleapi.cursomaana.example.com.ejemplostorage.beans.Usuario;
-import ejemplogoogleapi.cursomaana.example.com.ejemplostorage.model.UsuarioDAO;
+import ejemplogoogleapi.cursomaana.example.com.ejemplostorage.model.dao.UsuarioDAO;
+import ejemplogoogleapi.cursomaana.example.com.ejemplostorage.model.factory.FactoryDAO;
 
 public class ActualizarUsuarioActivity extends AppCompatActivity {
-
 
     private EditText nombre;
     private EditText password;
     private EditText email;
 
     private Button actualizar;
-    private Usuario usuarioActualizar;
 
+    private int idUsuarioActualizar;
+    private Usuario usuarioActualizar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actualizar_usuario);
 
-        final UsuarioDAO usuarioDAO = new UsuarioDAO(this);
-
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        final SharedPreferences.Editor editor = preferences.edit();
+
+        final UsuarioDAO usuarioDAO = FactoryDAO.getDAO(getApplicationContext(), preferences.getInt("tipoPersistencia", 0));
+
 
         Intent lastIntent = getIntent();
-        int idUsuarioActualizar = lastIntent.getIntExtra("idUsuarioActualizar", 0);
+        idUsuarioActualizar = lastIntent.getIntExtra("idUsuarioActualizar", 0);
 
         usuarioActualizar = usuarioDAO.select(idUsuarioActualizar);
 
@@ -52,40 +51,26 @@ public class ActualizarUsuarioActivity extends AppCompatActivity {
         password.setText(usuarioActualizar.getPassword());
         email.setText(usuarioActualizar.getEmail());
 
-        String tipoPersistencia = preferences.getString("tipoPersistencia", "sqlite");
 
-        if (tipoPersistencia.equals("sqlite")) {
-            actualizar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    usuarioActualizar.setNombre(String.valueOf(nombre.getText()));
-                    usuarioActualizar.setPassword(String.valueOf(password.getText()));
-                    usuarioActualizar.setEmail(String.valueOf(email.getText()));
+        actualizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                usuarioActualizar.setNombre(String.valueOf(nombre.getText()));
+                usuarioActualizar.setPassword(String.valueOf(password.getText()));
+                usuarioActualizar.setEmail(String.valueOf(email.getText()));
 
-                    usuarioDAO.update(usuarioActualizar);
+                usuarioDAO.update(usuarioActualizar);
 
-                    Toast msg = Toast.makeText(getApplicationContext(), R.string.MSG_SUCCESS_UPDATED_USER, Toast.LENGTH_SHORT);
-                    msg.show();
+                toastMessageAndBackToList();
+            }
+        });
+    }
 
-                    Intent nextIntent = new Intent(ActualizarUsuarioActivity.this, ListaUsuariosActivity.class);
-                    startActivity(nextIntent);
-                    finish();
-
-                }
-            });
-        }
-
-        if (tipoPersistencia.equals("shared")) {
-            actualizar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Usuario usuario = new Usuario("Hola Actualización", "123456", "gmuela92@gmail.com");
-                    Gson gson = new Gson();
-                    String usuarioJSON = gson.toJson(usuario);
-                    editor.putString("usuario0", usuarioJSON);
-                    editor.commit();
-                }
-            });
-        }
+    private void toastMessageAndBackToList() {
+        Toast msg = Toast.makeText(getApplicationContext(), R.string.MSG_SUCCESS_UPDATED_USER, Toast.LENGTH_SHORT);
+        msg.show();
+        Intent nextIntent = new Intent(ActualizarUsuarioActivity.this, ListaUsuariosActivity.class);
+        startActivity(nextIntent);
+        finish();
     }
 }

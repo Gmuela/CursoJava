@@ -7,12 +7,12 @@
         android:orderInCategory="100"
         app:showAsAction="never">
         <menu>
-            <item android:id="@+id/shared_preferences"
-                android:title="@string/sharedpreferences"
-                android:orderInCategory="100"
-                app:showAsAction="never"/>
             <item android:id="@+id/sqlite"
                 android:title="@string/sqlite"
+                android:orderInCategory="100"
+                app:showAsAction="never"/>
+            <item android:id="@+id/shared_preferences"
+                android:title="@string/sharedpreferences"
                 android:orderInCategory="100"
                 app:showAsAction="never"/>
         </menu>

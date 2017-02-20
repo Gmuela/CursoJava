@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Persistencia en Android</string>
+    <string name="app_name">Persistencia</string>
     <string name="MSG_SUCCESS_CREATED_USER">Usuario creado</string>
     <string name="MSG_SUCCESS_DELETED_USER">Usuario borrado</string>
     <string name="MSG_SUCCESS_UPDATED_USER">Usuario Actualizado</string>
@@ -7,6 +7,8 @@
     <string name="persistencia">Persistencia</string>
     <string name="sharedpreferences">SharedPreferences</string>
     <string name="sqlite">SQLite</string>
-    <string name="MSG_SUCCESS_CHANGED_PERSISTENCE_SQLITE">Persistencia cambiada a: SQLite</string>
-    <string name="MSG_SUCCESS_CHANGED_PERSISTENCE_SHARED">Persistencia cambiada a: SharedPreferences</string>
+    <string name="MSG_SUCCESS_CHANGED_PERSISTENCE_SQLITE">SQLite Activado</string>
+    <string name="MSG_SUCCESS_CHANGED_PERSISTENCE_SHARED">SharedPreferences Activado</string>
+    <string name="SQLite_Activado">Tipo de persistencia activada: SQLite</string>
+    <string name="Shared_Activado">Tipo de persistencia activada: SharedPreferences</string>
 </resources>

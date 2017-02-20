@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/android_icon"
             android:id="@+id/imageView"
-            android:layout_weight="0.68" />
+            android:layout_weight="0.81" />
 
         <Button
             android:text="Crear Usuario"
@@ -45,10 +45,14 @@
             android:textSize="18sp" />
 
         <TextView
-            android:text="TextView"
+            android:text="Tipo de persistencia activada: SQLite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tipoPersistenciaElegida"
-            android:layout_weight="0.68" />
+            android:layout_weight="0.05"
+            android:textAlignment="center"
+            android:layout_marginTop="30dp"
+            android:textStyle="normal|bold"
+            android:textColor="@color/colorAccent" />
     </LinearLayout>
 </RelativeLayout>

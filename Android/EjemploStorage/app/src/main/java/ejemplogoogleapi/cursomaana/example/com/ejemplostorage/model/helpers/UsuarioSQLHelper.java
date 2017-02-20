@@ -1,4 +1,4 @@
-package ejemplogoogleapi.cursomaana.example.com.ejemplostorage.model;
+package ejemplogoogleapi.cursomaana.example.com.ejemplostorage.model.helpers;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
