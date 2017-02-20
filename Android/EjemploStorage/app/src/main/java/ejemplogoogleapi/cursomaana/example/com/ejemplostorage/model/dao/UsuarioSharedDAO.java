@@ -22,7 +22,18 @@ public class UsuarioSharedDAO implements UsuarioDAO {
 
     @Override
     public void insert(Usuario usuario) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
 
+        int idUsuario = preferences.getInt("idUsuario", 0);
+        idUsuario++;
+        editor.putInt("idUsuario", idUsuario);
+        usuario.setId(idUsuario);
+
+        Gson gson = new Gson();
+        String usuarioJSON = gson.toJson(usuario);
+        editor.putString(String.valueOf("usuario" + usuario.getId()), usuarioJSON);
+        editor.apply();
     }
 
     @Override
