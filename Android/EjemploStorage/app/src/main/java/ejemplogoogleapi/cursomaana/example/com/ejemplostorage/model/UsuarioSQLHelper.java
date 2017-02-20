@@ -1,4 +1,4 @@
-package ejemplogoogleapi.cursomaana.example.com.ejemplostorage;
+package ejemplogoogleapi.cursomaana.example.com.ejemplostorage.model;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class UsuarioSQLHelper extends SQLiteOpenHelper {
 
-    private String createTableUsuarios ="CREATE TABLE Usuarios(_id INTEGER PRIMARY KEY AUTOINCREMENT,nombre TEXT,password TEXT,email TEXT)";
+    private String createTableUsuarios = "CREATE TABLE Usuarios(_id INTEGER PRIMARY KEY AUTOINCREMENT,nombre TEXT,password TEXT,email TEXT)";
 
     public UsuarioSQLHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);

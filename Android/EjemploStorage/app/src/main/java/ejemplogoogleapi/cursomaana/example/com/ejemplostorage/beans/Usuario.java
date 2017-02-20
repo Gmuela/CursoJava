@@ -1,8 +1,10 @@
-package ejemplogoogleapi.cursomaana.example.com.ejemplostorage;
+package ejemplogoogleapi.cursomaana.example.com.ejemplostorage.beans;
 
 import java.io.Serializable;
 
 public class Usuario implements Serializable {
+
+    private int id;
     private String nombre;
     private String password;
     private String email;
@@ -11,6 +13,18 @@ public class Usuario implements Serializable {
         this.nombre = nombre;
         this.password = password;
         this.email = email;
+    }
+
+    public Usuario() {
+        //Default
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {

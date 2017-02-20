@@ -38,7 +38,7 @@ public class ConSharedPreferences {
     verDatos.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent nextIntent = new Intent(MainActivity.this, VerDatos.class);
+            Intent nextIntent = new Intent(MainActivity.this, ListaUsuariosActivity.class);
             startActivity(nextIntent);
         }
     });

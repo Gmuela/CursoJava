@@ -1,4 +1,4 @@
-package ejemplogoogleapi.cursomaana.example.com.ejemplostorage;
+package ejemplogoogleapi.cursomaana.example.com.ejemplostorage.adaptadores;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,9 +10,12 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import ejemplogoogleapi.cursomaana.example.com.ejemplostorage.R;
+import ejemplogoogleapi.cursomaana.example.com.ejemplostorage.beans.Usuario;
+
 public class AdaptadorUsuario extends ArrayAdapter<Usuario> {
     public AdaptadorUsuario(Context context, List<Usuario> datos) {
-        super(context,R.layout.formato_usuario, datos);
+        super(context, R.layout.formato_usuario, datos);
     }
 
     @NonNull
