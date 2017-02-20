@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import ejemplogoogleapi.cursomaana.example.com.ejemplostorage.R;
@@ -17,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Button crearUsuario;
     private Button verListaUsuarios;
+
+    private TextView tipoP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
 
         editor.putString("tipoPersistencia", "sqlite");
         editor.apply();
+
+        String string = preferences.getString("tipoPersistencia", "hola");
+        tipoP = (TextView) findViewById(R.id.tipoPersistenciaElegida);
+        tipoP.setText(string);
 
         crearUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());

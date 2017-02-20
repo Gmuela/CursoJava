@@ -44,61 +44,51 @@ public class CrearUsuarioActivity extends AppCompatActivity {
 
         guardar = (Button) findViewById(R.id.guardarButton);
 
-        setOnClicks(usuarioDAO, preferences, editor);
+        final String tipoPersistencia = preferences.getString("tipoPreferencia", "sqlite");
+
+        guardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (tipoPersistencia.equals("sqlite")) {
+
+                    saveWithSQLite(usuarioDAO);
+
+                } else if(tipoPersistencia.equals("shared")){
+                    saveWithShared(editor);
+                }
+            }
+        });
     }
 
-    @Override
-    protected void onRestart() {
-        final UsuarioDAO usuarioDAO = new UsuarioDAO(this);
+    private void saveWithShared(SharedPreferences.Editor editor) {
+        String nombreUsuario = String.valueOf(nombre.getText());
+        String passwordUsuario = String.valueOf(password.getText());
+        String emailUsuario = String.valueOf(email.getText());
 
-        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        final SharedPreferences.Editor editor = preferences.edit();
-        setOnClicks(usuarioDAO, preferences, editor);
+        Usuario usuario = new Usuario(nombreUsuario,passwordUsuario,emailUsuario);
+        usuario.setId(idUsuario);
+        idUsuario++;
+        editor.putInt("idUsuario", idUsuario);
+        Gson gson = new Gson();
+        String usuarioJSON = gson.toJson(usuario);
+        editor.putString(String.valueOf(usuario.getId()), usuarioJSON);
+        editor.apply();
     }
 
-    private void setOnClicks(final UsuarioDAO usuarioDAO, SharedPreferences preferences, final SharedPreferences.Editor editor) {
-        String tipoPersistencia = preferences.getString("tipoPreferencia", "sqlite");
+    private void saveWithSQLite(UsuarioDAO usuarioDAO) {
+        String nombreUsuario = String.valueOf(nombre.getText());
+        String passwordUsuario = String.valueOf(password.getText());
+        String emailUsuario = String.valueOf(email.getText());
 
-        if (tipoPersistencia.equals("sqlite")) {
-            guardar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String nombreUsuario = String.valueOf(nombre.getText());
-                    String passwordUsuario = String.valueOf(password.getText());
-                    String emailUsuario = String.valueOf(email.getText());
+        Usuario usuario = new Usuario(nombreUsuario, passwordUsuario, emailUsuario);
 
-                    Usuario usuario = new Usuario(nombreUsuario, passwordUsuario, emailUsuario);
+        usuarioDAO.insert(usuario);
 
-                    usuarioDAO.insert(usuario);
+        Toast msg = Toast.makeText(getApplicationContext(), R.string.MSG_SUCCESS_CREATED_USER, Toast.LENGTH_SHORT);
+        msg.show();
 
-                    Toast msg = Toast.makeText(getApplicationContext(), R.string.MSG_SUCCESS_CREATED_USER, Toast.LENGTH_SHORT);
-                    msg.show();
-
-                    Intent nextIntent = new Intent(CrearUsuarioActivity.this, ListaUsuariosActivity.class);
-                    startActivity(nextIntent);
-                    finish();
-                }
-            });
-        }
-
-        if(tipoPersistencia.equals("shared")){
-            guardar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String nombreUsuario = String.valueOf(nombre.getText());
-                    String passwordUsuario = String.valueOf(password.getText());
-                    String emailUsuario = String.valueOf(email.getText());
-
-                    Usuario usuario = new Usuario(nombreUsuario,passwordUsuario,emailUsuario);
-                    usuario.setId(idUsuario);
-                    idUsuario++;
-                    editor.putInt("idUsuario", idUsuario);
-                    Gson gson = new Gson();
-                    String usuarioJSON = gson.toJson(usuario);
-                    editor.putString(String.valueOf(usuario.getId()), usuarioJSON);
-                    editor.apply();
-                }
-            });
-        }
+        Intent nextIntent = new Intent(CrearUsuarioActivity.this, ListaUsuariosActivity.class);
+        startActivity(nextIntent);
+        finish();
     }
 }

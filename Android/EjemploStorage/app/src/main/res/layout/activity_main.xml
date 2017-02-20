@@ -43,5 +43,12 @@
             android:textAlignment="center"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:textSize="18sp" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tipoPersistenciaElegida"
+            android:layout_weight="0.68" />
     </LinearLayout>
 </RelativeLayout>
