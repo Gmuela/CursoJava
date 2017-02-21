@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .ancestors * {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("span").parent().css({"color": "red"});
+        });
+    </script>
+</head>
+<body>
+Completa el Código Jquery para añadir el color rojo al padre directo de span
+<div class="ancestors">
+    <div style="width:500px;">div (great-grandparent)
+        <ul>ul (grandparent)
+            <li>li (direct parent)
+                <span>span</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

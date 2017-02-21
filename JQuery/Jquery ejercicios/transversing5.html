@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .ancestors * {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("ul").children().first().css({"color": "red"});
+        });
+    </script>
+</head>
+<body>
+Añade el color rojo al hijo directo de UL
+<div class="ancestors">
+    <div style="width:500px;">div (great-grandparent)
+        <ul>ul (grandparent)
+            <li>li (direct parent)
+                <span>span</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

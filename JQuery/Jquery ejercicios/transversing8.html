@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .descendants * {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("div").children().first().css({"color": "red"});
+        });
+    </script>
+</head>
+<body>
+Utiliza la funcion children para añadir el color rojo al primer hijo del div
+<div class="descendants" style="width:500px;">div (parent)
+    <p>first p (child)</p>
+    <p>second p (child)</p>
+</div>
+
+</body>
+</html>
