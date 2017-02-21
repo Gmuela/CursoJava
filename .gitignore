@@ -83,13 +83,3 @@ freeline_project_description.json
 
 ### Android Patch ###
 gen-external-apklibs
-
-# End of https://www.gitignore.io/api/android
-### ApacheCordova ###
-# Apache Cordova generated files and directories
-bin/*
-!/plugins
-!/PhoneGap/*/plugins/android.json
-!/PhoneGap/*/plugins/fetch.json
-PhoneGap/*/plugins/*
-PhoneGap/*/platforms/*
