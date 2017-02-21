@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    alert($("div").outerHeight() + "|" + $("div").outerWidth());
+});
+</script>
+<style>
+div {
+    height: 100px;
+    width: 300px;
+    padding: 10px;
+    margin: 3px;
+    border: 1px solid blue;
+    background-color: lightblue;
+}
+</style>
+</head>
+<body>
+Muestra en un Alert la altura de este div incluyendo el padding y borde 
+<div>Soy un div.</div>
+
+</body>
+</html>

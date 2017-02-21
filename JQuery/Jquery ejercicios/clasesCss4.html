@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("p").click(function(){
+        $(this).toggleClass("test");
+    });
+});
+</script>
+<style>
+.important {
+    font-weight: bold;
+    font-size: xx-large;
+    background-color: yellow;
+}
+.test {
+    color: red;
+    border: 5px dotted blue;
+}
+</style>
+</head>
+<body>
+Utiliza JQuery para añadir/eliminar la clase important del siguiente parrafo cuando se clickeado
+<p class="important">This is a paragraph.Haz click si quieres cambiar mi importancia</p>
+
+</body>

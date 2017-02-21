@@ -3,17 +3,26 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function(){
-            $("button").click(function(){
-                $("p").remove(".italic");
+        $(document).ready(function () {
+            $("button").click(function () {
+                var txt = "";
+                var $div = $("#div");
+
+                txt += "Width of div: " + $div.width() + "</br>";
+                txt += "Height of div: " + $div.height() + "</br>";
+                txt += "Outer width of div: " + $div.outerWidth() + "</br>";
+                txt += "Outer height of div: " + $div.outerHeight();
+                $div.html(txt);
             });
         });
     </script>
 </head>
 <body>
-<p>This is a paragraph in the div.</p>
-<p class="italic"><i>This is another paragraph in the div.</i></p>
-<p class="italic"><i>This is another paragraph in the div.</i></p>
-<button>Remove all p elements with class="italic"</button>
+<div id="div"
+     style="height:100px;width:300px;padding:10px;margin:3px;border:1px solid blue;background-color:lightblue;"></div>
+<br>
+<button>Display dimensions of div</button>
+<p>outerWidth() - returns the width of an element (includes padding and border).</p>
+<p>outerHeight() - returns the height of an element (includes padding and border).</p>
 </body>
 </html>
