@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
-    $(document).ready(function(){
-        $("#divsaludo").html("Hola JQuery");
-    });
-</script>
-<title>Hola mundo, version JQuery</title>
+        $(document).ready(function(){
+            $("button").click(function(){
+                $("p").remove(".italic");
+            });
+        });
+    </script>
 </head>
 <body>
-<div id="divsaludo"></div>
-    </body>
-    </html>
+<p>This is a paragraph in the div.</p>
+<p class="italic"><i>This is another paragraph in the div.</i></p>
+<p class="italic"><i>This is another paragraph in the div.</i></p>
+<button>Remove all p elements with class="italic"</button>
+</body>
+</html>

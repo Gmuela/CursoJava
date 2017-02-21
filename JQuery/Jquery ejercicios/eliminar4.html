@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".test,.demo").remove();
+        });
+    </script>
+    <style>
+        .test {
+            color: red;
+            font-size: 20px;
+        }
+
+        .demo {
+            color: green;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+Utiliza Jquery para eliminar todos los parrafos con la clase= test y clase= demo
+<p>This is a paragraph.</p>
+<p class="test">This is another paragraph.</p>
+<p class="test">This is another paragraph.</p>
+<p class="demo">This is p element with class="demo".</p>
+</body>
+</html>
