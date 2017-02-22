@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio AJAX</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script>
+
+    var datos;
+
+    function cargarClick() {
+        $("li").click(function () {
+            console.log(datos);
+            detalleUsuario($(this));
+        });
+    }
+
+    function detalleUsuario(el) {
+        var $divLista = $("#divLista");
+        var $divDetalle = $("#divDetalle");
+
+        $divLista.fadeOut(100);
+
+        for (var i in datos) {
+            if (datos[i].name.first == el.text()) {
+                $divDetalle.append("<img src='" + datos[i].picture.large + "'><br>");
+                $divDetalle.append(datos[i].name.first + " " + datos[i].name.last + "<br>");
+                $divDetalle.append(datos[i].gender + "<br>");
+                $divDetalle.append(datos[i].dob + "<br>");
+                $divDetalle.append(datos[i].email + "<br>");
+            }
+        }
+
+        $("#atras").click(function () {
+            $divDetalle.fadeOut(100);
+            $divDetalle.empty();
+            $divLista.fadeIn(800);
+            $divDetalle.append("<div><button id='atras'>Atrás</button></div>");
+        });
+        $divDetalle.fadeIn(800);
+    }
+    $(document).ready(function () {
+        $.ajax({
+            url: 'https://randomuser.me/api/?results=5',
+            dataType: 'json',
+            success: function (data) {
+                $("#divDetalle").hide();
+                for (var i in data.results) {
+                    $("#listaUsuarios").append("<li>" + data.results[i].name.first + "</li>")
+                }
+                datos = data.results;
+                cargarClick();
+            }
+        });
+    });
+
+</script>
+<body>
+<div id="divLista">
+    <ul id="listaUsuarios">
+    </ul>
+</div>
+<div id="divDetalle">
+    <div><button id="atras">Atrás</button></div>
+</div>
+</body>
+</html>
