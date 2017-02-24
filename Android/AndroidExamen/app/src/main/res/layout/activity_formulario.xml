@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_formulario"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cursomaana.example.com.androidexamen.FormularioActivity"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/f_nombre_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/f_nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:drawableStart="@drawable/ic_usuario"
+                android:ems="10"
+                android:hint="Introduzca el nombre"
+                android:inputType="textPersonName" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/f_email_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/f_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/nombreFinal"
+                android:layout_below="@+id/nombreFinal"
+                android:layout_marginTop="19dp"
+                android:drawableStart="@drawable/ic_email"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/f_password_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/f_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/nombreFinal"
+                android:layout_below="@+id/nombreFinal"
+                android:layout_marginTop="19dp"
+                android:drawableStart="@drawable/ic_password"
+                android:ems="10"
+                android:hint="Contraseña"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/f_verif_pass_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/f_verif_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/nombreFinal"
+                android:layout_below="@+id/nombreFinal"
+                android:layout_marginTop="19dp"
+                android:drawableStart="@drawable/ic_password"
+                android:ems="10"
+                android:hint="Verifica Contraseña"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/sexo_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Sexo"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/f_rad_sexo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/rad_hombre"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rad_hombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hombre"
+                android:textAlignment="center" />
+
+            <RadioButton
+                android:id="@+id/rad_mujer"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:text="Mujer"
+                android:textAlignment="viewStart" />
+
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/aficiones_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Aficiones"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <CheckBox
+                android:id="@+id/af_cine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cine"
+                android:layout_weight="0.12" />
+
+            <CheckBox
+                android:id="@+id/af_musica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Música" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/af_deporte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deporte" />
+
+            <CheckBox
+                android:id="@+id/af_manualidades"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Manualidades"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/f_nacionalidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nacionalidad"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spinner_nacionalidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+            <Button
+                android:id="@+id/f_acceptButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Registrarse"
+                android:layout_marginTop="15dp"/>
+
+
+    </LinearLayout>
+
+</ScrollView>
